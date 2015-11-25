@@ -14,7 +14,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
     <packaging>pom</packaging>
     <version>2.0.0-SNAPSHOT</version>
 
-    <name>Open Sensor Search Parent Project</name>
+    <name>Open Sensor Search Parent</name>
     <inceptionYear>2013</inceptionYear>
 
     <licenses>
@@ -79,7 +79,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
     </issueManagement>
 
     <modules>
-        <module>common</module>
         <module>sir-json</module>
         <module>sir-common</module>
         <module>service</module>

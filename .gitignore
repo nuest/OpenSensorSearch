@@ -10,3 +10,4 @@ target
 src/main/config/buildNumber.properties
 *.log
 service/nb-configuration.xml
+release.properties
