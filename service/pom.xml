@@ -1,401 +1,390 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 	
-	<parent>
-		<groupId>org.n52.oss</groupId>
-		<artifactId>parent</artifactId>
-		<version>1.0</version>
-	</parent>
+    <parent>
+        <groupId>org.n52.oss</groupId>
+        <artifactId>parent</artifactId>
+        <version>2.0.0-SNAPSHOT</version>
+    </parent>
 	
-	<artifactId>service</artifactId>
-	<name>Open Sensor Search Service</name>
-	<description>Platform for discovery and metadata management for sensors</description>
-	<packaging>war</packaging>
-	<version>0.6</version>
+    <artifactId>service</artifactId>
+    <name>Open Sensor Search Service</name>
+    <description>Platform for discovery and metadata management for sensors</description>
+    <packaging>war</packaging>
+    <version>2.0.0-SNAPSHOT</version>
 
-	<properties>
-		<webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+    <properties>
+        <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
 
-		<restlet.version>2.1.6</restlet.version>
-	</properties>
+        <restlet.version>2.1.6</restlet.version>
+    </properties>
 
-	<build>
-		<finalName>oss-service</finalName>
+    <build>
+        <finalName>oss-service</finalName>
 
-		<plugins>
-			<plugin>
-				<!-- http://wiki.eclipse.org/Jetty/Feature/Jetty_Maven_Plugin -->
-				<!-- jetty:run-exploded invoces lifecycle phase package -->
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>8.1.11.v20130520</version>
+        <plugins>
+            <plugin>
+                <!-- http://wiki.eclipse.org/Jetty/Feature/Jetty_Maven_Plugin -->
+                <!-- jetty:run-exploded invoces lifecycle phase package -->
+                <groupId>org.mortbay.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>8.1.11.v20130520</version>
 
-				<configuration>
-					<scanIntervalSeconds>2</scanIntervalSeconds>
-					<!-- if you embed the following in <webApp>, then jetty:run-exploded
-						will result in error "When configuring a basic element the configuration
-						cannot contain any child elements. Configuration element 'war'." -->
-					<contextPath>${service.path}</contextPath> <!-- is ignored for run-exploded, but used by Webby: Right-click, Debug as,
+                <configuration>
+                    <scanIntervalSeconds>2</scanIntervalSeconds>
+                    <!-- if you embed the following in <webApp>, then jetty:run-exploded
+                    will result in error "When configuring a basic element the configuration
+                    cannot contain any child elements. Configuration element 'war'." -->
+                    <contextPath>${service.path}</contextPath> <!-- is ignored for run-exploded, but used by Webby: Right-click, Debug as,
 						Webby ... -->
-					<war>target/${project.build.finalName}</war>
-				</configuration>
-			</plugin>
+                    <war>target/${project.build.finalName}</war>
+                </configuration>
+            </plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
 
-				<configuration>
-					<!-- have to explicitly add resources and target paths if I want to
-						do filtering on different resources -->
-					<!-- http://maven.apache.org/plugins/maven-war-plugin/examples/adding-filtering-webresources.html -->
-					<webResources>
-						<resource>
-							<directory>src/main/webapp</directory>
-							<filtering>true</filtering>
-						</resource>
-						<resource>
-							<directory>src/main/resources</directory>
-							<filtering>true</filtering>
-							<targetPath>WEB-INF/classes</targetPath>
-						</resource>
-					</webResources>
+                <configuration>
+                    <!-- have to explicitly add resources and target paths if I want to
+                    do filtering on different resources -->
+                    <!-- http://maven.apache.org/plugins/maven-war-plugin/examples/adding-filtering-webresources.html -->
+                    <webResources>
+                        <resource>
+                            <directory>src/main/webapp</directory>
+                            <filtering>true</filtering>
+                        </resource>
+                        <resource>
+                            <directory>src/main/resources</directory>
+                            <filtering>true</filtering>
+                            <targetPath>WEB-INF/classes</targetPath>
+                        </resource>
+                    </webResources>
 
-					<webXml>${basedir}/src/main/webapp/WEB-INF/web.xml</webXml>
-					<filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
+                    <webXml>${basedir}/src/main/webapp/WEB-INF/web.xml</webXml>
+                    <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
 
-					<archive>
-						<manifest>
-							<addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-						</manifest>
-					</archive>
-				</configuration>
-			</plugin>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
 
-			<plugin>
-				<!-- http://code.google.com/p/maven-license-plugin/wiki/HowTo -->
-				<!-- run "mvn license:check" to check -->
-				<!-- run "mvn license:format" to add to the files -->
-				<groupId>com.mycila.maven-license-plugin</groupId>
-				<artifactId>maven-license-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>**/iso_schematron_skeleton_for_saxon.xsl</exclude>
-						<exclude>**/iso_svrl_for_xslt2.xsl</exclude>
-						<exclude>**/webapp/TestRequests/**</exclude>
-						<exclude>**/webapp/codemirror/**</exclude>
-						<exclude>**/*.xml</exclude>
-						<exclude>**/libs/env*.js</exclude>
-						<exclude>**/libs/jquery.js</exclude>
-						<exclude>**/webapp/js/bootstrap*.js</exclude>
-						<exclude>**/webapp/css/bootstrap*.css</exclude>
-						<exclude>**/org/n52/sir/util/ext/**</exclude>
-						<exclude>**/*.properties</exclude>
-						<exclude>**/*.js</exclude>
-						<exclude>**/*.css</exclude>
-					</excludes>
-					<includes>
-						<include>**/*.java</include>
-						<include>**/*.jsp</include>
-						<include>**/*.js</include>
-						<include>**/*.xsl</include>
-						<include>**/*.sch</include>
-						<include>**/*.sql</include>
-						<include>**/*.css</include>
-					</includes>
-					<strictCheck>true</strictCheck>
-					<properties>
-						<year>${project.inceptionYear}</year>
-					</properties>
-					<mapping>
-						<sch>XML_STYLE</sch>
-					</mapping>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+            <plugin>
+                <!-- http://code.google.com/p/maven-license-plugin/wiki/HowTo -->
+                <!-- run "mvn license:check" to check -->
+                <!-- run "mvn license:format" to add to the files -->
+                <groupId>com.mycila.maven-license-plugin</groupId>
+                <artifactId>maven-license-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>**/iso_schematron_skeleton_for_saxon.xsl</exclude>
+                        <exclude>**/iso_svrl_for_xslt2.xsl</exclude>
+                        <exclude>**/webapp/TestRequests/**</exclude>
+                        <exclude>**/webapp/codemirror/**</exclude>
+                        <exclude>**/*.xml</exclude>
+                        <exclude>**/webapp/js/bootstrap*.js</exclude>
+                        <exclude>**/webapp/css/bootstrap*.css</exclude>
+                        <exclude>**/org/n52/sir/util/ext/**</exclude>
+                        <exclude>**/*.properties</exclude>
+                        <exclude>**/*.js</exclude>
+                        <exclude>**/*.css</exclude>
+                    </excludes>
+                    <includes>
+                        <include>**/*.java</include>
+                        <include>**/*.jsp</include>
+                        <include>**/*.js</include>
+                        <include>**/*.xsl</include>
+                        <include>**/*.sch</include>
+                        <include>**/*.sql</include>
+                        <include>**/*.css</include>
+                    </includes>
+                    <strictCheck>true</strictCheck>
+                    <properties>
+                        <year>${project.inceptionYear}</year>
+                    </properties>
+                    <mapping>
+                        <sch>XML_STYLE</sch>
+                    </mapping>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
-	<profiles>
-		<profile>
-			<id>generate-documentation</id>
+    <profiles>
+        <profile>
+            <id>generate-documentation</id>
 
-			<build>
-				<plugins>
-					<!-- TODO: add swagger generation plugin here -->
-					<plugin>
-						<groupId>com.github.danielflower.mavenplugins</groupId>
-						<artifactId>maven-gitlog-plugin</artifactId>
-						<version>1.5.0</version>
-						<executions>
-							<execution>
-								<goals>
-									<goal>generate</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
+            <build>
+                <plugins>
+                    <!-- TODO: add swagger generation plugin here -->
+                    <plugin>
+                        <groupId>com.github.danielflower.mavenplugins</groupId>
+                        <artifactId>maven-gitlog-plugin</artifactId>
+                        <version>1.5.0</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>generate</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.restlet.jee</groupId>
-			<artifactId>org.restlet</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.osgi</groupId>
-					<artifactId>org.osgi.core</artifactId>
-				</exclusion>
-			</exclusions>
-			<version>${restlet.version}</version>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>org.restlet.jee</groupId>
+            <artifactId>org.restlet</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.osgi</groupId>
+                    <artifactId>org.osgi.core</artifactId>
+                </exclusion>
+            </exclusions>
+            <version>${restlet.version}</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.restlet.jee</groupId>
-			<artifactId>org.restlet.ext.servlet</artifactId>
-			<version>${restlet.version}</version>
-		</dependency>
+        <dependency>
+            <groupId>org.restlet.jee</groupId>
+            <artifactId>org.restlet.ext.servlet</artifactId>
+            <version>${restlet.version}</version>
+        </dependency>
 
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
 
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
 
-		<dependency>
-			<groupId>com.sun.xml.messaging.saaj</groupId>
-			<artifactId>saaj-impl</artifactId>
-			<version>1.3.21</version>
-		</dependency>
+        <dependency>
+            <groupId>com.sun.xml.messaging.saaj</groupId>
+            <artifactId>saaj-impl</artifactId>
+            <version>1.3.21</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.apache.xmlbeans</groupId>
-			<artifactId>xmlbeans</artifactId>
-			<!-- if added, the wrong XmlConstants is used, see XmlTools.java and SMLtoEbRIMTransformer.java -->
-			<exclusions>
-				<exclusion>
-					<groupId>stax</groupId>
-					<artifactId>stax-api</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+        <dependency>
+            <groupId>org.apache.xmlbeans</groupId>
+            <artifactId>xmlbeans</artifactId>
+            <!-- if added, the wrong XmlConstants is used, see XmlTools.java and SMLtoEbRIMTransformer.java -->
+            <exclusions>
+                <exclusion>
+                    <groupId>stax</groupId>
+                    <artifactId>stax-api</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
 
-		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>2.2</version>
-		</dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.2</version>
+        </dependency>
 
-		<dependency>
-			<groupId>xerces</groupId>
-			<artifactId>xercesImpl</artifactId>
-			<version>2.11.0</version>
-		</dependency>
-		<dependency>
-			<artifactId>solr-solrj</artifactId>
-			<groupId>org.apache.solr</groupId>
-			<version>4.0.0</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<artifactId>solr-core</artifactId>
-			<groupId>org.apache.solr</groupId>
-			<version>1.4.0</version>
-			<type>jar</type>
-			<scope>compile</scope>
-			<exclusions>
-				<!-- included via solrj, and there the correct groupId is used so that
-					the pom can be found. -->
-				<exclusion>
-					<artifactId>wstx-asl</artifactId>
-					<groupId>woodstox</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
+        <dependency>
+            <groupId>xerces</groupId>
+            <artifactId>xercesImpl</artifactId>
+            <version>2.11.0</version>
+        </dependency>
+        <dependency>
+            <artifactId>solr-solrj</artifactId>
+            <groupId>org.apache.solr</groupId>
+            <version>4.0.0</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <artifactId>solr-core</artifactId>
+            <groupId>org.apache.solr</groupId>
+            <version>1.4.0</version>
+            <type>jar</type>
+            <scope>compile</scope>
+            <exclusions>
+                <!-- included via solrj, and there the correct groupId is used so that
+                the pom can be found. -->
+                <exclusion>
+                    <artifactId>wstx-asl</artifactId>
+                    <groupId>woodstox</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
-		<dependency>
-			<groupId>org.apache.tomcat</groupId>
-			<artifactId>dbcp</artifactId>
-			<version>6.0.37</version>
-		</dependency>
+        <dependency>
+            <groupId>org.apache.tomcat</groupId>
+            <artifactId>dbcp</artifactId>
+            <version>6.0.37</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.postgis</groupId>
-			<artifactId>postgis-jdbc</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.postgis</groupId>
+            <artifactId>postgis-jdbc</artifactId>
+        </dependency>
 
-		<dependency>
-			<groupId>postgresql</groupId>
-			<artifactId>postgresql</artifactId>
-			<version>8.4-702.jdbc4</version>
-		</dependency>
+        <dependency>
+            <groupId>postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>8.4-702.jdbc4</version>
+        </dependency>
 
-		<dependency>
-			<groupId>net.sf.saxon</groupId>
-			<artifactId>Saxon-HE</artifactId>
-			<version>9.5.0.2</version>
-		</dependency>
+        <dependency>
+            <groupId>net.sf.saxon</groupId>
+            <artifactId>Saxon-HE</artifactId>
+            <version>9.5.0.2</version>
+        </dependency>
 
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.2.4</version>
-			<scope>compile</scope>
-		</dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.2.4</version>
+            <scope>compile</scope>
+        </dependency>
 
-		<dependency>
-			<groupId>net.java.dev.rome</groupId>
-			<artifactId>rome</artifactId>
-			<version>1.0.0</version>
-		</dependency>
+        <dependency>
+            <groupId>net.java.dev.rome</groupId>
+            <artifactId>rome</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
-		<!-- for permalink generation -->
-		<dependency>
-			<groupId>org.n52.sensorweb</groupId>
-			<artifactId>sensorwebclient-ext</artifactId>
-			<version>3.1.1-SNAPSHOT</version>
-		</dependency>
+        <!-- for permalink generation -->
+        <dependency>
+            <groupId>org.n52.sensorweb</groupId>
+            <artifactId>sensorwebclient-ext</artifactId>
+            <version>3.1.1-SNAPSHOT</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>3.1</version>
-		</dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.1</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.n52.oss</groupId>
-			<artifactId>sir-json</artifactId>
-			<version>0.3</version>
-		</dependency>
+        <dependency>
+            <groupId>org.n52.oss</groupId>
+            <artifactId>sir-json</artifactId>
+            <version>0.3</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-all</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.skyscreamer</groupId>
-			<artifactId>jsonassert</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>uk.co.datumedge</groupId>
-			<artifactId>hamcrest-json</artifactId>
-			<version>0.2</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>xmlunit</groupId>
-			<artifactId>xmlunit</artifactId>
-			<scope>test</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.skyscreamer</groupId>
+            <artifactId>jsonassert</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>uk.co.datumedge</groupId>
+            <artifactId>hamcrest-json</artifactId>
+            <version>0.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>xmlunit</groupId>
+            <artifactId>xmlunit</artifactId>
+            <scope>test</scope>
+        </dependency>
 
-		<dependency>
-			<groupId>com.google.inject</groupId>
-			<artifactId>guice</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.google.inject.extensions</groupId>
-			<artifactId>guice-servlet</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.google.inject.extensions</groupId>
-			<artifactId>guice-assistedinject</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.google.inject.extensions</groupId>
-			<artifactId>guice-multibindings</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.inject.extensions</groupId>
+            <artifactId>guice-servlet</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.inject.extensions</groupId>
+            <artifactId>guice-assistedinject</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.inject.extensions</groupId>
+            <artifactId>guice-multibindings</artifactId>
+        </dependency>
 
-		<dependency>
-			<groupId>org.mozilla</groupId>
-			<artifactId>rhino</artifactId>
-			<version>1.7R4</version>
-		</dependency>
+        <dependency>
+            <groupId>org.mozilla</groupId>
+            <artifactId>rhino</artifactId>
+            <version>1.7R4</version>
+        </dependency>
 
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-bundle</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-server</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-json</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey.contribs</groupId>
-			<artifactId>jersey-guice</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.jersey.contribs</groupId>
-			<artifactId>jersey-multipart</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-bundle</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey</groupId>
+            <artifactId>jersey-json</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey.contribs</groupId>
+            <artifactId>jersey-guice</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.jersey.contribs</groupId>
+            <artifactId>jersey-multipart</artifactId>
+        </dependency>
 
-		<dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz</artifactId>
-			<version>2.2.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.github.tomakehurst</groupId>
-			<artifactId>wiremock</artifactId>
-			<classifier>standalone</classifier>
-			<exclusions>
-				<exclusion>
-					<artifactId>log4j</artifactId>
-					<groupId>log4j</groupId>
-				</exclusion>
-			</exclusions>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.wordnik</groupId>
-			<artifactId>swagger-jaxrs_2.9.1</artifactId>
-			<version>1.2.1</version>
-			<scope>compile</scope>
-		</dependency>
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock</artifactId>
+            <classifier>standalone</classifier>
+            <exclusions>
+                <exclusion>
+                    <artifactId>log4j</artifactId>
+                    <groupId>log4j</groupId>
+                </exclusion>
+            </exclusions>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.wordnik</groupId>
+            <artifactId>swagger-jaxrs_2.9.1</artifactId>
+            <version>1.2.1</version>
+            <scope>compile</scope>
+        </dependency>
 
-		<dependency>
-			<groupId>org.n52.oss</groupId>
-			<artifactId>common</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.n52.oss</groupId>
+            <artifactId>common</artifactId>
+        </dependency>
 
-		<dependency>
-			<groupId>org.n52.oss</groupId>
-			<artifactId>sir-common</artifactId>
-		</dependency>
+        <dependency>
+            <groupId>org.n52.oss</groupId>
+            <artifactId>sir-common</artifactId>
+        </dependency>
 
-		<dependency>
-			<groupId>org.n52.oss</groupId>
-			<artifactId>sor-common</artifactId>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.n52.oss</groupId>
-			<artifactId>sor</artifactId>
-		</dependency>
-	</dependencies>
+    </dependencies>
 </project>

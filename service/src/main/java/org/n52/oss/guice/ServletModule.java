@@ -26,7 +26,6 @@ import org.n52.oss.opensearch.OpenSearch;
 import org.n52.sir.SIR;
 import org.n52.sir.harvest.exec.IJSExecute;
 import org.n52.sir.harvest.exec.impl.RhinoJSExecute;
-import org.n52.sir.script.HarvestResource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -52,7 +51,6 @@ public class ServletModule extends JerseyServletModule {
 
         // bind the JAX-RS resources: http://code.google.com/p/google-guice/wiki/ServletModule
         // TODO split up service into modules, move the binding to the respective modules
-        bind(HarvestResource.class);
         bind(AutoCompleteResource.class);
         bind(OpenSearch.class);
         bind(SIR.class);

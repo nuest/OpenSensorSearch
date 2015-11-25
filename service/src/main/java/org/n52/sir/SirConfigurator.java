@@ -15,26 +15,19 @@
  */
 package org.n52.sir;
 
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.LinkedHashMap;
-import java.util.List;
 import java.util.Properties;
 
 import org.n52.oss.sir.SirConstants;
 import org.n52.oss.sir.ows.OwsExceptionReport;
 import org.n52.sir.ds.IDAOFactory;
-import org.n52.sir.licenses.License;
-import org.n52.sir.licenses.Licenses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.x52North.sir.x032.CapabilitiesDocument;
 import org.x52North.sir.x032.VersionAttribute;
 
-import com.google.gson.Gson;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.google.inject.name.Named;
@@ -66,8 +59,6 @@ public class SirConfigurator {
 
     private static final String VERSION_SPLIT_CHARACTER = ",";
 
-    private static final String SCRIPTS_PATH = "oss.scripts.storagePath";
-
     /**
      * @deprecated use injection instead
      * @return Returns the instance of the SirConfigurator. Null will be returned if the parameterized
@@ -91,16 +82,6 @@ public class SirConfigurator {
     private String serviceVersion;
 
     private String ScriptsPath;
-
-    public LinkedHashMap<String, License> getLicenses() {
-        return this.licenses;
-    }
-
-    public void setLicenses(LinkedHashMap<String, License> licenses) {
-        this.licenses = licenses;
-    }
-
-    private LinkedHashMap<String, License> licenses;
 
     private String updateSequence;
 
@@ -175,34 +156,10 @@ public class SirConfigurator {
         this.validateRequests = Boolean.parseBoolean(this.props.getProperty(VALIDATE_XML_REQUESTS));
         this.validateResponses = Boolean.parseBoolean(this.props.getProperty(VALIDATE_XML_RESPONSES));
 
-        this.ScriptsPath = this.props.getProperty(SCRIPTS_PATH);
-        this.licenses = this.initializeLicenses();
-
         newUpdateSequence();
         loadCapabilitiesSkeleton(this.props);
 
         log.info(" ***** Initialized SirConfigurator successfully! ***** ");
-    }
-
-    private LinkedHashMap<String, License> initializeLicenses() {
-        try (InputStream licensesStream = SirConfigurator.class.getResourceAsStream("/prop/licenses.json");) {
-
-            LinkedHashMap<String, License> licensesMap = new LinkedHashMap<>();
-            Gson gson = new Gson();
-            Licenses list = gson.fromJson(new InputStreamReader(licensesStream), Licenses.class);
-            List<License> licenses1 = list.licenses;
-
-            for (int i = 0; i < licenses1.size(); i++) {
-                License l = licenses1.get(i);
-                licensesMap.put(l.code, l);
-            }
-            log.info("The list of licenses initialized successfully! {}", list);
-            return licensesMap;
-        }
-        catch (IOException e) {
-            log.error("Cannot load licesnes", e);
-            return null;
-        }
     }
 
     public String getScriptsPath() {

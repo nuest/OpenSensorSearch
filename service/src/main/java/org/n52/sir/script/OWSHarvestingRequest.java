@@ -30,7 +30,7 @@ import com.google.inject.Inject;
 
 public class OWSHarvestingRequest {
 
-    private static Logger log = LoggerFactory.getLogger(HarvestResource.class);
+    private static Logger log = LoggerFactory.getLogger(OWSHarvestingRequest.class);
 
     @Inject
     Client client;
@@ -54,6 +54,7 @@ public class OWSHarvestingRequest {
 
         }
         catch (Exception e) {
+            log.error("Error harvesting {} @ {}", serviceType, url, e);
             return -1;
         }
 

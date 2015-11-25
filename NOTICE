@@ -19,7 +19,6 @@ This project includes:
   Apache HttpCore under Apache License
   Apache Solr Core under Apache 2
   Apache Solr Solrj under Apache 2
-  AR Open Sensor Search Service under The Apache Software License, Version 2.0
   ASM Core under BSD 3-Clause License
   c3p0:JDBC DataSources/Resource Pools under GNU LESSER GENERAL PUBLIC LICENSE
   Collections under The Apache Software License, Version 2.0
@@ -40,7 +39,6 @@ This project includes:
   Hamcrest Core under New BSD License
   Hamcrest JSON under MIT License
   HttpClient under Apache License
-  ICU4J under ICU License
   Jackson under The Apache Software License, Version 2.0
   Jackson-annotations under The Apache Software License, Version 2.0 or GNU Lesser General Public License, Version 2.1
   Jackson-core under The Apache Software License, Version 2.0 or GNU Lesser General Public License, Version 2.1
@@ -56,8 +54,6 @@ This project includes:
   JAXB API bundle for GlassFish V3 under CDDL 1.1 or GPL2 w/ CPE
   JAXB RI under CDDL 1.1 or GPL2 w/ CPE
   jdom under JDOM license (Apache style), https://github.com/hunterhacker/jdom/blob/master/LICENSE.txt
-  Jena under BSD
-  Jena IRI under BSD-style license
   jersey-bundle under CDDL 1.1 or GPL2 w/ CPE
   jersey-client under CDDL 1.1 or GPL2 w/ CPE
   jersey-core under CDDL 1.1 or GPL2 w/ CPE
@@ -78,7 +74,6 @@ This project includes:
   jsr311-api under CDDL License
   jstl under CDDL 1.1 or GPL2 w/ CPE
   JUnit under Common Public License Version 1.0
-  Log4j Implemented Over SLF4J under Apache Software Licenses
   Logback Classic Module under Eclipse Public License - v 1.0 or GNU Lesser General Public License
   Logback Core Module under Eclipse Public License - v 1.0 or GNU Lesser General Public License
   Lucene Analyzers under Apache 2
@@ -125,7 +120,6 @@ This project includes:
   Saxon-HE under Mozilla Public License Version 2.0
   Scala Library under BSD-like
   ScalaBeans under The Apache Software License, Version 2.0
-  Sensor Observable Registry under The Apache Software License, Version 2.0
   Sensor Web Client External Tools under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
   Servlet Specification API under Apache License Version 2.0
   SIR common classes under The Apache Software License, Version 2.0
@@ -151,7 +145,6 @@ This project includes:
   spring-webmvc under The Apache Software License, Version 2.0
   standard under The Apache Software License, Version 2.0
   StAX API under The Apache Software License, Version 2.0
-  Stax2 API under The BSD License
   Streaming API for XML under GNU General Public Library or COMMON DEVELOPMENT AND DISTRIBUTION LICENSE (CDDL) Version 1.0
   Streaming API for XML (STAX API 1.0) under The Apache Software License, Version 2.0
   swagger-annotations under Apache License 2.0
@@ -161,7 +154,6 @@ This project includes:
   WireMock under The Apache Software License, Version 2.0
   Woodstox under The Apache Software License, Version 2.0
   Xerces2-j under The Apache Software License, Version 2.0
-  xercesImpl under The Apache Software License, Version 2.0
   XML Commons External Components XML APIs under The Apache Software License, Version 2.0 or The SAX License or The W3C License
   Xml Compatibility extensions for Jackson under The Apache Software License, Version 2.0 or GNU Lesser General Public License (LGPL), Version 2.1
   XmlBeans under The Apache Software License, Version 2.0
