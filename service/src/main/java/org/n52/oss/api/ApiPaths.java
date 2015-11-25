@@ -47,6 +47,4 @@ public abstract class ApiPaths {
 
     public static final String AUTOSUGGEST_PATH = API_PATH + "/suggest";
 
-    public static final String BADGES_PATH = API_PATH + "/badges";
-
 }
