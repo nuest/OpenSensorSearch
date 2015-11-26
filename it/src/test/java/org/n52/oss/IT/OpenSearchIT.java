@@ -82,8 +82,8 @@ public class OpenSearchIT {
     public static void prepare() throws XmlException, IOException, OwsExceptionReport, HttpException {
         client = GuiceUtil.configureSirClient();
 
-        insertSensor("Requests/testsensor.xml");
-        // insertSensor("Requests/Sensors/testSensor02.xml");
+        insertSensor("requests/testsensor.xml");
+        // insertSensor("requests/sensors/testSensor02.xml");
     }
 
     private static void insertSensor(String path) throws XmlException, IOException, OwsExceptionReport, HttpException {
@@ -148,7 +148,7 @@ public class OpenSearchIT {
 
     @Test
     public void testRSSResponseFromOpenSearch() throws IOException, SAXException {
-        String realResult = readResource("Requests/Sensors/testSensor01Result.rss");
+        String realResult = readResource("requests/sensors/testSensor01Result.rss");
         String responseResult = sendRequest(buildQuery("urn:ogc:object:feature:Sensor:EEA:airbase:4.0:DEBB059",
                                                        "application/rss"));
 
@@ -157,7 +157,7 @@ public class OpenSearchIT {
 
     @Test
     public void testXMLResponseFromOpenSearch() throws IOException, SAXException {
-        String realResult = readResource("Requests/Sensors/testSensor01Result.XML");
+        String realResult = readResource("requests/sensors/testSensor01Result.XML");
         String responseResult = sendRequest(buildQuery("urn:ogc:object:feature:Sensor:EEA:airbase:4.0:DEBB059",
                                                        "application/xml"));
 
@@ -166,7 +166,7 @@ public class OpenSearchIT {
 
     @Test
     public void testJSONResponseFromOpenSearch() throws IOException {
-        String realResult = readResource("Requests/Sensors/jsonSensor.json");
+        String realResult = readResource("requests/sensors/jsonSensor.json");
 
         ObjectMapper mapper = MapperFactory.getMapper();
 
@@ -200,7 +200,7 @@ public class OpenSearchIT {
 
     @Test
     public void testKMLResponseFromOpenSearch() throws IOException, SAXException {
-        String realResult = readResource("Requests/Sensors/testSensor01Result.kml");
+        String realResult = readResource("requests/sensors/testSensor01Result.kml");
         String responseResult = sendRequest(buildQuery("urn:ogc:object:feature:Sensor:EEA:airbase:4.0:DEBB059",
                                                        "application/kml"));
         assertXMLEqual(realResult, responseResult);

@@ -57,7 +57,7 @@ public class DeleteSensorInfoIT {
     @BeforeClass
     public static void setUp() {
         client = GuiceUtil.configureSirClient();
-        testSensorInfo = new File(ClassLoader.getSystemResource("Requests/sir/InsertSensorInfo_newSensor.xml").getFile());
+        testSensorInfo = new File(ClassLoader.getSystemResource("requests/sir/InsertSensorInfo_newSensor.xml").getFile());
     }
 
     @Before
@@ -103,7 +103,7 @@ public class DeleteSensorInfoIT {
 
     @Test
     public void deleteSensor() throws Exception {
-        File f = new File(ClassLoader.getSystemResource("Requests/sir/DeleteSensorInfo.xml").getFile());
+        File f = new File(ClassLoader.getSystemResource("requests/sir/DeleteSensorInfo.xml").getFile());
         DeleteSensorInfoRequestDocument req = DeleteSensorInfoRequestDocument.Factory.parse(f);
         req.getDeleteSensorInfoRequest().getInfoToBeDeletedArray(0).getSensorIdentification().setSensorIDInSIR(sensorID);
 

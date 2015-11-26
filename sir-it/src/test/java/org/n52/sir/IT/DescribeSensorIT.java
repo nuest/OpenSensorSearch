@@ -90,7 +90,7 @@ public class DescribeSensorIT {
 
     @Test
     public void describeSensorWithTestFile() throws Exception {
-        DescribeSensorRequestDocument doc = DescribeSensorRequestDocument.Factory.parse(new File(ClassLoader.getSystemResource("Requests/sir/DescribeSensor.xml").getFile()));
+        DescribeSensorRequestDocument doc = DescribeSensorRequestDocument.Factory.parse(new File(ClassLoader.getSystemResource("requests/sir/DescribeSensor.xml").getFile()));
         doc.getDescribeSensorRequest().setSensorIDInSIR(sensorID);
 
         XmlObject response = client.xSendPostRequest(doc);

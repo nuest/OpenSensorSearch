@@ -54,7 +54,7 @@ public class InsertSensorInfoNewSensorIT {
 
     @Test
     public void insertAirBaseSensor() throws XmlException, IOException {
-        File sensor = new File(ClassLoader.getSystemResource("Requests/sir/testSensor-AirBase.xml").getFile());
+        File sensor = new File(ClassLoader.getSystemResource("requests/sir/testSensor-AirBase.xml").getFile());
         SensorMLDocument DOC = SensorMLDocument.Factory.parse(sensor);
         InsertSensorInfoRequestDocument req = InsertSensorInfoRequestDocument.Factory.newInstance();
         req.addNewInsertSensorInfoRequest().addNewInfoToBeInserted().setSensorDescription(DOC.getSensorML().getMemberArray(0).getProcess());
@@ -72,7 +72,7 @@ public class InsertSensorInfoNewSensorIT {
 
     @Test
     public void insertTestSensorFromFile1() throws XmlException, IOException {
-        File f = new File(ClassLoader.getSystemResource("Requests/sir/testSensor-1.xml").getFile());
+        File f = new File(ClassLoader.getSystemResource("requests/sir/testSensor-1.xml").getFile());
         SensorMLDocument doc = SensorMLDocument.Factory.parse(f);
         InsertSensorInfoRequestDocument req = InsertSensorInfoRequestDocument.Factory.newInstance();
         req.addNewInsertSensorInfoRequest().addNewInfoToBeInserted().setSensorDescription(doc.getSensorML().getMemberArray()[0].getProcess());
@@ -90,7 +90,7 @@ public class InsertSensorInfoNewSensorIT {
 
     @Test
     public void insertTestSensorFromFile() throws XmlException, IOException {
-        File sensor = new File(ClassLoader.getSystemResource("Requests/sir/testSensor.xml").getFile());
+        File sensor = new File(ClassLoader.getSystemResource("requests/sir/testSensor.xml").getFile());
         SensorMLDocument DOC = SensorMLDocument.Factory.parse(sensor);
 
         InsertSensorInfoRequestDocument req = InsertSensorInfoRequestDocument.Factory.newInstance();
