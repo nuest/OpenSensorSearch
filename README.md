@@ -91,7 +91,7 @@ The integration tests can be activated during build with a Maven profile: ``mvn 
 
 ## License
 
-OSS is published under Apache Software License, Version 2.0.
+OSS is published under GNU GPL Version 2.0.
 
 ### Java Libraries
 

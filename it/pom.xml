@@ -1,110 +1,110 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 	
-	<parent>
-		<groupId>org.n52.oss</groupId>
-		<artifactId>parent</artifactId>
-		<version>1.0</version>
-	</parent>
+    <parent>
+        <groupId>org.n52.oss</groupId>
+        <artifactId>parent</artifactId>
+        <version>2.0.0-SNAPSHOT</version>
+    </parent>
 	
-	<artifactId>it</artifactId>
-	<version>0.3</version>
-	<name>OSS integration tests</name>
+    <artifactId>it</artifactId>
+    <version>2.0.0-SNAPSHOT</version>
+    <name>OSS integration tests</name>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.1</version>
-				<!-- advanced configuration: http://tomcat.apache.org/maven-plugin-2.0-SNAPSHOT/run-mojo-features.html -->
-				<!-- <configuration> <systemProperties> <java.io.tmpdir>target</java.io.tmpdir>
-					</systemProperties> </configuration> -->
-				<configuration>
-					<path>${service.path}</path>
-				</configuration>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.1</version>
+                <!-- advanced configuration: http://tomcat.apache.org/maven-plugin-2.0-SNAPSHOT/run-mojo-features.html -->
+                <!-- <configuration> <systemProperties> <java.io.tmpdir>target</java.io.tmpdir>
+                </systemProperties> </configuration> -->
+                <configuration>
+                    <path>${service.path}</path>
+                </configuration>
 
-				<executions>
-					<execution>
-						<id>start-tomcat</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<fork>true</fork>
-						</configuration>
-					</execution>
-					<execution>
-						<id>stop-tomcat</id>
-						<phase>post-integration-test</phase>
-						<goals>
-							<goal>shutdown</goal>
-						</goals>
-					</execution>
-				</executions>
+                <executions>
+                    <execution>
+                        <id>start-tomcat</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <fork>true</fork>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>stop-tomcat</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                            <goal>shutdown</goal>
+                        </goals>
+                    </execution>
+                </executions>
 
-				<!-- <dependencies> -->
-				<!-- <dependency> -->
-				<!-- <groupId>org.apache.maven.surefire</groupId> -->
-				<!-- <artifactId>surefire-junit47</artifactId> -->
-				<!-- <version>2.15</version> -->
-				<!-- </dependency> -->
-				<!-- </dependencies> -->
-			</plugin>
-		</plugins>
-	</build>
+                <!-- <dependencies> -->
+                <!-- <dependency> -->
+                <!-- <groupId>org.apache.maven.surefire</groupId> -->
+                <!-- <artifactId>surefire-junit47</artifactId> -->
+                <!-- <version>2.15</version> -->
+                <!-- </dependency> -->
+                <!-- </dependencies> -->
+            </plugin>
+        </plugins>
+    </build>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.n52.oss</groupId>
-			<artifactId>service</artifactId>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>org.n52.oss</groupId>
+            <artifactId>service</artifactId>
+        </dependency>
 
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-all</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.skyscreamer</groupId>
-			<artifactId>jsonassert</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>uk.co.datumedge</groupId>
-			<artifactId>hamcrest-json</artifactId>
-			<version>0.2</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>xmlunit</groupId>
-			<artifactId>xmlunit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.github.tomakehurst</groupId>
-			<artifactId>wiremock</artifactId>
-			<classifier>standalone</classifier>
-			<exclusions>
-				<exclusion>
-					<artifactId>log4j</artifactId>
-					<groupId>log4j</groupId>
-				</exclusion>
-			</exclusions>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest-all</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.skyscreamer</groupId>
+            <artifactId>jsonassert</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>uk.co.datumedge</groupId>
+            <artifactId>hamcrest-json</artifactId>
+            <version>0.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>xmlunit</groupId>
+            <artifactId>xmlunit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock</artifactId>
+            <classifier>standalone</classifier>
+            <exclusions>
+                <exclusion>
+                    <artifactId>log4j</artifactId>
+                    <groupId>log4j</groupId>
+                </exclusion>
+            </exclusions>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 </project>
