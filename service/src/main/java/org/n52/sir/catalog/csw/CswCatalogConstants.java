@@ -30,7 +30,7 @@ package org.n52.sir.catalog.csw;
 
 /**
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class CswCatalogConstants {
 

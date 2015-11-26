@@ -68,9 +68,9 @@ import com.sun.syndication.io.FeedException;
 import com.sun.syndication.io.SyndFeedOutput;
 
 /**
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public abstract class AbstractFeedListener implements OpenSearchListener {
 

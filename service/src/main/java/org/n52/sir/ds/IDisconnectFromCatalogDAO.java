@@ -32,13 +32,13 @@ import org.n52.oss.sir.ows.OwsExceptionReport;
 
 /**
  * @author Jan Schulte
- * 
+ *
  */
 public interface IDisconnectFromCatalogDAO {
 
     /**
      * delete connection to catalog from database
-     * 
+     *
      * @param cswURL
      *        url to the catalog service
      * @return Returns the catalog ID in SIR or null, if not exists

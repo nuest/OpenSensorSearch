@@ -30,7 +30,7 @@ package org.n52.oss.testdata.sml;
 
 /**
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class SensorMLEncoderFactory {
 
@@ -43,7 +43,7 @@ public class SensorMLEncoderFactory {
     }
 
     /**
-     * 
+     *
      * @return
      */
     public static SensorMLEncoderFactory getFactory() {
@@ -51,7 +51,7 @@ public class SensorMLEncoderFactory {
     }
 
     /**
-     * 
+     *
      * @return
      */
     public SensorMLEncoder getEncoder() {

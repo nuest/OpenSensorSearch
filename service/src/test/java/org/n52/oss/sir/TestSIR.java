@@ -51,11 +51,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ *
  * TODO make unit tests out of these hacked tests
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class TestSIR {
 
@@ -63,7 +63,7 @@ public class TestSIR {
 
     /**
      * Sends an HTTP GET request to a url
-     * 
+     *
      * @param endpoint
      *        The URL of the server.
      * @param requestParameters
@@ -106,7 +106,7 @@ public class TestSIR {
     /**
      * Reads data from the data reader and posts it to a server via POST request. data - The data you want to
      * send endpoint - The server's address output - writes the server's response to output
-     * 
+     *
      * @param data
      *        Request data
      * @param endpoint

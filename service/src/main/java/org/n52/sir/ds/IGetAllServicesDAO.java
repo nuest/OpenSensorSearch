@@ -36,9 +36,9 @@ import org.n52.oss.sir.ows.OwsExceptionReport;
 /**
  * interface for the specific DAOFactories, offers methods to create the matching DAOs for the getAllServices
  * operation
- * 
+ *
  * @author Jan SChulte
- * 
+ *
  */
 public interface IGetAllServicesDAO {
 

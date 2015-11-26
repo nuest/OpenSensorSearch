@@ -344,7 +344,7 @@ public class PGSQLUserAccountDAO implements IUserAccountDAO {
         builder.append("'");
         return builder.toString();
     }
-    
+
     private String UserIDForUsernameQuery(String userName)
     {
         StringBuilder builder = new StringBuilder();

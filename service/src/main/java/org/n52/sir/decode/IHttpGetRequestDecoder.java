@@ -33,16 +33,16 @@ import org.n52.sir.request.AbstractSirRequest;
 
 /**
  * interface offers parsing method to parse the String representing a Get request and create a Sir request
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public interface IHttpGetRequestDecoder {
 
     /**
      * parses the String representing the Get-request and returns an internal SIR representation of the
      * request
-     * 
+     *
      * @param capString
      *        String with the getCapabilities parameters
      * @return Returns SirGetCapabilitiesRequest representing the request

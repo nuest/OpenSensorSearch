@@ -39,9 +39,9 @@ import com.google.inject.spi.TypeListener;
 
 /**
  * See also https://github.com/artgo/guice-slf4j
- * 
+ *
  * @author Daniel
- * 
+ *
  */
 public class Slf4jTypeListener implements TypeListener {
 

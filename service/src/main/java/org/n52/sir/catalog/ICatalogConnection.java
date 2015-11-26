@@ -31,15 +31,15 @@ package org.n52.sir.catalog;
 import java.net.URL;
 
 /**
- * 
+ *
  * Class encapsulates all information for persistent storage of a connection to a catalog.
- * 
+ *
  * If the connetion is only scheduled for single execution the parameters
  * {@link ICatalogConnection#NO_PUSH_INTERVAL} and {@link ICatalogConnection#UNSAVED_CONNECTION_ID} shall be
  * used for instantiation.
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public interface ICatalogConnection {
 
@@ -59,27 +59,27 @@ public interface ICatalogConnection {
     public static final String UNSAVED_CONNECTION_ID = "[unsaved_connection!]";
 
     /**
-     * 
+     *
      * @return The URL pointing to the catalog service
      */
     public abstract URL getCatalogURL();
 
     /**
-     * 
+     *
      * @return The internal identifier, can be used to cancel a connection
      */
     public abstract String getConnectionID();
 
     /**
-     * 
+     *
      * This parameter is optional. It can be checked via comparison with {@link #NO_PUSH_INTERVAL}.
-     * 
+     *
      * @return The temporal interval at which updates are sent to this catalog in seconds
      */
     public abstract int getPushIntervalSeconds();
 
     /**
-     * 
+     *
      * @return A textual description of the connection's status. This should be human readable.
      */
     public abstract String getStatus();

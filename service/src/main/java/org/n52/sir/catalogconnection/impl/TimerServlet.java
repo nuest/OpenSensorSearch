@@ -47,19 +47,19 @@ import org.slf4j.LoggerFactory;
 import com.google.inject.Inject;
 
 /**
- * 
+ *
  * This class can be used to execute {@link TimerTask} instances. It runs as a servlet and can be accessed by
  * other servlets for task scheduling and cancelling. The actual service method for GET and POST requests are
  * not implemented. It also provides methods to access the appropriate instances of
  * {@link ICatalogStatusHandler} and {@link ICatalogFactory} for tasks that run within this servlet.
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 @Deprecated
 public class TimerServlet extends GenericServlet {
 
-    /**
+    /*
      * Inner class to handle storage and cancelling of tasks at runtime.
      */
     private static class TaskElement {
@@ -97,14 +97,14 @@ public class TimerServlet extends GenericServlet {
 
     private static final Logger log = LoggerFactory.getLogger(TimerServlet.class);
 
-    /**
+    /*
      * The identifier that can be used to access the instance of this servlet an run-time.
      */
     public static final String NAME_IN_CONTEXT = "TimerServlet";
 
     private static final long serialVersionUID = 4704774153636727580L;
 
-    /**
+    /*
      * Inner {@link Timer} that might run as a daemon according to the init parameter
      * {@link TimerServlet#IS_DAEMON_INIT_PARAM_NAME} in the servlet defintion (web.xml).
      */
@@ -140,10 +140,10 @@ public class TimerServlet extends GenericServlet {
     }
 
     /**
-     * 
+     *
      * Returns an instance of {@link ICatalogStatusHandler} that can be used to update the status description
      * of repeated catalog connections.
-     * 
+     *
      * @return the catalogStatusHandler
      */
     public ICatalogStatusHandler getCatalogStatusHandler() {
@@ -176,14 +176,14 @@ public class TimerServlet extends GenericServlet {
     }
 
     /**
-     * 
+     *
      * " Finally, fixed-rate execution is appropriate for scheduling multiple repeating timer tasks that must
      * remain synchronized with respect to one another." See
      * {@link Timer#scheduleAtFixedRate(TimerTask, long, long)} for details.
-     * 
-     * @param task
-     * @param delay
-     * @param period
+     *
+     * @param task the task to run
+     * @param delay the delay until starting the task the first time
+     * @param period repetition interval
      */
     public void submit(String identifier, TimerTask task, long delay, long period) {
         timer.scheduleAtFixedRate(task, delay, period);

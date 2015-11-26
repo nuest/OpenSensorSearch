@@ -27,7 +27,7 @@
  * Public License for more details.
  */
 /**
- * 
+ *
  */
 
 package org.n52.sir.listener.harvest;
@@ -100,11 +100,11 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 /**
- * 
+ *
  * Catalog: http://p5.neracoos.org/IOOSCatalog/sos_platforms.xml
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class IOOSHarvester extends FileHarvester {
 

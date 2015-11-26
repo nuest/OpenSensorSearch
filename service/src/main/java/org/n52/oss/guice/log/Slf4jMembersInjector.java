@@ -36,9 +36,9 @@ import org.slf4j.LoggerFactory;
 import com.google.inject.MembersInjector;
 
 /**
- * 
+ *
  * @author Daniel
- * 
+ *
  * @param <T>
  */
 public class Slf4jMembersInjector<T> implements MembersInjector<T> {

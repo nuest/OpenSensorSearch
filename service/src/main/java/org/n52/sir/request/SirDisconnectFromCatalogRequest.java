@@ -30,37 +30,27 @@ package org.n52.sir.request;
 
 /**
  * Internal request to disconnect a CSW catalog service
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public class SirDisconnectFromCatalogRequest extends AbstractSirRequest {
 
-    /**
-     * url of the catalog service
-     */
     private String cswURL;
 
-    /**
-     * @return the cswURL
-     */
     public String getCswURL() {
         return this.cswURL;
     }
 
-    /**
-     * @param cswURL
-     *        the cswURL to set
-     */
     public void setCswURL(String cswURL) {
         this.cswURL = cswURL;
     }
 
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append("DisconnectToCatalogRequest: ");
-        sb.append("CswURL: " + this.cswURL);
+        sb.append("CswURL: ").append(this.cswURL);
         return sb.toString();
     }
 }

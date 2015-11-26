@@ -29,7 +29,6 @@
 package org.n52.sir.response;
 
 import java.net.URL;
-
 import org.n52.oss.util.XmlTools;
 import org.n52.sir.SirConfigurator;
 import org.slf4j.Logger;
@@ -39,15 +38,11 @@ import org.x52North.sir.x032.ConnectToCatalogResponseDocument.ConnectToCatalogRe
 
 /**
  * @author Jan Schulte
- * 
  */
 public class SirConnectToCatalogResponse extends AbstractXmlResponse {
 
     private static final Logger log = LoggerFactory.getLogger(SirConnectToCatalogResponse.class);
 
-    /**
-     * the url to the catalog service
-     */
     private URL catalogUrl;
 
     @Override
@@ -62,33 +57,27 @@ public class SirConnectToCatalogResponse extends AbstractXmlResponse {
         XmlTools.addSirAndSensorMLSchemaLocation(conCatResp);
 
         if (SirConfigurator.getInstance().isValidateResponses()) {
-            if ( !document.validate())
+            if (!document.validate()) {
                 log.warn("Service created invalid document!\n" + XmlTools.validateAndIterateErrors(document));
+            }
         }
 
         return document;
     }
 
-    /**
-     * @return the catalogUrl
-     */
     public URL getCatalogUrl() {
         return this.catalogUrl;
     }
 
-    /**
-     * @param cswUrl
-     *        the cswUrl to set
-     */
     public void setCatalogUrl(URL catalogUrl) {
         this.catalogUrl = catalogUrl;
     }
 
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append("SirConnectToCatalogResponse: ");
-        sb.append("CatalogUrl: " + this.catalogUrl);
+        sb.append("CatalogUrl: ").append(this.catalogUrl);
         return sb.toString();
     }
 

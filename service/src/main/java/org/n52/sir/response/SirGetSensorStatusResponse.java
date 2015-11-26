@@ -47,11 +47,11 @@ import org.x52North.sir.x032.StatusDocument.Status;
 
 /**
  * Internal response to get the sensor status
- * 
+ *
  * was orginally opengis.gml.x32.TimeInstantType
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public class SirGetSensorStatusResponse extends AbstractXmlResponse {
 

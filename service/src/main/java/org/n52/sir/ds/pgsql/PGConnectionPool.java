@@ -38,17 +38,17 @@ import org.slf4j.LoggerFactory;
 /**
  * Connection Pool for PostgreSQL databases. Class implements the abstract class ConnectionPool and implements
  * the getNewConnection method.
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public class PGConnectionPool extends AbstractConnectionPool {
-    
+
     private static final Logger log = LoggerFactory.getLogger(PGConnectionPool.class);
 
     /**
      * constructor with necessary parameters as strings
-     * 
+     *
      * @param connection
      *        connection url
      * @param user

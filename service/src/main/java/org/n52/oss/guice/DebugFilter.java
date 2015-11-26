@@ -62,7 +62,7 @@ public class DebugFilter implements Filter {
             ServletException {
         String url = getFullURL((HttpServletRequest) request);
         log.debug("URL: {}", url);
-        
+
         // TODO make this output available in admin pages
 
         chain.doFilter(request, response);

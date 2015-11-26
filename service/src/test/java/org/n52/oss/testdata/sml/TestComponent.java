@@ -36,14 +36,14 @@ import net.opengis.sensorML.x101.ContactDocument.Contact;
 
 /**
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class TestComponent extends TestSensor {
 
     protected String parentSystemUniqueID;
 
     /**
-     * 
+     *
      * @param gmlDescription
      * @param keywords
      * @param uniqueId
@@ -107,7 +107,7 @@ public class TestComponent extends TestSensor {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.n52.sir.data.TestSensor#toString()
      */
     @Override

@@ -41,7 +41,7 @@ import org.x52North.sir.x032.UpdateSensorDescriptionResponseDocument.UpdateSenso
 
 /**
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class SirUpdateSensorDescriptionResponse extends AbstractXmlResponse {
 
@@ -65,49 +65,36 @@ public class SirUpdateSensorDescriptionResponse extends AbstractXmlResponse {
         XmlTools.addSirAndSensorMLSchemaLocation(updSensDescrResp);
 
         if (SirConfigurator.getInstance().isValidateResponses()) {
-            if ( !document.validate())
+            if (!document.validate()) {
                 log.warn("Service created invalid document!\n" + XmlTools.validateAndIterateErrors(document));
+            }
         }
 
         return document;
     }
 
-    /**
-     * @return the numberOfNewSensors
-     */
     public int getNumberOfUpdatedSensorDescriptions() {
         return this.numberOfUpdatedSensorDescriptions;
     }
 
-    /**
-     * @return the insertedSensors
-     */
     public Collection<String> getUpdatedSensors() {
         return this.updatedSensors;
     }
 
-    /**
-     * @param numberOfNewSensors
-     *        the numberOfNewSensors to set
-     */
     public void setNumberOfUpdatedSensorDescriptions(int numberOfNewSensors) {
         this.numberOfUpdatedSensorDescriptions = numberOfNewSensors;
     }
 
-    /**
-     * @param insertedSensors
-     *        the insertedSensors to set
-     */
     public void setUpdatedSensors(Collection<String> updatedSensors) {
         this.updatedSensors = updatedSensors;
     }
 
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append("SirUpdateSensorDescriptionResponse: ");
-        sb.append("\n#Sensors: " + this.numberOfUpdatedSensorDescriptions);
-        sb.append("\nUpdated Sensors: " + Arrays.toString(this.updatedSensors.toArray()));
+        sb.append("\n#Sensors: ").append(this.numberOfUpdatedSensorDescriptions);
+        sb.append("\nUpdated Sensors: ").append(Arrays.toString(this.updatedSensors.toArray()));
         return sb.toString();
     }
 

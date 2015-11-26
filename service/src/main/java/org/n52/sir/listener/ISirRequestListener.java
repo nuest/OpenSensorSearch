@@ -33,9 +33,9 @@ import org.n52.sir.response.ISirResponse;
 
 /**
  * interface for the request listeners
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public interface ISirRequestListener {
 
@@ -47,7 +47,7 @@ public interface ISirRequestListener {
     /**
      * method handles the incoming operation request an returns a matching response or an
      * ServiceExceptionReport if the SIR was not able to build a response
-     * 
+     *
      * @param request
      *        the operation request
      * @return Returns the responose of the request or an operation failed

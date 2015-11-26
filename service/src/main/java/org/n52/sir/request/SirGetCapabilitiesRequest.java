@@ -30,9 +30,9 @@ package org.n52.sir.request;
 
 /**
  * class represents a GetCapabilities request and encapsulates the parameters
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public class SirGetCapabilitiesRequest extends AbstractSirRequest {
 

@@ -62,7 +62,7 @@ import com.google.inject.servlet.RequestScoped;
 
 /**
  * @author Yakoub, Daniel
- * 
+ *
  */
 @Path(ApiPaths.TRANSFORMATION_PATH)
 //@Api(value = "/" + ApiPaths.TRANSFORMATION_PATH, description = "Conversion of SensorML document to different formats")

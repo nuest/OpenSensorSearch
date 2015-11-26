@@ -75,17 +75,17 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 /**
- * 
+ *
  * A transformer for the transformation of SensorML (http://www.opengeospatial.org/standards/sensorml)
  * documents to a set of ebRIM (http://www.oasis-open.org/specs/index.php#ebxmlrimv3.0) ExtrinsicObjects
  * according the the SensorML Profile for Discovery (Ongoing work, see OWS-6 SensorML Profile for Discovery
  * Engineering Report, OGC 09-033 (http://portal.opengeospatial.org/files/?artifact_id=33284)).
- * 
+ *
  * The transformation is based on the file {@link SMLtoEbRIMTransformer#TRANSFORMATION_FILE_NAME} and uses
  * XSLT 2.0 (http://www.w3.org/TR/xslt20/).
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class SMLtoEbRIMTransformer implements ITransformer {
 
@@ -126,7 +126,7 @@ public class SMLtoEbRIMTransformer implements ITransformer {
     private StreamSource xsltSource;
 
     /**
-     * 
+     *
      * @param xsltDir
      *        the directory with the XSLT transformation files needed
      * @param validate
@@ -169,11 +169,11 @@ public class SMLtoEbRIMTransformer implements ITransformer {
     }
 
     /**
-     * 
+     *
      * Method does the actual transformation of the given SensorML document: a {@link DOMSource} is created
      * and the transformation is writes to a {@link StringWriter}. The outpot is parsed as a
      * {@link RegistryPackageDocument} and returned.
-     * 
+     *
      * @param smlDoc
      * @return
      * @throws XmlException
@@ -319,10 +319,10 @@ public class SMLtoEbRIMTransformer implements ITransformer {
     }
 
     /**
-     * 
+     *
      * Method validates the documents during transformation and relies on SAX features (which must be
      * installed, naturally).
-     * 
+     *
      * @param input
      * @return
      * @throws TransformerConfigurationException

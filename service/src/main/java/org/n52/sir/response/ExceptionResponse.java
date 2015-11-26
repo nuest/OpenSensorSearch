@@ -47,7 +47,7 @@ import org.n52.oss.util.XmlTools;
 
 /**
  * Implementation of the <code>ISirResponse</code> interface for OGC service exceptions.
- * 
+ *
  * @author Alexander C. Walkowski, Daniel Nüst
  * @version 0.1
  */
@@ -70,7 +70,7 @@ public class ExceptionResponse implements ISirResponse {
     }
 
     /**
-     * 
+     *
      * @param e
      *        a regular exception to be wrapped in a exception response
      */

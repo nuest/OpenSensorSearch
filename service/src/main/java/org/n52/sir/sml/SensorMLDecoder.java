@@ -80,7 +80,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * @author Jan Schulte, Daniel Nüst
- * 
+ *
  */
 public class SensorMLDecoder {
 
@@ -120,7 +120,7 @@ public class SensorMLDecoder {
     }
 
     /**
-     * 
+     *
      * decodes the given sensor description and also adds the given identification to the returned SirSensor
      * instance if possible.
      */

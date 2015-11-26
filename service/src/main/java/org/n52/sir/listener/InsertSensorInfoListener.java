@@ -60,7 +60,7 @@ import com.google.inject.Inject;
 
 /**
  * @author Jan Schulte, Daniel Nüst
- * 
+ *
  */
 public class InsertSensorInfoListener implements ISirRequestListener {
 

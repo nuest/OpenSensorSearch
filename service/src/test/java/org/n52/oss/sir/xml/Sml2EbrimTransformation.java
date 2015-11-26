@@ -63,11 +63,11 @@ import org.xml.sax.SAXException;
 import x0.oasisNamesTcEbxmlRegrepXsdRim3.RegistryPackageDocument;
 
 /**
- * 
+ *
  * Testclass for transformations.
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class Sml2EbrimTransformation {
 

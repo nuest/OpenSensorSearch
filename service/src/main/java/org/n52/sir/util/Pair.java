@@ -29,11 +29,11 @@
 package org.n52.sir.util;
 
 /**
- * 
+ *
  * Simple class to hold a pair of two objects that belong together somehow.
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class Pair<T1, T2> {
 

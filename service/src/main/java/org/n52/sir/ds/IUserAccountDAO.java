@@ -30,7 +30,7 @@ package org.n52.sir.ds;
 
 /**
  * @author Yakoub
- * 
+ *
  */
 public interface IUserAccountDAO {
 

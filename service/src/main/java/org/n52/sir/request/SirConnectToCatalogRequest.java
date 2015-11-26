@@ -34,9 +34,9 @@ import org.n52.sir.catalog.ICatalogConnection;
 
 /**
  * Internal request to connect to a CSW catalog service
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public class SirConnectToCatalogRequest extends AbstractSirRequest {
 

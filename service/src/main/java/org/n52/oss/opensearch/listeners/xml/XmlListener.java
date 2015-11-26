@@ -71,7 +71,7 @@ public class XmlListener implements OpenSearchListener {
     public Response createResponse(final Collection<SirSearchResultElement> searchResult,
                                    final MultivaluedMap<String, String> params) throws OwsExceptionReport {
         log.debug("Creating streamed response...");
-        
+
         StreamingOutput stream = new StreamingOutput() {
             @Override
             public void write(OutputStream os) throws IOException, WebApplicationException {

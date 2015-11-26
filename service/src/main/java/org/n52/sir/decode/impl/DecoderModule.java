@@ -37,9 +37,9 @@ import com.google.inject.AbstractModule;
 
 /**
  * http://code.google.com/p/google-guice/wiki/Multibindings
- * 
+ *
  * @author Daniel
- * 
+ *
  */
 public class DecoderModule extends AbstractModule {
 

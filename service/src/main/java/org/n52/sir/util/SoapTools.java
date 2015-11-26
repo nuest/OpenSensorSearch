@@ -41,11 +41,11 @@ import javax.xml.soap.SOAPMessage;
 import org.n52.oss.util.XmlTools;
 
 /**
- * 
+ *
  * Some helper methods when dealing with SOAP classes (from the package <code>java.xml.soap</code>).
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class SoapTools {
 

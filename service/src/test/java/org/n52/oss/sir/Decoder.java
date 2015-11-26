@@ -46,25 +46,25 @@ import org.n52.oss.sir.ows.OwsExceptionReport;
 import org.n52.sir.sml.SensorMLDecoder;
 
 public class Decoder {
-    
+
     private static SensorMLDocument doc = null;
-    
+
     @BeforeClass
     public static void loadDocuments() throws XmlException, IOException {
         File sensor_file = new File(ClassLoader.getSystemResource("Requests/testsensor.xml").getFile());
         doc = SensorMLDocument.Factory.parse(sensor_file);
     }
-    
+
     @Test
     public void keywordsAreDecoded() throws OwsExceptionReport {
         SensorMLDecoder decoder = new SensorMLDecoder();
         SirSensor sensor = decoder.decode(doc);
-        
+
         Collection<String> keywords = sensor.getKeywords();
         ArrayList<String> actual = new ArrayList<>();
         actual.addAll(keywords);
-        
+
         assertThat(actual, hasItems("testkeyword", "test", "another keyword"));
     }
-    
+
 }

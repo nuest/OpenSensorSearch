@@ -36,15 +36,15 @@ import com.google.inject.AbstractModule;
 import com.google.inject.multibindings.Multibinder;
 
 public class ListenerModule extends AbstractModule {
-    
+
     private static final Logger log = LoggerFactory.getLogger(ListenerModule.class);
-    
+
     @Override
     protected void configure() {
         Multibinder<OpenSearchListener> listenerBinder = Multibinder.newSetBinder(binder(), OpenSearchListener.class);
         listenerBinder.addBinding().to(AtomListener.class);
         listenerBinder.addBinding().to(RssListener.class);
-        
+
         log.debug("Configured {}", this);
     }
 

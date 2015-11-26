@@ -33,42 +33,41 @@ import java.net.URL;
 import org.n52.oss.sir.ows.OwsExceptionReport;
 
 /**
- * 
+ *
  * Factory for objects that access catalogue services, {@link ICatalog}. The created catalogs use the url that
  * is available via {@link ICatalogFactory#getCatalogUrl()} as their endpoint.
- * 
+ *
  * The method {@link ICatalogFactory#getCatalogConnection(String, URL, int, String)} shall be used to create
  * {@link ICatalogConnection} instances that contain the neccessary parameters to create and save a connection
  * to a catalog.
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public interface ICatalogFactory {
 
     /**
-     * 
-     * @param url
-     *        the endpoint the catalog must use
+     *
+     * @param url the endpoint the catalog must use
      * @return a new instance of an ICatalog
-     * @throws OwsExceptionReport
+     * @throws OwsExceptionReport on any error
      */
     public abstract ICatalog getCatalog(URL url) throws OwsExceptionReport;
 
     /**
-     * 
+     *
      * Method creates objects that encapsulate all information that is needed to persitently save a connection
      * to a catalog.
-     * 
-     * @param connectionID
-     * @param url
-     * @param pushInterval
-     * @param newConnectionStatus
+     *
+     * @param connectionID id to store the connetion under
+     * @param url catalog service endpoint
+     * @param pushInterval repetition interval in seconds
+     * @param connectionStatus the first status connection message
      * @return
      */
     public abstract ICatalogConnection getCatalogConnection(String connectionID,
                                                             URL url,
                                                             int pushInterval,
-                                                            String newConnectionStatus);
+                                                            String connectionStatus);
 
 }

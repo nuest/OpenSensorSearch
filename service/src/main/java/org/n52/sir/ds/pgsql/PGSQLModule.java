@@ -28,11 +28,10 @@
  */
 package org.n52.sir.ds.pgsql;
 
+import com.google.inject.AbstractModule;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.n52.oss.common.AbstractConfigModule;
-import org.n52.oss.config.ConfigModule;
 import org.n52.sir.ds.ICatalogStatusHandlerDAO;
 import org.n52.sir.ds.IConnectToCatalogDAO;
 import org.n52.sir.ds.IDAOFactory;
@@ -48,8 +47,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.inject.name.Names;
+import java.io.File;
+import java.io.FileReader;
+import java.io.InputStream;
+import java.io.Reader;
 
-public class PGSQLModule extends AbstractConfigModule {
+public class PGSQLModule extends AbstractModule {
 
     private static final Logger log = LoggerFactory.getLogger(PGSQLModule.class);
 
@@ -59,7 +62,7 @@ public class PGSQLModule extends AbstractConfigModule {
     protected void configure() {
         try {
             Properties properties = new Properties();
-            properties.load(ConfigModule.class.getResourceAsStream("/prop/db.properties"));
+            properties.load(PGSQLModule.class.getResourceAsStream("/prop/db.properties"));
 
             // update properties from home folder file
             properties = updateFromUserHome(properties, HOME_CONFIG_FILE);
@@ -69,8 +72,7 @@ public class PGSQLModule extends AbstractConfigModule {
 
             // leftover of old configuration: constants must be initialized
             PGDAOConstants.loadAndInstantiate(properties);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             log.error("Could not load properties.", e);
         }
 
@@ -93,6 +95,53 @@ public class PGSQLModule extends AbstractConfigModule {
         bind(PGSQLObservedPropertyDAO.class);
 
         log.debug("Configured {}", this);
+    }
+
+    protected Properties updateFromUserHome(Properties props, String homeConfigFile) {
+        log.debug("Updating properties {} from {}", props, homeConfigFile);
+
+        String home = System.getProperty("user.home");
+        log.debug("Used home directory: {}", home);
+
+        if (home != null) {
+            File homeDirectory = new File(home);
+
+            try {
+                if (homeDirectory != null && homeDirectory.isDirectory()) {
+                    File configFile = new File(homeDirectory, homeConfigFile);
+                    if (configFile != null && configFile.exists()) {
+                        try (Reader r = new FileReader(configFile);) {
+                            props.load(r);
+                            log.info("Loaded properties (overwriting defaults) from {}", configFile);
+                        }
+                    } else {
+                        log.debug("No config file in user home ({}), let's see if the defaults work...", homeDirectory);
+                    }
+                }
+            } catch (IOException e) {
+                log.error("Could not load properties.", e);
+            }
+        } else {
+            log.warn("user.home is not specified. Will try to use fallback resources.");
+        }
+
+        return props;
+    }
+
+    protected Properties loadProperties(String name) throws IOException {
+        log.debug("Loading properties for {}", name);
+
+        Properties properties = new Properties();
+        try (InputStream is = getClass().getResourceAsStream(name);) {
+            if (is != null) {
+                properties.load(is);
+                log.debug("Loaded properties: {}", properties);
+            } else {
+                log.error("Could not load properties from {}", name);
+            }
+        }
+
+        return properties;
     }
 
 }

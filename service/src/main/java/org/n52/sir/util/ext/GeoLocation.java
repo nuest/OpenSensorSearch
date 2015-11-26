@@ -28,7 +28,7 @@
  */
 /**
  * http://creativecommons.org/licenses/by/3.0/
- * 
+ *
  * Jan Philip Matuschek
  */
 
@@ -38,17 +38,17 @@ package org.n52.sir.util.ext;
  * <p>
  * Represents a point on the surface of a sphere. (The Earth is almost spherical.)
  * </p>
- * 
+ *
  * <p>
  * To create an instance, call one of the static methods fromDegrees() or fromRadians().
  * </p>
- * 
+ *
  * <p>
  * This code was originally published at <a
  * href="http://JanMatuschek.de/LatitudeLongitudeBoundingCoordinates#Java">
  * http://JanMatuschek.de/LatitudeLongitudeBoundingCoordinates#Java</a>.
  * </p>
- * 
+ *
  * @author Jan Philip Matuschek
  * @version 22 September 2010
  */
@@ -113,7 +113,7 @@ public class GeoLocation {
      * href="http://JanMatuschek.de/LatitudeLongitudeBoundingCoordinates">
      * http://JanMatuschek.de/LatitudeLongitudeBoundingCoordinates</a>.
      * </p>
-     * 
+     *
      * @param distance
      *        the distance from the point represented by this GeoLocation instance. Must me measured in the
      *        same unit as the radius argument.
@@ -173,7 +173,7 @@ public class GeoLocation {
 
     /**
      * Computes the great circle distance between this GeoLocation instance and the location argument.
-     * 
+     *
      * @param radius
      *        the radius of the sphere, e.g. the average radius for a spherical approximation of the figure of
      *        the Earth is approximately 6371.01 kilometers.

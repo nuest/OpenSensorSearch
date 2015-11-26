@@ -29,20 +29,16 @@
 package org.n52.sir.request;
 
 /**
- * 
+ *
  * An empty mockup request to handle unimplemented operations
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class SirSubscriptionRequest extends AbstractSirRequest {
 
     private String name;
 
-    /**
-     * @param string
-     * 
-     */
     public SirSubscriptionRequest(String name) {
         this.name = name;
     }

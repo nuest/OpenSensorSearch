@@ -39,7 +39,7 @@ import net.opengis.sensorML.x101.SensorMLDocument;
 
 /**
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class TestSensor {
 
@@ -427,7 +427,7 @@ public class TestSensor {
     }
 
     /**
-     * 
+     *
      * @return
      */
     public final SensorMLDocument getSensorMLDocument() {

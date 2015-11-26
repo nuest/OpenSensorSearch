@@ -39,10 +39,8 @@ import org.slf4j.LoggerFactory;
 import com.google.inject.Inject;
 
 /**
- * FIXME one method in utillity class > remove class.
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
  */
 public class SORTools {
 
@@ -51,10 +49,6 @@ public class SORTools {
     @Inject
     SORClient client;
 
-    /**
-     * @param phenomena
-     * @return
-     */
     public Collection<SirSearchCriteria_Phenomenon> getMatchingPhenomena(Collection<SirSearchCriteria_Phenomenon> phenomena) {
         Collection<SirSearchCriteria_Phenomenon> newPhenomena = new ArrayList<>();
 
@@ -65,9 +59,8 @@ public class SORTools {
                 Collection<SirSearchCriteria_Phenomenon> currentNewPhenomena = null;
                 try {
                     currentNewPhenomena = this.client.getMatchingTypes(p,
-                                                                       SirConfigurator.getInstance().isValidateRequests());
-                }
-                catch (Exception e) {
+                            SirConfigurator.getInstance().isValidateRequests());
+                } catch (Exception e) {
                     log.error("Could not get matching phenomena for " + p);
                 }
                 if (currentNewPhenomena != null) {

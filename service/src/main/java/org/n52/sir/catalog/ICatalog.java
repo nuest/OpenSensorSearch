@@ -36,14 +36,14 @@ import org.apache.xmlbeans.XmlObject;
 import org.n52.oss.sir.ows.OwsExceptionReport;
 
 /**
- * 
+ *
  * Interface for connections to a catalog. This can be a web service that is regularly updated from a SIR
  * instance. The main method is {@link ICatalog#pushAllDataToCatalog()}, that transfers all available
  * information in a format (that is accepted by the catalog) into the catalog. Methods for checking the
  * capabilites of the encapsulated catalog and the correctness of documents beforehand are available as well.
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public interface ICatalog {
 
@@ -51,38 +51,38 @@ public interface ICatalog {
 
     /**
      * Checks if the given document is conform with the required schema or profile of this catalog.
-     * 
-     * @param doc
-     * @return
-     * @throws OwsExceptionReport
-     * @throws IOException 
+     *
+     * @param doc the document to test
+     * @return true if the document is conform
+     * @throws OwsExceptionReport on any error
+     * @throws IOException on problems parsing the docucment
      */
     public abstract boolean acceptsDocument(XmlObject doc) throws OwsExceptionReport, IOException;
 
     /**
-     * 
+     *
      * Checks if the catalog instance is fit for the purpose of storing sensor information and tries to update
      * the catalog with the required elements.
-     * 
-     * @return
-     * @throws OwsExceptionReport
+     *
+     * @return true if the catalog could be prepared to handle output from this service
+     * @throws OwsExceptionReport on any error
      */
     public abstract boolean ensureSufficientCapabilities() throws OwsExceptionReport;
 
     /**
      * Returns an array with the number of {inserted, updated, deleted} sensors during the last
      * {@link ICatalog#pushAllDataToCatalog()} call.
-     * 
-     * @return
+     *
+     * @return statistics of the last sucessfull catalog push, array with the sensor counts that were inserted, updated, deleted
      */
     public abstract int[] getSummaryOfLastPush();
 
     /**
      * Checks if this catalog instance is fit for the purpose of storing sensor information, e.g. if the given
      * URL points at a valid catalog service that supports the required document profiles.
-     * 
-     * @return
-     * @throws OwsExceptionReport
+     *
+     * @return true if the catalog can already handle output from this service
+     * @throws OwsExceptionReport on any error
      */
     public abstract boolean hasSufficientCapabilities() throws OwsExceptionReport;
 
@@ -90,22 +90,23 @@ public interface ICatalog {
      * Saves all sensor information data that is stored within this instance of the SIR after
      * {@link ICatalog#OLDEST_PUSH_DATE} into this catalog instance. As the push might include a set of
      * transactions so the return type can be a list of errors that occurred.
-     * 
-     * @throws OwsExceptionReport
+     *
+     * @throws OwsExceptionReport on any error
      */
     public abstract List<OwsExceptionReport> pushAllDataToCatalog() throws OwsExceptionReport;
 
     /**
-     * 
+     *
      * Saves all sensor information data that is stored within this instance of the SIR and was updated after
      * the given Date into this catalog instance. As the push might include a set of transactions so the
      * return type can be a list of errors that occurred.
-     * 
+     *
      * @param lastPush
      *        The {@link Date} after which the updates must have happened to be included in the push.
-     * @return
-     * @throws OwsExceptionReport
+     * @return a collection of error messages, if any occured
+     * @throws OwsExceptionReport on nonr-recoverable errors 
      */
+    // FIXME use compound exceptin report from iceland
     List<OwsExceptionReport> pushAllDataToCatalog(Date lastPush) throws OwsExceptionReport;
 
 }

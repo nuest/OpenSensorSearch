@@ -41,9 +41,9 @@ import com.google.inject.Module;
 
 /**
  * http://docs.oracle.com/javase/6/docs/api/java/util/ServiceLoader.html
- * 
+ *
  * @author Daniel
- * 
+ *
  */
 public class ServiceLoaderConfigurationModule extends AbstractModule {
 

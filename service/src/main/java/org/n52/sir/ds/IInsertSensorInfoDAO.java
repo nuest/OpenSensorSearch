@@ -36,15 +36,15 @@ import org.n52.oss.sir.ows.OwsExceptionReport;
 /**
  * interface for the specific DAOFactories, offers methods to create the matching DAOs for the
  * insertSensorInfo operation
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public interface IInsertSensorInfoDAO {
 
     /**
      * Adds a service reference to a given sensor identification in SIR
-     * 
+     *
      * @param sensIdent
      *        the sensor identification
      * @param servRef
@@ -55,7 +55,7 @@ public interface IInsertSensorInfoDAO {
 
     /**
      * Removes a service reference by a given sensor ID in SIR an the service description
-     * 
+     *
      * @param sensIdent
      *        the sensor Identification
      * @param servRef
@@ -66,7 +66,7 @@ public interface IInsertSensorInfoDAO {
 
     /**
      * Deletes a sensor by SensorIdentification
-     * 
+     *
      * @param sensIdent
      *        the sensorIdentification
      * @return Returns the former SensorID in SIR
@@ -76,7 +76,7 @@ public interface IInsertSensorInfoDAO {
 
     /**
      * Inserts a sensor with service description and sensor information
-     * 
+     *
      * @param sensor
      *        the sensor
      * @return Returns the sensorID in the Database
@@ -86,7 +86,7 @@ public interface IInsertSensorInfoDAO {
 
     /**
      * Updates the sensor document by SensorIdentification with given sensorML document
-     * 
+     *
      * @param sensIdent
      *        the sensorIdentification
      * @param sensor

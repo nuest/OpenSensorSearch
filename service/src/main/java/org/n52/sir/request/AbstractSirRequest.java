@@ -32,9 +32,9 @@ import java.net.URI;
 
 /**
  * abstract super class for all sir request classes
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public abstract class AbstractSirRequest {
 

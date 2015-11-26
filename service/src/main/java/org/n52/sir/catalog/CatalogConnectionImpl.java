@@ -32,12 +32,12 @@ import java.net.URL;
 
 
 /**
- * 
+ *
  * Class encapsulates all inormation that is required to start and also persistently store a connection to a
  * catalog.
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class CatalogConnectionImpl implements ICatalogConnection {
 

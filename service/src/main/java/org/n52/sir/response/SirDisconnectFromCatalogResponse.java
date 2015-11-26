@@ -37,7 +37,7 @@ import org.x52North.sir.x032.DisconnectFromCatalogResponseDocument.DisconnectFro
 
 /**
  * @author Jan Schulte
- * 
+ *
  */
 public class SirDisconnectFromCatalogResponse extends AbstractXmlResponse {
 

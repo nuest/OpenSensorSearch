@@ -29,9 +29,9 @@
 package org.n52.oss.api;
 
 /**
- * 
+ *
  * JSON with Jersey: https://jersey.java.net/documentation/1.18/json.html
- * 
+ *
  * @author Yakoub, Daniel Nüst
  */
 import java.util.ArrayList;

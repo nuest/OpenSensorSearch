@@ -30,9 +30,9 @@ package org.n52.sir.request;
 
 /**
  * Internal request to harvest a service
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public class SirHarvestServiceRequest extends AbstractSirRequest {
 

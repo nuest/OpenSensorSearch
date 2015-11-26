@@ -38,9 +38,9 @@ import org.n52.oss.sir.ows.OwsExceptionReport;
 /**
  * Interface for the specific DAOFactories, offers methods to create the matching DAOs for the searchSensor
  * operation
- * 
+ *
  * @author Jan Schulte, Daniel Nüst
- * 
+ *
  */
 public interface ISearchSensorDAO {
 
@@ -48,50 +48,24 @@ public interface ISearchSensorDAO {
 
     public String AUTOCOMPLETE = "autocomplete";
 
-    /**
-     * Get all available sensors.
-     * 
-     * @return Returns the sensors
-     * @throws OwsExceptionReport
-     */
+    // TODO add pagination
     public Collection<SirSearchResultElement> getAllSensors(boolean simpleReponse) throws OwsExceptionReport;
 
-    /**
+    /*
      * Search a sensor by given internal sensor identification and returns the sensor
-     * 
-     * @param sensorId
-     *        the identifier provided by this service
-     * @param b
-     * @return Returns the Sensor
-     * @throws OwsExceptionReport
      */
     public SirSearchResultElement getSensorBySensorID(String sensorId, boolean simpleReponse) throws OwsExceptionReport;
 
-    /**
+    /*
      * Search a sensor by given service description and returns the sensor
-     * 
-     * @param servDesc
-     *        the service description
-     * @return Returns the sensor
-     * @throws OwsExceptionReport
      */
     public SirSearchResultElement getSensorByServiceDescription(SirServiceReference servDesc, boolean simpleReponse) throws OwsExceptionReport;
 
-    /**
+    /*
      * Search sensors by a given searchCriteria and returns a collection of SearchResultElements
-     * 
-     * @param searchCriteria
-     *        the searchCriteria
-     * @return Returns a Collection of SearchResultElements
-     * @throws OwsExceptionReport
      */
     public Collection<SirSearchResultElement> searchSensor(SirSearchCriteria searchCriteria, boolean simpleReponse) throws OwsExceptionReport;
 
-    /**
-     * 
-     * @return a list of all the sensor ids
-     * @throws OwsExceptionReport
-     */
     public Collection<String> getAllSensorIds() throws OwsExceptionReport;
 
 }

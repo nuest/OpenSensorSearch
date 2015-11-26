@@ -42,7 +42,7 @@ import org.x52North.sir.x032.InsertSensorInfoResponseDocument.InsertSensorInfoRe
 
 /**
  * @author Jan Schulte, Daniel Nüst
- * 
+ *
  */
 public class SirInsertSensorInfoResponse extends AbstractXmlResponse {
 

@@ -34,9 +34,9 @@ import javax.xml.transform.TransformerException;
 
 /**
  * interface for the SirReponse
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public interface ISirResponse {
 

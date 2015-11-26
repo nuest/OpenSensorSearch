@@ -254,7 +254,7 @@
 			<rim:Slot name="urn:ogc:def:slot:OGC-CSW-ebRIM-Sensor::Location"
 				slotType="urn:ogc:def:dataType:ISO-19107:2003:GM_Point">
 				<wrs:ValueList>
-					<wrs:AnyValue><!--Could not detect valid EPSG code in swe:Position/@referenceSystem, 
+					<wrs:AnyValue><!--Could not detect valid EPSG code in swe:Position/@referenceSystem,
 							falling back to ancestor sml:System position definition. -->
 						<gml:Point xmlns:gml="http://www.opengis.net/gml"
 							gml:id="d21e400" srsName="urn:ogc:def:crs:EPSG:4326">
@@ -311,7 +311,7 @@
 			<rim:Slot name="urn:ogc:def:slot:OGC-CSW-ebRIM-Sensor::Location"
 				slotType="urn:ogc:def:dataType:ISO-19107:2003:GM_Point">
 				<wrs:ValueList>
-					<wrs:AnyValue><!--Could not detect valid EPSG code in swe:Position/@referenceSystem, 
+					<wrs:AnyValue><!--Could not detect valid EPSG code in swe:Position/@referenceSystem,
 							falling back to ancestor sml:System position definition. -->
 						<gml:Point xmlns:gml="http://www.opengis.net/gml"
 							gml:id="d21e484" srsName="urn:ogc:def:crs:EPSG:4326">
@@ -368,7 +368,7 @@
 			<rim:Slot name="urn:ogc:def:slot:OGC-CSW-ebRIM-Sensor::Location"
 				slotType="urn:ogc:def:dataType:ISO-19107:2003:GM_Point">
 				<wrs:ValueList>
-					<wrs:AnyValue><!--Could not detect valid EPSG code in swe:Position/@referenceSystem, 
+					<wrs:AnyValue><!--Could not detect valid EPSG code in swe:Position/@referenceSystem,
 							falling back to ancestor sml:System position definition. -->
 						<gml:Point xmlns:gml="http://www.opengis.net/gml"
 							gml:id="d21e568" srsName="urn:ogc:def:crs:EPSG:4326">
@@ -426,7 +426,7 @@
 			<rim:Slot name="urn:ogc:def:slot:OGC-CSW-ebRIM-Sensor::Location"
 				slotType="urn:ogc:def:dataType:ISO-19107:2003:GM_Point">
 				<wrs:ValueList>
-					<wrs:AnyValue><!--Could not detect valid EPSG code in swe:Position/@referenceSystem, 
+					<wrs:AnyValue><!--Could not detect valid EPSG code in swe:Position/@referenceSystem,
 							falling back to ancestor sml:System position definition. -->
 						<gml:Point xmlns:gml="http://www.opengis.net/gml"
 							gml:id="d21e658" srsName="urn:ogc:def:crs:EPSG:4326">
@@ -487,7 +487,7 @@
 			<rim:Slot name="urn:ogc:def:slot:OGC-CSW-ebRIM-Sensor::Location"
 				slotType="urn:ogc:def:dataType:ISO-19107:2003:GM_Point">
 				<wrs:ValueList>
-					<wrs:AnyValue><!--Could not detect valid EPSG code in swe:Position/@referenceSystem, 
+					<wrs:AnyValue><!--Could not detect valid EPSG code in swe:Position/@referenceSystem,
 							falling back to ancestor sml:System position definition. -->
 						<gml:Point xmlns:gml="http://www.opengis.net/gml"
 							gml:id="d21e751" srsName="urn:ogc:def:crs:EPSG:4326">
@@ -544,7 +544,7 @@
 			<rim:Slot name="urn:ogc:def:slot:OGC-CSW-ebRIM-Sensor::Location"
 				slotType="urn:ogc:def:dataType:ISO-19107:2003:GM_Point">
 				<wrs:ValueList>
-					<wrs:AnyValue><!--Could not detect valid EPSG code in swe:Position/@referenceSystem, 
+					<wrs:AnyValue><!--Could not detect valid EPSG code in swe:Position/@referenceSystem,
 							falling back to ancestor sml:System position definition. -->
 						<gml:Point xmlns:gml="http://www.opengis.net/gml"
 							gml:id="d21e835" srsName="urn:ogc:def:crs:EPSG:4326">

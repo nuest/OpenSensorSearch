@@ -37,7 +37,7 @@ import org.x52North.sir.x032.InsertSensorStatusResponseDocument.InsertSensorStat
 
 /**
  * @author Jan Schulte, Daniel Nüst
- * 
+ *
  */
 public class SirInsertSensorStatusResponse extends AbstractXmlResponse {
 

@@ -29,15 +29,15 @@
 package org.n52.oss.opensearch;
 
 public class Queries {
-    
+
     // TODO http://localhost:8080/OpenSensorSearch/search?q=washington&format=lala > must return exception
 
     // FIXME implement open search query tester with a mock-up database
-    
-    // TODO test for time 
-    
+
+    // TODO test for time
+
     // TODO test for bbox
-    
+
     // TODO test for location
 
 }

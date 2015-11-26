@@ -75,11 +75,11 @@ import org.slf4j.LoggerFactory;
 import com.google.inject.Inject;
 
 /**
- * 
+ *
  * TODO move text snippets to properties file
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class HtmlListener implements OpenSearchListener {
 
@@ -91,7 +91,7 @@ public class HtmlListener implements OpenSearchListener {
 
     /**
      * store the service capabilities
-     * 
+     *
      * TODO delete the cache occasionally so that the capabilities are requested new from time to time
      */
     private HashMap<URL, XmlObject> capabilitiesCache;

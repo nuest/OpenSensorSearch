@@ -37,9 +37,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public abstract class AbstractConnectionPool implements ConnectionPool {
 
@@ -49,7 +49,7 @@ public abstract class AbstractConnectionPool implements ConnectionPool {
 
     /**
      * constructor with necessary parameters as strings
-     * 
+     *
      * @param connection
      *        connection url
      * @param user

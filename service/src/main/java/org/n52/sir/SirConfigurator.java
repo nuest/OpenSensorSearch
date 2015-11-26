@@ -47,11 +47,12 @@ import com.google.inject.name.Named;
 
 /**
  * Singleton class reads the config file and builds the RequestOperator and DAO
- * 
+ *
  * @author Jan Schulte, Daniel Nüst
- * 
+ *
  */
 @Singleton
+@Deprecated // use iceland configuration mechanism
 public class SirConfigurator {
 
     private static final String ACCEPTED_SERVICE_VERSIONS = "oss.sir.acceptedVersions";
@@ -103,8 +104,7 @@ public class SirConfigurator {
     private boolean validateResponses;
 
     @Inject
-    public SirConfigurator(IDAOFactory daoFactory, @Named("sir_properties")
-    Properties props) throws OwsExceptionReport {
+    public SirConfigurator(IDAOFactory daoFactory, @Named("sir_properties") Properties props) throws OwsExceptionReport {
         this.factory = daoFactory;
         this.props = props;
 
@@ -134,23 +134,24 @@ public class SirConfigurator {
         return this.serviceVersion;
     }
 
-    /**
+    /*
      * does the translation from String representation of version number (to be optained by
      * getServiceVersion()) to enum of schema.
-     * 
-     * @return
      */
     public org.x52North.sir.x032.VersionAttribute.Version.Enum getServiceVersionEnum() {
         String sv = getServiceVersion();
 
-        if (sv.equals(SirConstants.SERVICE_VERSION_0_3_0))
+        if (sv.equals(SirConstants.SERVICE_VERSION_0_3_0)) {
             return VersionAttribute.Version.X_0_3_0;
+        }
 
-        if (sv.equals(SirConstants.SERVICE_VERSION_0_3_1))
+        if (sv.equals(SirConstants.SERVICE_VERSION_0_3_1)) {
             return VersionAttribute.Version.X_0_3_1;
+        }
 
-        if (sv.equals(SirConstants.SERVICE_VERSION_0_3_2))
+        if (sv.equals(SirConstants.SERVICE_VERSION_0_3_2)) {
             return VersionAttribute.Version.X_0_3_2;
+        }
 
         throw new RuntimeException("Not a supported version!");
     }
@@ -195,13 +196,12 @@ public class SirConfigurator {
             log.info("Loading capabilities skeleton from " + skeletonPath);
 
             this.capabilitiesSkeleton = CapabilitiesDocument.Factory.parse(resource);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             log.error("Error on loading capabilities skeleton file: " + e.getMessage());
             OwsExceptionReport se = new OwsExceptionReport();
             se.addCodedException(OwsExceptionReport.ExceptionCode.NoApplicableCode,
-                                 null,
-                                 "Error on loading capabilities skeleton file: " + e.getMessage());
+                    null,
+                    "Error on loading capabilities skeleton file: " + e.getMessage());
 
             throw se;
         }

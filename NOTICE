@@ -15,7 +15,7 @@ limitations under the License.
 This project includes:
   ANTLR 3 Runtime under BSD licence
   AOP alliance under Public Domain
-  Apache Commons Codec under The Apache Software License, Version 2.0
+  Apache Commons Codec under Apache License, Version 2.0
   Apache Commons Exec under Apache License, Version 2.0
   Apache Commons FileUpload under The Apache Software License, Version 2.0
   Apache Commons Lang under Apache License, Version 2.0
@@ -125,6 +125,7 @@ This project includes:
   Noggit under Apache License, Version 2.0
   OASIS ebXML Registry Information Model (RIM) schemas v3.0.0 under The Apache Software License, Version 2.0
   OGC CSW schema (spec. v2.0.2) under The Apache Software License, Version 2.0
+  OGC CSW-ebRIM schema (spec. v1.0.1) under The Apache Software License, Version 2.0
   OGC Filter schema (spec. v1.1.0) under The Apache Software License, Version 2.0
   OGC GML schema (spec. v3.1.1) under The Apache Software License, Version 2.0
   OGC GML schema (spec. v3.2.1) under The Apache Software License, Version 2.0
@@ -139,6 +140,8 @@ This project includes:
   OGC SPS schema (spec. v1.0.0) under The Apache Software License, Version 2.0
   OGC SWECommon schema (spec. v1.0.0) under The Apache Software License, Version 2.0
   OGC SWECommon schema (spec. v1.0.1) under The Apache Software License, Version 2.0
+  Open Sensor Search integration tests under GNU General Public License (GPL), Version 2.0
+  Open Sensor Search integration tests for SIR under GNU General Public License (GPL), Version 2.0
   Open Sensor Search Parent under GNU General Public License (GPL), Version 2.0
   Open Sensor Search Service under GNU General Public License (GPL), Version 2.0
   Open Sensor Search webapp under GNU General Public License (GPL), Version 2.0

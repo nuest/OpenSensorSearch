@@ -56,7 +56,7 @@ import com.google.inject.Inject;
 
 /**
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class SORClient {
 
@@ -72,7 +72,7 @@ public class SORClient {
     Client client;
 
     /**
-     * 
+     *
      * @param serviceVersion
      * @param inputURI
      * @param matchingTypeString
@@ -145,7 +145,7 @@ public class SORClient {
     }
 
     /**
-     * 
+     *
      * @param matchingURIArray
      * @return
      */
@@ -161,7 +161,7 @@ public class SORClient {
     }
 
     /**
-     * 
+     *
      * @param sorUri
      * @param validateXml
      * @return
@@ -196,7 +196,7 @@ public class SORClient {
     }
 
     /**
-     * 
+     *
      * @param serviceURI
      * @param phenomenon
      * @param matchingType

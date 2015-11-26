@@ -45,9 +45,9 @@ import org.x52North.sir.x032.HarvestServiceResponseDocument.HarvestServiceRespon
 
 /**
  * Internal response to a harvest service request
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public class SirHarvestServiceResponse extends AbstractXmlResponse {
 
@@ -81,7 +81,7 @@ public class SirHarvestServiceResponse extends AbstractXmlResponse {
 
     /**
      * TODO make injectable so that validate variable is injected here!
-     * 
+     *
      * @param validate
      */
     public SirHarvestServiceResponse(boolean validate) {

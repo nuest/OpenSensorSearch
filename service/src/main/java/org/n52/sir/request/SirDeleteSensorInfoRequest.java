@@ -34,32 +34,25 @@ import org.n52.oss.sir.api.SirInfoToBeDeleted;
 
 /**
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class SirDeleteSensorInfoRequest extends AbstractSirRequest {
 
     private Collection<SirInfoToBeDeleted> infoToBeDeleted;
 
-    /**
-     * @return the descrToBeUpdated
-     */
     public Collection<SirInfoToBeDeleted> getInfoToBeDeleted() {
         return this.infoToBeDeleted;
     }
 
-    /**
-     * @param infoToBeInserted
-     *        the infoToBeInserted to set
-     */
     public void setInfoToBeDeleted(Collection<SirInfoToBeDeleted> infoToBeDeleted) {
         this.infoToBeDeleted = infoToBeDeleted;
     }
 
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append("SirDeleteSensorInfoRequest: ");
-        sb.append("\nDelete Infos: " + this.infoToBeDeleted);
+        sb.append("\nDelete Infos: ").append(this.infoToBeDeleted);
         return sb.toString();
     }
 

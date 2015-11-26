@@ -35,9 +35,9 @@ import org.slf4j.LoggerFactory;
 import com.google.inject.AbstractModule;
 
 /**
- * 
+ *
  * @author Daniel
- * 
+ *
  */
 public class CatalogModule extends AbstractModule {
 

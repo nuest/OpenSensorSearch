@@ -27,7 +27,7 @@
  * Public License for more details.
  */
 /**
- * 
+ *
  */
 
 package org.n52.sir.listener.harvest;
@@ -60,7 +60,7 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 /**
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  */
 public abstract class FileHarvester extends Harvester {

@@ -32,17 +32,18 @@ import org.n52.oss.sir.ows.OwsExceptionReport;
 
 /**
  * @author Jan Schulte
- * 
+ *
  */
 public interface ICatalogStatusHandlerDAO {
 
     /**
      * sets a new status for a connection by connectionID
-     * 
+     *
      * @param connectionID
      *        connectionID to the catalog connection
      * @param status
      *        status to this connection
+     * @throws OwsExceptionReport on any arror
      */
     void setNewStatus(String connectionID, String status) throws OwsExceptionReport;
 }

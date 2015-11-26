@@ -58,7 +58,7 @@ import org.x52North.sir.x032.SimpleSensorDescriptionDocument.SimpleSensorDescrip
 
 /**
  * @author Jan Schulte
- * 
+ *
  */
 public class SirSearchSensorResponse extends AbstractXmlResponse {
 

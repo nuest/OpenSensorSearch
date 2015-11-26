@@ -46,18 +46,18 @@ import x0.oasisNamesTcEbxmlRegrepXsdRim3.impl.RegistryPackageDocumentImpl;
 
 /**
  * https://jersey.java.net/documentation/latest/message-body-workers.html
- * 
+ *
  * FIXME this does not work yet, instead I'm casting the response to a org.w3c.dom.Document before returning
  * it:
- * 
+ *
  * <code>
  * XmlObject transformed = transformer.transform(sensorMLDocument);
  * Document doc = (Document) transformed.getDomNode();
  * return Response.ok(doc).build();G
  * </code>
- * 
+ *
  * @author Daniel
- * 
+ *
  */
 public class EbRimMessageBodyWriter implements MessageBodyWriter<RegistryPackageDocumentImpl> {
 

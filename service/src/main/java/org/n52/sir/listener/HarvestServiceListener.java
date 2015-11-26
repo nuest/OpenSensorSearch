@@ -51,7 +51,7 @@ import com.google.inject.Inject;
 
 /**
  * @author Jan Schulte, Daniel Nüst (d.nuest@52north.org)
- * 
+ *
  */
 public class HarvestServiceListener implements ISirRequestListener {
 
@@ -73,7 +73,7 @@ public class HarvestServiceListener implements ISirRequestListener {
 
     /**
      * FIXME instantiate a new harvester for every request
-     * 
+     *
      */
     @Inject
     public HarvestServiceListener(IHarvestServiceDAO dao,

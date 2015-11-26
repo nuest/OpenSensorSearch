@@ -31,9 +31,9 @@ package org.n52.sir.ds;
 
 /**
  * interface for the specific DAOFactories, offers methods to create the matching DAOs for the operations
- * 
+ *
  * @author Jan Schulte, Moh-Yakou, Daniel Nüst
- * 
+ *
  */
 public interface IDAOFactory {
 

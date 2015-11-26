@@ -57,7 +57,7 @@ import com.google.inject.Inject;
 
 /**
  * @author Jan Schulte
- * 
+ *
  */
 public class UpdateSensorDescriptionListener implements ISirRequestListener {
 

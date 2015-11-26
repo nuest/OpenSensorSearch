@@ -39,7 +39,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * @author Jan Schulte, Daniel Nüst
- * 
+ *
  */
 public class HttpGetRequestDecoder implements IHttpGetRequestDecoder {
 

@@ -30,9 +30,9 @@ package org.n52.sir.request;
 
 /**
  * Internal request to response with a sensorML by given sensor ID in Sir
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public class SirDescribeSensorRequest extends AbstractSirRequest {
 

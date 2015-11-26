@@ -28,7 +28,7 @@
  */
 /**
  * http://creativecommons.org/licenses/by/3.0/
- * 
+ *
  * Jan Philip Matuschek
  */
 
@@ -40,7 +40,7 @@ package org.n52.sir.util.ext;
  * http://JanMatuschek.de/LatitudeLongitudeBoundingCoordinates#Java</a> for the GeoLocation class referenced
  * from this code.
  * </p>
- * 
+ *
  * @author Jan Philip Matuschek
  * @version 26 May 2010
  */

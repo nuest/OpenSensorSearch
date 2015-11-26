@@ -56,7 +56,7 @@ import com.google.gson.Gson;
 
 /**
  * @author Yakoub
- * 
+ *
  */
 public class RemoteHarvestJob implements Job {
     private static final Logger log = LoggerFactory.getLogger(RemoteHarvestJob.class);

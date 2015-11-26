@@ -35,7 +35,7 @@ import com.google.inject.Inject;
 
 /**
  * @author Yakoub
- * 
+ *
  */
 public class SOLRDeleteSensorInfoDAO {
 

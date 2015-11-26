@@ -33,15 +33,15 @@ import java.util.HashMap;
 import x0.oasisNamesTcEbxmlRegrepXsdRim3.IdentifiableType;
 
 /**
- * 
+ *
  * Class caches {@link IdentifiableType} instances that were queried from a catalog. This can be used to avoid
  * repeated querying during the process of updating a transformed document prior to insertion. For example, a
  * classificatio node that should not be inserted again because it is already present in the catalog can be
  * cached here to avoid requesting it again from the catalog. Attention: The equality check is purely based on
  * the attribute "id" of {@link IdentifiableType}.
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class CswCatalogCache {
 
@@ -52,7 +52,7 @@ public class CswCatalogCache {
     }
 
     /**
-     * 
+     *
      * @param cnt
      */
     public void add(IdentifiableType iT) {
@@ -60,9 +60,9 @@ public class CswCatalogCache {
     }
 
     /**
-     * 
+     *
      * Uses the id of the given identifiable to check against the cached identifiables.
-     * 
+     *
      * @param identifiableType
      * @return true if an identifiable with the same id is already cached.
      */

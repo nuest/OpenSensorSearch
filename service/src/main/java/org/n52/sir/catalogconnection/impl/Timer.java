@@ -50,35 +50,29 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 /**
- * 
+ *
  * This class can be used to execute {@link TimerTask} instances. It runs as a servlet and can be accessed by
  * other servlets for task scheduling and cancelling. The actual service method for GET and POST requests are
  * not implemented. It also provides methods to access the appropriate instances of
  * {@link ICatalogStatusHandler} and {@link ICatalogFactory} for tasks that run within this servlet.
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 @Singleton
 public class Timer {
 
-    /**
+    /*
      * Inner class to handle storage and cancelling of tasks at runtime.
      */
     private static class TaskElement {
+
         protected Date date;
         protected long delay;
         protected String id;
         protected long period;
         protected TimerTask task;
 
-        /**
-         * 
-         * @param identifier
-         * @param task
-         * @param delay
-         * @param period
-         */
         protected TaskElement(String identifier, TimerTask task, long delay, long period) {
             this.id = identifier;
             this.task = task;
@@ -127,7 +121,6 @@ public class Timer {
         // TODO create inner quartz timer
         // timer = new Timer(getServletName(),
         // Boolean.parseBoolean(getInitParameter(IS_DAEMON_INIT_PARAM_NAME)));
-
         log.info("NEW {}", this);
     }
 
@@ -147,29 +140,24 @@ public class Timer {
 
     public ICatalog getCatalog(ICatalogConnection conn) throws OwsExceptionReport {
         try {
-            if ( !this.catalogCache.containsKey(conn.getCatalogURL().toURI())) {
+            if (!this.catalogCache.containsKey(conn.getCatalogURL().toURI())) {
                 ICatalog catalog = this.catalogFactory.getCatalog(conn.getCatalogURL());
                 this.catalogCache.put(conn.getCatalogURL().toURI(), catalog);
             }
 
             return this.catalogCache.get(conn.getCatalogURL().toURI());
-        }
-        catch (URISyntaxException e) {
+        } catch (URISyntaxException e) {
             log.error("URI", e);
         }
 
         return null;
     }
 
-    /**
-     * 
-     * " Finally, fixed-rate execution is appropriate for scheduling multiple repeating timer tasks that must
+    /*
+     *
+     * "Finally, fixed-rate execution is appropriate for scheduling multiple repeating timer tasks that must
      * remain synchronized with respect to one another." See
      * {@link Timer#scheduleAtFixedRate(TimerTask, long, long)} for details.
-     * 
-     * @param task
-     * @param delay
-     * @param period
      */
     public void submit(String identifier, TimerTask task, long delay, long period) {
         // timer.scheduleAtFixedRate(task, delay, period);

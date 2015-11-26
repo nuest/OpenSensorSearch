@@ -72,9 +72,9 @@ import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 /**
- * 
+ *
  * @author Jan Schulte, Daniel Nüst (d.nuest@52north.org)
- * 
+ *
  */
 @Singleton
 public class RequestOperator {
@@ -116,7 +116,7 @@ public class RequestOperator {
 
     /**
      * Checks the get request query string and returns the related response
-     * 
+     *
      * @param queryString
      *        the post request string
      * @return the related ISirResponse
@@ -163,9 +163,10 @@ public class RequestOperator {
 
     /**
      * Checks the post request query string and returns the related response
-     * 
+     *
      * @param inputString
      *        the post request document
+     * @param requestUri endpoint for the post request
      * @return Returns the related ISirResponse
      */
     public ISirResponse doPostOperation(String inputString, URI requestUri) {

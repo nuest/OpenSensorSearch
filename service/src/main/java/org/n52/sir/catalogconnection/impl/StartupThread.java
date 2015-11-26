@@ -44,9 +44,9 @@ import com.google.inject.name.Named;
 /**
  * Uses a thread for a delayed execution. This is necessary if both the catalog and the SIR run in the same
  * container. The update can be blocked if the {@link ICatalogStatusHandler} is not available in the context.
- * 
+ *
  * @author Daniel
- * 
+ *
  */
 public class StartupThread extends Thread {
 

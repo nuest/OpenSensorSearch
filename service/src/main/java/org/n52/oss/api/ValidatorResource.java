@@ -61,7 +61,7 @@ import com.google.inject.servlet.RequestScoped;
 
 /**
  * @author Yakoub
- * 
+ *
  */
 @Path(ApiPaths.CHECK_PATH)
 //@Api(value = "/" + ApiPaths.CHECK_PATH, description = "validation of SensorML for future harvesting")

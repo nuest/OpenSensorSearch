@@ -48,7 +48,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class TestSensorFactory {
 
@@ -89,7 +89,7 @@ public class TestSensorFactory {
     private HashMap<String, String> uomsForOutputs;
 
     /**
-     * 
+     *
      */
     public TestSensorFactory() {
         this.rand = new Random();
@@ -320,7 +320,7 @@ public class TestSensorFactory {
     }
 
     /**
-     * 
+     *
      * @param inputs
      * @return
      */
@@ -343,7 +343,7 @@ public class TestSensorFactory {
     }
 
     /**
-     * 
+     *
      * @param intendedApplication
      * @return
      */
@@ -371,7 +371,7 @@ public class TestSensorFactory {
     }
 
     /**
-     * 
+     *
      * @param intendedApplication
      * @return
      */
@@ -401,9 +401,9 @@ public class TestSensorFactory {
     }
 
     /**
-     * 
+     *
      * randome value for altitudes, between roughly (!) 5 and 100
-     * 
+     *
      * @return
      */
     private double randomAltitude() {
@@ -414,9 +414,9 @@ public class TestSensorFactory {
     }
 
     /**
-     * 
+     *
      * create random values between the lower and upper bounds.
-     * 
+     *
      * @param bboxLowerCorner
      * @param bboxUpperCorner
      * @return
@@ -430,7 +430,7 @@ public class TestSensorFactory {
     }
 
     /**
-     * 
+     *
      * @param intendedApplication
      * @return
      */
@@ -440,7 +440,7 @@ public class TestSensorFactory {
     }
 
     /**
-     * 
+     *
      * @param intendedApplication
      * @return
      */
@@ -461,7 +461,7 @@ public class TestSensorFactory {
     }
 
     /**
-     * 
+     *
      * @return
      */
     private String randomIntendedApplication() {
@@ -469,7 +469,7 @@ public class TestSensorFactory {
     }
 
     /**
-     * 
+     *
      * @return
      */
     private String randomSensorId() {
@@ -477,7 +477,7 @@ public class TestSensorFactory {
     }
 
     /**
-     * 
+     *
      * @param base
      * @param days
      * @return

@@ -78,46 +78,36 @@ public class SimpleSoapCswClient {
 
     private URL url;
 
-    /**
-     * 
-     * @param url
-     * @throws OwsExceptionReport
-     */
     public SimpleSoapCswClient(URL url, boolean doNotCheck) throws OwsExceptionReport {
         this.url = url;
         this.doNotCheck = doNotCheck;
 
         try {
             this.transformerFact = TransformerFactory.newInstance();
-        }
-        catch (TransformerFactoryConfigurationError e) {
+        } catch (TransformerFactoryConfigurationError e) {
             log.error("Could not instantiate a TransformerFactory!", e);
             throw new OwsExceptionReport("Could not instantiate a TransformerFactory!", e);
         }
 
-        if (this.extendedDebugToConsole)
+        if (this.extendedDebugToConsole) {
             log.warn("*** Extended logging of all outgoing and incoming message is ENABLED. Be aware of large logfiles! ***");
+        }
 
         try {
             this.connfactory = SOAPConnectionFactory.newInstance();
-        }
-        catch (UnsupportedOperationException e) {
+        } catch (UnsupportedOperationException e) {
             log.error("Error creating connection factory - please check VM capabilities!", e);
             throw new OwsExceptionReport("Error creating connection factory - please check VM capabilities!", e);
-        }
-        catch (SOAPException e) {
+        } catch (SOAPException e) {
             log.error("Error creating connection factory - please check VM capabilities!", e);
             throw new OwsExceptionReport("Error creating connection factory - please check VM capabilities!", e);
         }
     }
 
     /**
-     * 
-     * add soap envelope and body
-     * 
-     * @param doc
-     * @return
-     * @throws SOAPException
+     * @param doc the soaop message body
+     * @return provided document wrapped in soap message with part and envelope
+     * @throws SOAPException when soap message cannot be created
      */
     private SOAPMessage buildMessage(Document doc) throws SOAPException {
         MessageFactory mfact = MessageFactory.newInstance();
@@ -131,50 +121,41 @@ public class SimpleSoapCswClient {
         return smsg;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         SimpleSoapCswClient other = (SimpleSoapCswClient) obj;
         if (this.connfactory == null) {
-            if (other.connfactory != null)
+            if (other.connfactory != null) {
                 return false;
-        }
-        else if ( !this.connfactory.equals(other.connfactory))
-            return false;
-        if (this.url == null) {
-            if (other.url != null)
-                return false;
-        }
-        else
-            try {
-                if ( !this.url.toURI().equals(other.url.toURI()))
-                    return false;
             }
-            catch (URISyntaxException e) {
+        } else if (!this.connfactory.equals(other.connfactory)) {
+            return false;
+        }
+        if (this.url == null) {
+            if (other.url != null) {
+                return false;
+            }
+        } else {
+            try {
+                if (!this.url.toURI().equals(other.url.toURI())) {
+                    return false;
+                }
+            } catch (URISyntaxException e) {
                 log.error("Uri error.", e);
             }
+        }
         return true;
     }
 
-    /**
-     * 
-     * @param response
-     * @return
-     * @throws OwsExceptionReport
-     * @throws SOAPException
-     * @throws TransformerException
-     * @throws XmlException
-     */
     public XmlObject extractContent(SOAPMessage message) throws OwsExceptionReport {
         try {
             // extract the content of the reply
@@ -200,34 +181,22 @@ public class SimpleSoapCswClient {
             o = XmlObject.Factory.parse(contentNode);
 
             return o;
-        }
-        catch (TransformerException e) {
+        } catch (TransformerException e) {
             log.error("Could not process received document.");
             OwsExceptionReport report = new OwsExceptionReport("Could not transform content of SOAPMessage.", e);
             throw report;
-        }
-        catch (XmlException e) {
+        } catch (XmlException e) {
             log.error("Could not parse received content.");
             OwsExceptionReport report = new OwsExceptionReport("Could not parse content of SOAPMessage to XmlObject.",
-                                                               e);
+                    e);
             throw report;
-        }
-        catch (SOAPException e) {
+        } catch (SOAPException e) {
             log.error("Could not get content from SOAPMessage.");
             OwsExceptionReport report = new OwsExceptionReport("Could get content from SOAPMessage.", e);
             throw report;
         }
     }
 
-    /**
-     * 
-     * untested method...
-     * 
-     * @param message
-     * @param elementName
-     * @return
-     * @throws OwsExceptionReport
-     */
     public XmlObject extractContent(SOAPMessage message, String namespaceURI, String localElementName) throws OwsExceptionReport {
         try {
             // extract the content of the reply
@@ -251,51 +220,37 @@ public class SimpleSoapCswClient {
             NodeList elements = message.getSOAPBody().getElementsByTagNameNS(namespaceURI, localElementName);
             o = XmlObject.Factory.parse(elements.item(0));
 
-            if (elements.getLength() > 1)
+            if (elements.getLength() > 1) {
                 log.warn("Got more than one matching element by tag name and namespace, returning only first!");
+            }
 
             return o;
-        }
-        catch (TransformerException e) {
+        } catch (TransformerException e) {
             log.error("Could not process received document.");
             OwsExceptionReport report = new OwsExceptionReport("Could not transform content of SOAPMessage.", e);
             throw report;
-        }
-        catch (XmlException e) {
+        } catch (XmlException e) {
             log.error("Could not parse received content.");
             OwsExceptionReport report = new OwsExceptionReport("Could not parse content of SOAPMessage to XmlObject.",
-                                                               e);
+                    e);
             throw report;
-        }
-        catch (SOAPException e) {
+        } catch (SOAPException e) {
             log.error("Could not get content from SOAPMessage.");
             OwsExceptionReport report = new OwsExceptionReport("Could get content from SOAPMessage.", e);
             throw report;
         }
     }
 
-    /**
-     * 
-     * @param message
-     * @return
-     * @throws OwsExceptionReport
-     */
     public SOAPFault extractFault(SOAPMessage message) throws OwsExceptionReport {
         try {
             return message.getSOAPBody().getFault();
-        }
-        catch (SOAPException e) {
+        } catch (SOAPException e) {
             log.error("Could not get SOAPBody from message.");
             OwsExceptionReport report = new OwsExceptionReport("Could get fault from SOAPMessage.", e);
             throw report;
         }
     }
 
-    /**
-     * 
-     * @param childNodes
-     * @return
-     */
     private Node findContent(NodeList childNodes) {
         Node currentNode = childNodes.item(0);
         if (currentNode.getLocalName().equals("Envelope") || currentNode.getLocalName().equals("Body")) {
@@ -304,38 +259,23 @@ public class SimpleSoapCswClient {
         return currentNode;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ( (this.connfactory == null) ? 0 : this.connfactory.hashCode());
+        result = prime * result + ((this.connfactory == null) ? 0 : this.connfactory.hashCode());
         try {
-            result = prime * result + ( (this.url.toURI() == null) ? 0 : this.url.toURI().hashCode());
-        }
-        catch (URISyntaxException e) {
+            result = prime * result + ((this.url.toURI() == null) ? 0 : this.url.toURI().hashCode());
+        } catch (URISyntaxException e) {
             log.error("URI not hashable.", e);
         }
         return result;
     }
 
-    /**
-     * @return the doNotCheck
-     */
     public boolean isDoNotCheck() {
         return this.doNotCheck;
     }
 
-    /**
-     * 
-     * @param doc
-     * @return
-     * @throws OwsExceptionReport
-     */
     public SOAPMessage send(Document doc) throws OwsExceptionReport {
         SOAPMessage responseMessage;
 
@@ -347,7 +287,7 @@ public class SimpleSoapCswClient {
                 log.debug("########## SENDING #########\n" + SoapTools.toString(smsg));
             }
 
-            if ( !this.sendNothing) {
+            if (!this.sendNothing) {
                 // send the message
                 SOAPConnection con = this.connfactory.createConnection();
 
@@ -362,20 +302,15 @@ public class SimpleSoapCswClient {
 
             log.warn("Fake mode - DID NOT SEND ANYTHING, CHANGE VARIABLE IN SimpleSoapCswClient!");
             throw new OwsExceptionReport("Fake mode, did not send the document!", null);
-        }
-        catch (SOAPException e) {
+        } catch (SOAPException e) {
             log.error("Could not send document to service!", e);
             OwsExceptionReport er = new OwsExceptionReport("Could not send document to service using SOAP!",
-                                                           e.getCause());
+                    e.getCause());
             er.addCodedException(ExceptionCode.InvalidRequest, "-", e);
             throw er;
         }
     }
 
-    /**
-     * @param doNotCheck
-     *        the doNotCheck to set
-     */
     public void setDoNotCheck(boolean doNotCheck) {
         this.doNotCheck = doNotCheck;
     }

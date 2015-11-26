@@ -33,15 +33,15 @@ import org.n52.sir.request.AbstractSirRequest;
 
 /**
  * interface offers method to receive a request. Returns internal SIR representation of request
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public interface IHttpPostRequestDecoder {
 
     /**
      * method receives request and returns internal SIR representation of request
-     * 
+     *
      * @param docString
      *        string, which contains the request document
      * @return Returns internal SIR representation of the request

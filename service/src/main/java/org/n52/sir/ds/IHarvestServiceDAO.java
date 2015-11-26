@@ -34,15 +34,15 @@ import org.n52.oss.sir.ows.OwsExceptionReport;
 /**
  * interface for the specific DAOFactories, offers methods to create the matching DAOs for the harvestService
  * operation
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public interface IHarvestServiceDAO {
 
     /**
      * Inserts a service in the database
-     * 
+     *
      * @param serviceUrl
      *        The Service Url
      * @param serviceType
@@ -54,7 +54,7 @@ public interface IHarvestServiceDAO {
 
     /**
      * Inserts a sensor in the database
-     * 
+     *
      * @param sensor
      *        the inserted sensor
      * @return Returns the SensorID in the Database

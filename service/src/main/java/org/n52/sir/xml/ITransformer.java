@@ -45,15 +45,15 @@ import org.n52.oss.sir.api.SirSensorDescription;
 import x0.oasisNamesTcEbxmlRegrepXsdRim3.RegistryPackageDocument;
 
 /**
- * 
+ *
  * An object that implements this interface can be used for transformation of one XML document to another. The
  * transformation can include validation.
- * 
+ *
  * The transformation can be based on different kinds of inputs and outputs: Apart from the method relying on
  * java.xml.transform classes there is a convenience method for XMLBeans using {@link XmlObject}.
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public interface ITransformer {
 

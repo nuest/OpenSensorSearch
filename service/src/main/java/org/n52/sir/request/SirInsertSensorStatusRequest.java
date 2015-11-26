@@ -35,7 +35,7 @@ import org.n52.oss.sir.api.SirStatus;
 
 /**
  * @author Jan Schulte
- * 
+ *
  */
 public class SirInsertSensorStatusRequest extends AbstractSirRequest {
 

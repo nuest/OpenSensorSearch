@@ -55,9 +55,9 @@ import org.slf4j.LoggerFactory;
 import com.google.inject.Inject;
 
 /**
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class KmlListener implements OpenSearchListener {
 
@@ -95,7 +95,7 @@ public class KmlListener implements OpenSearchListener {
 
                 KmlDocument doc = KmlDocument.Factory.newInstance();
                 KmlType kml = doc.addNewKml();
-                
+
                 AbstractFeatureType abstractFeatureGroup = kml.addNewAbstractFeatureGroup();
                 abstractFeatureGroup.addNewAuthor().addName("Open Sensor Search");
                 abstractFeatureGroup.addNewLink().addNewHref().setStringValue(KmlListener.this.homeUri.toString());

@@ -45,7 +45,7 @@ import com.google.inject.Inject;
 
 /**
  * @author Jan Schulte, Daniel Nüst
- * 
+ *
  */
 public class PGSQLHarvestServiceDAO implements IHarvestServiceDAO {
 
@@ -388,7 +388,7 @@ public class PGSQLHarvestServiceDAO implements IHarvestServiceDAO {
 
     /**
      * Builds a command, which insert a service
-     * 
+     *
      * @param serviceUrl
      *        The service url
      * @param serviceType
@@ -429,7 +429,7 @@ public class PGSQLHarvestServiceDAO implements IHarvestServiceDAO {
 
     /**
      * Builds a query, which request the ID of a service by given service URL and service Type
-     * 
+     *
      * @param serviceUrl
      *        The service URL
      * @param serviceType

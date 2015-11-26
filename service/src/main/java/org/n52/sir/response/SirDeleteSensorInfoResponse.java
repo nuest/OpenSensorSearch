@@ -42,7 +42,7 @@ import org.x52North.sir.x032.DeleteSensorInfoResponseDocument.DeleteSensorInfoRe
 
 /**
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class SirDeleteSensorInfoResponse extends AbstractXmlResponse {
 
@@ -69,65 +69,45 @@ public class SirDeleteSensorInfoResponse extends AbstractXmlResponse {
         XmlTools.addSirAndSensorMLSchemaLocation(delteSensInfoResp);
 
         if (SirConfigurator.getInstance().isValidateResponses()) {
-            if ( !document.validate())
+            if (!document.validate()) {
                 log.warn("Service created invalid document!\n" + XmlTools.validateAndIterateErrors(document));
+            }
         }
 
         return document;
     }
 
-    /**
-     * @return the deletedSensors
-     */
     public Collection<String> getDeletedSensors() {
         return this.deletedSensors;
     }
 
-    /**
-     * @return the numberOfNewSensors
-     */
     public int getNumberOfDeletedSensors() {
         return this.numberOfDeletedSensors;
     }
 
-    /**
-     * @return the numberOfNewServiceReferences
-     */
     public int getNumberOfDeletedServiceReferences() {
         return this.numberOfDeletedServiceReferences;
     }
 
-    /**
-     * @param deletedSensors
-     *        the deletedSensors to set
-     */
     public void setDeletedSensors(Collection<String> insertedSensors) {
         this.deletedSensors = insertedSensors;
     }
 
-    /**
-     * @param numberOfDeletedSensors
-     *        the numberOfDeletedSensors to set
-     */
     public void setNumberOfDeletedSensors(int numberOfDeletedSensors) {
         this.numberOfDeletedSensors = numberOfDeletedSensors;
     }
 
-    /**
-     * @param numberOfDeletedServiceReferences
-     *        the numberOfDeletedServiceReferences to set
-     */
     public void setNumberOfDeletedServiceReferences(int numberOfDeletedServiceReferences) {
         this.numberOfDeletedServiceReferences = numberOfDeletedServiceReferences;
     }
 
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append("SirDeleteSensorInfoResponse: ");
-        sb.append("\n# of deleted sensors: " + this.numberOfDeletedSensors);
-        sb.append("\nDeleted service references: " + this.numberOfDeletedServiceReferences);
-        sb.append("\nDeleted Sensors: " + Arrays.toString(this.deletedSensors.toArray()));
+        sb.append("\n# of deleted sensors: ").append(this.numberOfDeletedSensors);
+        sb.append("\nDeleted service references: ").append(this.numberOfDeletedServiceReferences);
+        sb.append("\nDeleted Sensors: ").append(Arrays.toString(this.deletedSensors.toArray()));
         return sb.toString();
     }
 

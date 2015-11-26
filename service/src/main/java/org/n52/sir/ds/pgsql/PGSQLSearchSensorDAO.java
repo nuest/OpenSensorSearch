@@ -61,7 +61,7 @@ import com.google.inject.Inject;
 
 /**
  * @author Jan Schulte
- * 
+ *
  */
 public class PGSQLSearchSensorDAO implements ISearchSensorDAO {
 
@@ -411,17 +411,17 @@ public class PGSQLSearchSensorDAO implements ISearchSensorDAO {
 
     /**
      * Manual test queries:
-     * 
+     *
      * select text from sensor WHERE ('%Wasser%Station%' % ANY(text));
-     * 
+     *
      * select text from sensor WHERE '%Potsdam%' % ANY(text);
-     * 
+     *
      * select text from sensor WHERE '%(Vaisala|Potsdam)%' % ANY(text);
-     * 
+     *
      * Documentation:
-     * 
+     *
      * http://www.postgresql.org/docs/9.0/static/functions-matching.html
-     * 
+     *
      * http://www.rdegges.com/easy-fuzzy-text-searching-with-postgresql/
      */
     private String sensorsByTextOnIndexedColums(SirSearchCriteria searchCriteria) {

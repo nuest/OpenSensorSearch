@@ -36,49 +36,37 @@ import org.n52.sir.catalog.ICatalogConnection;
 
 /**
  * @author Jan Schulte
- * 
+ *
  */
 public interface IConnectToCatalogDAO {
 
-    /**
+    /*
      * Returns a list of all catalogs that have a push interval
-     * 
-     * @return a list of all catalogs that have a push interval
-     * @throws OwsExceptionReport
      */
     List<ICatalogConnection> getCatalogConnectionList() throws OwsExceptionReport;
 
     /**
      * checks in database if connection exists. If exists, the ConnectionID is returned, else null
-     * 
-     * @param url
-     *        url to the catalog service
-     * @param pushInterval
-     *        update interval
      * @return Returns the catalog ID in SIR or null, if not exists
      */
     String getConnectionID(URL url, int pushInterval) throws OwsExceptionReport;
 
     /**
      * insert a connection to a catalog service
-     * 
-     * @param cswUrl
-     *        url to the catalog service
-     * @param pushInterval
-     *        update interval
+     *
+     * @param cswUrl url to the catalog service
+     * @param pushInterval update interval
      * @return Returns the catalog ID in SIR
-     * @throws OwsExceptionReport
+     * @throws OwsExceptionReport on any error
      */
     String insertConnection(URL cswUrl, int pushInterval) throws OwsExceptionReport;
 
     /**
      * update the connection in database
-     * 
-     * @param cswUrl
-     *        url to the catalog service
-     * @param pushInterval
-     *        update interval
-     * @throws OwsExceptionReport
+     *
+     * @param cswUrl url to the catalog service
+     * @param pushInterval update interval
+     * @throws OwsExceptionReport on any error
      */
     void updateConnection(URL cswUrl, int pushInterval) throws OwsExceptionReport;
 

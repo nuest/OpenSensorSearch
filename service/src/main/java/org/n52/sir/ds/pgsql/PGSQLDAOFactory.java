@@ -35,9 +35,9 @@ import org.n52.sir.ds.IUserAccountDAO;
 
 /**
  * DAO factory for PostgreSQL
- * 
+ *
  * @author Jan Schulte, Daniel Nüst
- * 
+ *
  */
 public class PGSQLDAOFactory implements IDAOFactory {
 

@@ -85,6 +85,8 @@ http://maven.apache.org/maven-v4_0_0.xsd">
         <module>service</module>
         <module>website</module>
         <module>webapp</module>
+        <module>sir-it</module>
+        <module>it</module>
     </modules>
 
     <properties>
@@ -101,16 +103,6 @@ http://maven.apache.org/maven-v4_0_0.xsd">
         <oss.logger.filepath>${catalina.base:-.}/logs/oss</oss.logger.filepath>
         <oss.logger.level>DEBUG</oss.logger.level>
     </properties>
-
-    <profiles>
-        <profile>
-            <id>integration-test</id>
-            <modules>
-                <module>sir-it</module>
-                <module>it</module>
-            </modules>
-        </profile>
-    </profiles>
 
     <build>
         <plugins>
@@ -393,6 +385,12 @@ http://maven.apache.org/maven-v4_0_0.xsd">
                 <artifactId>52n-xml-kml-v220</artifactId>
                 <version>${sensorweb.schemas.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.n52.sensorweb</groupId>
+                <artifactId>52n-xml-wrs-v101</artifactId>
+                <version>${sensorweb.schemas.version}</version>
+                <type>jar</type>
+            </dependency>
 
             <dependency>
                 <groupId>org.apache.xmlbeans</groupId>
@@ -466,6 +464,26 @@ http://maven.apache.org/maven-v4_0_0.xsd">
                         <groupId>woodstox</groupId>
                     </exclusion>
                 </exclusions>-->
+            </dependency>
+
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>2.8.1</version>
+                <type>jar</type>
+            </dependency>
+            <dependency>
+                <groupId>xerces</groupId>
+                <artifactId>xercesImpl</artifactId>
+                <version>2.11.0</version>
+                <type>jar</type>
+            </dependency>
+
+            <dependency>
+                <groupId>com.sun.xml.messaging.saaj</groupId>
+                <artifactId>saaj-impl</artifactId>
+                <version>1.3.25</version>
+                <type>jar</type>
             </dependency>
         </dependencies>
     </dependencyManagement>

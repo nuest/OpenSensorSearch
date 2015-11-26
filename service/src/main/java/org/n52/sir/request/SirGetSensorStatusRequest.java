@@ -36,9 +36,9 @@ import org.n52.oss.sir.api.SirSensorIdentification;
 
 /**
  * Internal request to get sensor status
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public class SirGetSensorStatusRequest extends AbstractSirRequest {
 

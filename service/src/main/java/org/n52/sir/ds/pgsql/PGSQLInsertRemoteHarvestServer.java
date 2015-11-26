@@ -43,9 +43,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ *
  * @author Daniel, Moh-Yakoub
- * 
+ *
  */
 public class PGSQLInsertRemoteHarvestServer implements IInsertRemoteHarvestServer {
     private static final Logger log = LoggerFactory.getLogger(PGSQLInsertRemoteHarvestServer.class);

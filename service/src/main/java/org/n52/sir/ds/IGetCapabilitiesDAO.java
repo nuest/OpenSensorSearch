@@ -37,9 +37,9 @@ import org.n52.sir.catalog.ICatalogConnection;
 /**
  * interface for the specific DAOFactories, offers methods to create the matching DAOs for the getCapabilities
  * operation
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public interface IGetCapabilitiesDAO {
 

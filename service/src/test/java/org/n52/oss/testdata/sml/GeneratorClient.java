@@ -63,9 +63,9 @@ import org.x52North.sir.x032.VersionAttribute;
 import org.x52North.sir.x032.VersionAttribute.Version.Enum;
 
 /**
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 @SuppressWarnings("unused")
 public class GeneratorClient {
@@ -164,7 +164,7 @@ public class GeneratorClient {
     }
 
     /**
-     * 
+     *
      * @param testSensor
      * @throws HttpException
      * @throws IOException

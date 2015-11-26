@@ -49,7 +49,7 @@ public class ShortAlphanumericIdentifierGenerator implements IdentifierGenerator
     public String generate() {
         return RandomStringUtils.randomAlphanumeric(ID_LENGTH).toLowerCase();
     }
-    
+
     @Override
     public Collection<String> generate(int count) {
         ArrayList<String> ids = new ArrayList<>();

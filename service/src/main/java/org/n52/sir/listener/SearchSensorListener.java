@@ -58,7 +58,7 @@ import com.google.inject.name.Named;
 
 /**
  * @author Jan Schulte, Daniel Nüst
- * 
+ *
  */
 public class SearchSensorListener implements ISirRequestListener {
 

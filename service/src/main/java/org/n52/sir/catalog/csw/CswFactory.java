@@ -61,7 +61,7 @@ import com.google.inject.name.Named;
 
 /**
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class CswFactory implements ICatalogFactory {
 
@@ -83,28 +83,24 @@ public class CswFactory implements ICatalogFactory {
 
     private ISearchSensorDAO searchDao;
 
-    private IProfileValidator validator;
+    private final IProfileValidator validator;
 
     @Inject
-    public CswFactory(@Named("oss.catalogconnection.csw-ebrim.classificationInitFilenames")
-    String classificationInitFilenames, @Named("oss.catalogconnection.csw-ebrim.slotInitFilename")
-    String slotInitFile, @Named("oss.catalogconnection.doNotCheckCatalogs")
-    String doNotCheckCatalogs, Set<ITransformer> transformers, @Named(ISearchSensorDAO.FULL)
-    ISearchSensorDAO searchDao, Set<IProfileValidator> validators, @Named("oss.catalogconnection.logLoadedFiles")
-    boolean logLoadedFiles) throws XmlException, IOException {
+    public CswFactory(@Named("oss.catalogconnection.csw-ebrim.classificationInitFilenames") String classificationInitFilenames, @Named("oss.catalogconnection.csw-ebrim.slotInitFilename") String slotInitFile, @Named("oss.catalogconnection.doNotCheckCatalogs") String doNotCheckCatalogs, Set<ITransformer> transformers, @Named(ISearchSensorDAO.FULL) ISearchSensorDAO searchDao, Set<IProfileValidator> validators, @Named("oss.catalogconnection.logLoadedFiles") boolean logLoadedFiles) throws XmlException, IOException {
         this.slotInitFile = getAbsolutePath(slotInitFile);
         this.searchDao = searchDao;
 
         try (FileReader reader = new FileReader(this.slotInitFile);) {
             this.slotInitDoc = XmlObject.Factory.parse(reader);
 
-            if (logLoadedFiles)
+            if (logLoadedFiles) {
                 log.debug("Loaded slot init doc: {}", this.slotInitDoc);
+            }
         }
 
         this.transformer = TransformerModule.getFirstMatchFor(transformers,
-                                                              TransformableFormat.SML,
-                                                              TransformableFormat.EBRIM);
+                TransformableFormat.SML,
+                TransformableFormat.EBRIM);
 
         XmlObject initDoc;
         this.classificationInitDocs = new ArrayList<>();
@@ -123,19 +119,19 @@ public class CswFactory implements ICatalogFactory {
         if (splitted.length > 0) {
             for (String s : splitted) {
                 try {
-                    if ( !s.isEmpty())
+                    if (!s.isEmpty()) {
                         this.doNotCheckCatalogsList.add(new URL(s.trim()));
-                }
-                catch (MalformedURLException e) {
+                    }
+                } catch (MalformedURLException e) {
                     log.error("Could not parse catalog url to 'do not check' list. Catalog will be checked during runtime!",
-                              e);
+                            e);
                 }
             }
         }
         log.debug("Loaded do-not-check-catalogs: {}", Arrays.toString(this.doNotCheckCatalogsList.toArray()));
 
         this.validator = ValidatorModule.getFirstMatchFor(validators,
-                                                          IProfileValidator.ValidatableFormatAndProfile.SML_DISCOVERY);
+                IProfileValidator.ValidatableFormatAndProfile.SML_DISCOVERY);
 
         log.info("NEW {}", this);
     }
@@ -146,8 +142,7 @@ public class CswFactory implements ICatalogFactory {
             Path p = Paths.get(r.toURI());
             String s = p.toAbsolutePath().toString();
             return s;
-        }
-        catch (URISyntaxException e) {
+        } catch (URISyntaxException e) {
             log.error("Could not load resource " + file, e);
             return file;
         }
@@ -157,11 +152,11 @@ public class CswFactory implements ICatalogFactory {
     public ICatalog getCatalog(URL catalogUrl) throws OwsExceptionReport {
         SimpleSoapCswClient client = new SimpleSoapCswClient(catalogUrl, catalogIsOnDoNotCheckList(catalogUrl));
         CswCatalog catalog = new CswCatalog(this.searchDao,
-                                            client,
-                                            this.classificationInitDocs,
-                                            this.slotInitDoc,
-                                            this.transformer,
-                                            this.validator);
+                client,
+                this.classificationInitDocs,
+                this.slotInitDoc,
+                this.transformer,
+                this.validator);
         return catalog;
     }
 
@@ -169,20 +164,11 @@ public class CswFactory implements ICatalogFactory {
         return this.doNotCheckCatalogsList.contains(catalogUrl);
     }
 
-    /**
-     * 
-     * @param connectionID
-     * @param url
-     * @param pushInterval
-     * @param newConnectionStatus
-     * @return an instance of the {@link ICatalogConnection} implementation used within the clients of this
-     *         factory.
-     */
     @Override
     public ICatalogConnection getCatalogConnection(String connectionID,
-                                                   URL url,
-                                                   int pushInterval,
-                                                   String newConnectionStatus) {
+            URL url,
+            int pushInterval,
+            String newConnectionStatus) {
         return new CatalogConnectionImpl(connectionID, url, pushInterval, ICatalogConnection.NEW_CONNECTION_STATUS);
     }
 

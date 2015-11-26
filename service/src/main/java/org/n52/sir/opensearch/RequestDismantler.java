@@ -48,10 +48,10 @@ public class RequestDismantler {
 
     public SirSearchCriteria createCriteria(Map<String, String> parameters) {
         // TODO daniel: implement method
-        
+
         return null;
     }
-    
+
     public SirBoundingBox getBoundingBox(HttpServletRequest req) {
         Set< ? > keySet = req.getParameterMap().keySet();
         boolean containsName = keySet.contains(OpenSearchConstants.NAME_PARAM);
@@ -103,9 +103,9 @@ public class RequestDismantler {
     }
 
     /**
-     * 
+     *
      * map lat lon und radius to a bouding box
-     * 
+     *
      * @param lat
      * @param lon
      * @param radius

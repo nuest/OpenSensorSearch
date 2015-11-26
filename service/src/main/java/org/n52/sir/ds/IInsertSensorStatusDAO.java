@@ -37,15 +37,15 @@ import org.n52.oss.sir.ows.OwsExceptionReport;
 /**
  * interface for the specific DAOFactories, offers methods to create the matching DAOs for the
  * insertSensorStatus operation
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public interface IInsertSensorStatusDAO {
 
     /**
      * insert a new sensor status in the database
-     * 
+     *
      * @param ident
      *        Identification of the sensor
      * @param status

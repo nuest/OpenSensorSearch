@@ -36,7 +36,7 @@
 				<wrs:ValueList>
 					<wrs:AnyValue>
 						<gml:Envelope xmlns:gml="http://www.opengis.net/gml"
-							srsName="urn:ogc:def:crs:EPSG:4326"><!--Observed BBOX does not apply for indoor camera, is just 
+							srsName="urn:ogc:def:crs:EPSG:4326"><!--Observed BBOX does not apply for indoor camera, is just
 								position. -->
 							<gml:lowerCorner>51.9412 7.6103</gml:lowerCorner>
 							<gml:upperCorner>51.9412 7.6103</gml:upperCorner>

@@ -52,6 +52,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.inject.Inject;
+import java.io.IOException;
 
 /**
  * @author Yakoub
@@ -123,7 +124,7 @@ public class SOLRSearchSensorDAO implements ISearchSensorDAO {
      *        : longitude of the desired point
      * @param kms
      *        : The distance of kms to match against
-     * 
+     *
      */
     private Collection<SirSearchResultElement> spatialSearch(String lat, String lng, double kms, String column) {
         return spatialSearchWithQuery("*:*", lat, lng, kms, column);
@@ -237,7 +238,7 @@ public class SOLRSearchSensorDAO implements ISearchSensorDAO {
         return query.toString();
     }
 
-    public Collection<SirSearchResultElement> searchByValidTimeRange(Date start, Date end) {
+    public Collection<SirSearchResultElement> searchByValidTimeRange(Date start, Date end) throws IOException {
         ModifiableSolrParams params = new ModifiableSolrParams();
         params.set("q", temporalQuery(start, end));
         QueryResponse response;
@@ -624,7 +625,7 @@ public class SOLRSearchSensorDAO implements ISearchSensorDAO {
             // search by bounding box
             /**
              * TODO Implement GeoBox searchByQuery
-             * 
+             *
              */
         }
         else {

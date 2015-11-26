@@ -28,14 +28,20 @@
  */
 package org.n52.sir;
 
+import com.google.inject.AbstractModule;
 import java.util.Properties;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.inject.name.Names;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
 
-public class ConfigModule extends ConfigModule {
+public class ConfigModule extends AbstractModule {
 
     private static final Logger log = LoggerFactory.getLogger(ConfigModule.class);
 

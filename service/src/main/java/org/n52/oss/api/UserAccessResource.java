@@ -44,7 +44,7 @@ import com.google.inject.servlet.RequestScoped;
 
 /**
  * @author Yakoub
- * 
+ *
  */
 @Path(ApiPaths.USER_PATH)
 @RequestScoped
@@ -92,7 +92,7 @@ public class UserAccessResource {
             String passwordHash = new SHA1HashGenerator().generate(password);
             boolean userExists = dao.nameExists(user);
             if(userExists)return Response.ok("{success:'false',reason:'User exists'}").build();
-            
+
             boolean success  = dao.register(user, passwordHash);
             return Response.ok("{success:'"+success+"'}").build();
         }
@@ -115,12 +115,12 @@ public class UserAccessResource {
             boolean isAdmin = dao.isAdmin(admin_user_name);
             if(!isAdmin)return Response.status(403).entity("{status:Fail insufficent permission}").build();
             boolean result =  dao.validate(user_id);
-            
+
             return Response.ok("{status:'"+result+"'}").build();
         }
         catch (Exception e) {
             return Response.status(500).entity(e).build();
         }
     }
-    
+
 }

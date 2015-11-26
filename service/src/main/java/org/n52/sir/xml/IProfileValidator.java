@@ -38,7 +38,7 @@ import org.n52.oss.sir.ows.OwsExceptionReport;
 
 /**
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public interface IProfileValidator {
 

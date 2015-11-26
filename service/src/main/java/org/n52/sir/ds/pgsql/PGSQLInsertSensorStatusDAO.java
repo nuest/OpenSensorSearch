@@ -49,7 +49,7 @@ import com.google.inject.Inject;
 
 /**
  * @author Jan Schulte, Daniel Nüst
- * 
+ *
  */
 public class PGSQLInsertSensorStatusDAO implements IInsertSensorStatusDAO {
 

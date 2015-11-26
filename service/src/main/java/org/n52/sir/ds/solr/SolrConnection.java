@@ -28,8 +28,8 @@
  */
 package org.n52.sir.ds.solr;
 
-/** 
- * @author Yakoub 
+/**
+ * @author Yakoub
  */
 import java.io.IOException;
 
@@ -73,7 +73,7 @@ public class SolrConnection {
         this.server.commit();
     }
 
-    public QueryResponse query(SolrParams params) throws SolrServerException {
+    public QueryResponse query(SolrParams params) throws SolrServerException, IOException {
         return this.server.query(params);
     }
 

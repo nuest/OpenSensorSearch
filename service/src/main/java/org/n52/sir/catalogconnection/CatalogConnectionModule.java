@@ -68,5 +68,5 @@ public class CatalogConnectionModule extends AbstractModule {
 
         log.debug("Configured {}", this);
     }
-    
+
 }

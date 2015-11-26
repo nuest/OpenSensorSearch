@@ -27,7 +27,7 @@
  * Public License for more details.
  */
 /**
- * 
+ *
  */
 
 package org.n52.sir.listener.harvest;
@@ -69,14 +69,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ *
  * Abstract class that contains functions to collect harvesting status (number of items, ids) and create the
  * internal response class for it.
- * 
+ *
  * IMPORTANT: implementing harvesters must call the reset() method after a harvest is complete.
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public abstract class Harvester implements Callable<ISirResponse> {
 

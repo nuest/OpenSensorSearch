@@ -56,14 +56,14 @@ import com.google.inject.Singleton;
 
 /**
  * https://jersey.java.net/documentation/latest/message-body-workers.html
- * 
+ *
  * Writer must be binded:
  * http://stackoverflow.com/questions/11216321/guice-jersey-custom-serialization-of-entities
- * 
+ *
  * Based on DocumentProvider.class
- * 
+ *
  * @author Daniel
- * 
+ *
  */
 @Singleton
 @Produces({MediaType.APPLICATION_XML, MediaType.TEXT_HTML})

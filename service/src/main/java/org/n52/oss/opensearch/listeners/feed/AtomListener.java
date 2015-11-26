@@ -35,9 +35,9 @@ import org.n52.oss.opensearch.OpenSearchConfigurator;
 import com.google.inject.Inject;
 
 /**
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class AtomListener extends AbstractFeedListener {
 

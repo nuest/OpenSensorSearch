@@ -53,9 +53,9 @@ import org.slf4j.LoggerFactory;
 import com.google.inject.Inject;
 
 /**
- * 
+ *
  * @author Daniel
- * 
+ *
  */
 public class GetCapabilitiesListener implements ISirRequestListener {
 

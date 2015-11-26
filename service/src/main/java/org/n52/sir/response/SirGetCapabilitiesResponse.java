@@ -58,7 +58,7 @@ import org.x52North.sir.x032.CapabilitiesDocument.Capabilities.Contents.LinkedCa
 
 /**
  * @author Jan Schulte
- * 
+ *
  */
 public class SirGetCapabilitiesResponse extends AbstractXmlResponse {
 

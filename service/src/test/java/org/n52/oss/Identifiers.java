@@ -43,7 +43,7 @@ import org.n52.oss.id.IdentifierGenerator;
 import org.n52.oss.id.ShortAlphanumericIdentifierGenerator;
 
 public class Identifiers {
-    
+
     @Test
     public void identifiersAreGenerated() {
         IdentifierGenerator gen = new ShortAlphanumericIdentifierGenerator();
@@ -53,27 +53,27 @@ public class Identifiers {
         System.out.println("Generated id: " + id1);
         String id2 = gen.generate();
         System.out.println("Generated id: " + id2);
-        
+
         assertThat(id0, not(equalTo(id1)));
         assertThat(id0, not(equalTo(id2)));
         assertThat(id1, not(equalTo(id2)));
-        
+
         assertTrue(StringUtils.isAlphanumeric(id0));
         assertTrue(StringUtils.isAlphanumeric(id1));
         assertTrue(StringUtils.isAlphanumeric(id2));
-        
+
         assertTrue(StringUtils.isAllLowerCase(id0.replaceAll("[\\d.]", "")));
         assertTrue(StringUtils.isAllLowerCase(id1.replaceAll("[\\d.]", "")));
         assertTrue(StringUtils.isAllLowerCase(id2.replaceAll("[\\d.]", "")));
     }
-    
+
     @Test
     public void listOfIdentifiersIsGenerated() {
         IdentifierGenerator gen = new ShortAlphanumericIdentifierGenerator();
         int size = 10;
         Collection<String> ids = gen.generate(size);
         System.out.println("Generated ids: " + Arrays.toString(ids.toArray()));
-        
+
         assertThat(ids, hasSize(size));
     }
 

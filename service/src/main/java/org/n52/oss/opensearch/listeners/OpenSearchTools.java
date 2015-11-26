@@ -37,9 +37,9 @@ import org.n52.oss.sir.api.SirServiceReference;
 import org.n52.oss.sir.api.SirSimpleSensorDescription;
 
 /**
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class OpenSearchTools {
 
@@ -56,8 +56,9 @@ public class OpenSearchTools {
             sb.append(s);
 
             i++;
-            if (i == maxElements)
+            if (i == maxElements) {
                 break;
+            }
 
             sb.append(",");
         }
@@ -67,26 +68,16 @@ public class OpenSearchTools {
         return reference.getService().getUrl() + "?REQUEST=GetCapabilities&SERVICE=SOS";
     }
 
-    /**
-     * handle only & characters
-     * 
-     * @param url
-     * @return
-     */
     public static String decode(String url) {
         String s = url.replaceAll("&amp;", "\\&");
         return s;
     }
 
-    /**
-     * 
-     * using the original URLEncoder does not work, it always appends the sir URL in front...
-     * 
+    /*
+     * using URLEncoder does not work, it always appends the sir URL in front...
+     *
      * // getCapRequest = URLEncoder.encode(getCapRequest, //
      * SirConfigurator.getInstance().getCharacterEncoding());
-     * 
-     * @param getCapRequest
-     * @return
      */
     public static String encode(String url) {
         String s = url.replaceAll("\\&", "&amp;");
@@ -100,21 +91,25 @@ public class OpenSearchTools {
         if (ds.contains(OpenSearchConstants.CDATA_START_TAG)) {
             ds = ds.replace(OpenSearchConstants.CDATA_START_TAG, "");
 
-            if (ds.endsWith(OpenSearchConstants.CDATA_END_TAG))
+            if (ds.endsWith(OpenSearchConstants.CDATA_END_TAG)) {
                 ds = ds.substring(0, ds.length() - 1);
+            }
         }
 
         // see if the string contains new line characters
-        if (ds.contains("\n"))
+        if (ds.contains("\n")) {
             ds = ds.replaceAll("\\n", System.getProperty("line.separator"));
+        }
 
         // replace tabs
-        if (ds.contains("\t"))
+        if (ds.contains("\t")) {
             ds = ds.replaceAll("\\t", " ");
+        }
 
         // encode possibly problematic characters
-        if (ds.contains("&"))
+        if (ds.contains("&")) {
             ds = encode(ds);
+        }
 
         ds = ds.trim();
 
@@ -134,21 +129,21 @@ public class OpenSearchTools {
     }
 
     /**
-     * highlight all occurences of searchText using <b>-elements.
-     * 
-     * @param text
-     * @param searchText
-     * @param highlightSearchText
-     * @param addLinksInSearchText
-     * @return
+     * highlight all occurences of searchText using &lt;b&gt;-elements.
+     *
+     * @param text the full text
+     * @param searchText the text to highlight
+     * @param highlightSearchText enable highlighting
+     * @param addLinksInSearchText enabled parsing of URL HTML anchors
+     * @return the full text with highlights and/or clickable links
      */
     public static String highlightHTML(String text,
-                                       String searchText,
-                                       boolean highlightSearchText,
-                                       boolean addLinksInSearchText) {
+            String searchText,
+            boolean highlightSearchText,
+            boolean addLinksInSearchText) {
         String s = text;
 
-        StringBuffer regex = new StringBuffer();
+        StringBuilder regex = new StringBuilder();
         if (highlightSearchText) {
             String[] words = searchText.split(" ");
             for (String word : words) {
@@ -170,7 +165,6 @@ public class OpenSearchTools {
 
             // http://regexlib.com/Search.aspx?k=URL&AspxAutoDetectCookieSupport=1
             // String regex = "((mailto\\\\:|(news|(ht|f)tp(s?))\\\\://){1}\\\\S+)";
-
             // http://stackoverflow.com/questions/1909534/java-replacing-text-url-with-clickable-html-link
             s = s.replaceAll("(.*://[^<>[:space:]]+[[:alnum:]/])", "<a href=\"$1\">$1</a>");
         }

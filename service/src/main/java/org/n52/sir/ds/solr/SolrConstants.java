@@ -50,5 +50,5 @@ public class SolrConstants {
     public static final String EDISMAX = "keyword^1 uniqueID^1 location^1 bboxcenter^1 description^1 classifier^1 identification^1 contact^1 interface^1 input^1 output^1";
     public static final String AND_OP ="AND";
     public static final String OR_OP = "OR";
-    
+
 }

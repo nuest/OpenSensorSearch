@@ -49,7 +49,7 @@ import com.google.inject.Inject;
 
 /**
  * @author Jan Schulte
- * 
+ *
  */
 public class PGSQLConnectToCatalogDAO implements IConnectToCatalogDAO {
 

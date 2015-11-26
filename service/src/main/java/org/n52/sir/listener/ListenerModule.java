@@ -37,9 +37,9 @@ import com.google.inject.multibindings.Multibinder;
 
 /**
  * http://code.google.com/p/google-guice/wiki/Multibindings
- * 
+ *
  * @author Daniel
- * 
+ *
  */
 public class ListenerModule extends AbstractModule {
 

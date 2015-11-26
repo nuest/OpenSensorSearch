@@ -38,7 +38,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public abstract class SensorStatusSubscriptionListener implements ISirRequestListener {
 

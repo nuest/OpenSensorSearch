@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -31,17 +31,11 @@ package org.n52.sir.IT;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.StringWriter;
-
-import javax.ws.rs.core.Response;
 
 import org.apache.http.HttpResponse;
-import org.n52.sir.json.MapperFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -65,14 +59,6 @@ public class Util {
         });
 
         return i.getInstance(Client.class);
-    }
-
-    public static String entityToString(Response response) throws JsonGenerationException,
-            JsonMappingException,
-            IOException {
-        StringWriter writer = new StringWriter();
-        MapperFactory.getMapper().writeValue(writer, response.getEntity());
-        return writer.toString();
     }
 
     public static String getResponsePayload(HttpResponse response) throws IOException {

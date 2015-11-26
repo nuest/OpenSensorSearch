@@ -34,32 +34,24 @@ import org.n52.oss.sir.api.SirDescriptionToBeUpdated;
 
 /**
  * @author Jan Schulte
- * 
  */
 public class SirUpdateSensorDescriptionRequest extends AbstractSirRequest {
 
     private Collection<SirDescriptionToBeUpdated> descrToBeUpdated;
 
-    /**
-     * @return the descrToBeUpdated
-     */
     public Collection<SirDescriptionToBeUpdated> getDescriptionToBeUpdated() {
         return this.descrToBeUpdated;
     }
 
-    /**
-     * @param infoToBeInserted
-     *        the infoToBeInserted to set
-     */
     public void setDescriptionToBeUpdated(Collection<SirDescriptionToBeUpdated> descrToBeUpdated) {
         this.descrToBeUpdated = descrToBeUpdated;
     }
 
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append("SirUpdateSensorDescriptionRequest: ");
-        sb.append("Update Infos: " + this.descrToBeUpdated);
+        sb.append("Update Infos: ").append(this.descrToBeUpdated);
         return sb.toString();
     }
 

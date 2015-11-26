@@ -41,12 +41,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ *
  * Class for executing the method {@link ICatalog#pushAllDataToCatalog()}. Error handling, logging and status
  * updating are included.
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class PushCatalogTask extends TimerTask {
 

@@ -35,7 +35,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * @author Jan Schulte, Daniel Nüst
- * 
+ *
  */
 public class ListenersTools {
 

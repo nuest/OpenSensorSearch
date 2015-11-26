@@ -40,9 +40,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ *
  * @author Daniel, Moh-Yakoub
- * 
+ *
  */
 public class PGSQLInsertHarvestScriptDAO implements IInsertHarvestScriptDAO {
 

@@ -39,9 +39,9 @@ import javax.inject.Scope;
 
 /**
  * Based on online tutorial at http://glauche.de/2009/08/24/logging-with-slf4j-and-guice/
- * 
+ *
  * @author Daniel
- * 
+ *
  */
 @Scope
 @Documented

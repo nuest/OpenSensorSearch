@@ -58,9 +58,9 @@ import com.google.inject.servlet.RequestScoped;
 import com.sun.jersey.api.view.Viewable;
 
 /**
- * 
+ *
  * @author Jan Schulte, Daniel Nüst
- * 
+ *
  */
 @Path("/sir")
 @RequestScoped

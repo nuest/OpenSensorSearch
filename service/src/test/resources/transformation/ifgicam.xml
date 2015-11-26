@@ -195,7 +195,7 @@
 					</outputs>
 					<parameters>
 						<ParameterList>
-							<!-- one could specify steady-state response for each channel if they 
+							<!-- one could specify steady-state response for each channel if they
 								had this info -->
 							<!-- for typical consumer video cams, this may not be available -->
 							<steadyStateResponse>
@@ -220,7 +220,7 @@
 									</function>
 								</NormalizedCurve>
 							</steadyStateResponse>
-							<!-- one could add frequency response for each channel if they had 
+							<!-- one could add frequency response for each channel if they had
 								this info -->
 							<!-- for typical video cams, this may not be available -->
 							<!-- to enable complete geolocation, one should provide look angle -->
@@ -362,7 +362,7 @@
 					</outputs>
 					<parameters>
 						<ParameterList>
-							<!-- one could specify steady-state response for each channel if they 
+							<!-- one could specify steady-state response for each channel if they
 								had this info -->
 							<!-- for typical consumer video cams, this may not be available -->
 							<steadyStateResponse>
@@ -432,7 +432,7 @@
 					</outputs>
 					<parameters>
 						<ParameterList>
-							<!-- one could specify steady-state response for each channel if they 
+							<!-- one could specify steady-state response for each channel if they
 								had this info -->
 							<!-- for typical consumer video cams, this may not be available -->
 							<steadyStateResponse>

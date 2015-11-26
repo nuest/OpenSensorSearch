@@ -39,11 +39,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ *
  * Class encapsulates a {@link TimerServlet} where tasks are forwared to.
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class CatalogConnectionSchedulerImpl implements CatalogConnectionScheduler {
 
@@ -54,7 +54,7 @@ public class CatalogConnectionSchedulerImpl implements CatalogConnectionSchedule
     private static final int SECONDS_TO_MILLISECONDS_FACTOR = 1000;
 
     /**
-     * 
+     *
      * @param timer
      */
     protected CatalogConnectionSchedulerImpl() {
@@ -83,7 +83,7 @@ public class CatalogConnectionSchedulerImpl implements CatalogConnectionSchedule
     }
 
     /**
-     * 
+     *
      * @param conn
      * @param delay
      * @throws OwsExceptionReport

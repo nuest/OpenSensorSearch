@@ -28,6 +28,7 @@
  */
 package org.n52.sir.catalog.csw;
 
+import com.google.common.collect.Maps;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -84,24 +85,24 @@ import x0.oasisNamesTcEbxmlRegrepXsdRim3.SlotDocument;
 import x0.oasisNamesTcEbxmlRegrepXsdRim3.SlotType1;
 
 /**
- * 
+ *
  * Class encapsulates the checking of a catalogue's capabilities and the presence of required elements like
  * slots, classification schemes and classification nodes. Apart from checking it can also try to update the
  * catalogue service, i.e. insert the slots and classification elements via insert transactions. The latter is
  * implemented for Buddata ebXML Registry/Repository (see http://code.google.com/p/buddata-ebxml-registry/).
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class CswCatalogChecker {
 
-    private static Collection<String> acceptedServiceParameters;
+    private static final Collection<String> acceptedServiceParameters;
 
-    private static Collection<String> acceptedServiceTypes;
+    private static final Collection<String> acceptedServiceTypes;
 
-    private static Collection<String> acceptedServiceTypeVersions;
+    private static final Collection<String> acceptedServiceTypeVersions;
 
-    private static Collection<String> acceptedVersionParameters;
+    private static final Collection<String> acceptedVersionParameters;
 
     private static List<XmlObject> classificationInitDocs;
 
@@ -119,11 +120,11 @@ public class CswCatalogChecker {
 
     private static final String POST_ENCODING_CONSTRAINT_NAME = "PostEncoding";
 
-    private static Map<String, String> requiredSlots = new HashMap<String, String>();
+    private static final Map<String, String> requiredSlots = new HashMap<String, String>();
 
     private static String requiredSlotsDocumentId;
 
-    private static boolean saveClassificationsCheckOnRuntime = true;
+    private static final boolean saveClassificationsCheckOnRuntime = true;
 
     private static final String SERVICE_PARAMETER_NAME = "service";
 
@@ -139,6 +140,7 @@ public class CswCatalogChecker {
 
     private static final String VERSION_PARAMETER_NAME = "version";
 
+    // FIXME use guava Sets class
     static {
         acceptedServiceTypes = new HashSet<String>();
         acceptedServiceTypes.add("urn:ogc:serviceType:CatalogueService:2.0.2:HTPP:ebRIM");
@@ -156,36 +158,29 @@ public class CswCatalogChecker {
 
     private SimpleSoapCswClient client;
 
-    /**
-     * 
-     * @param clientP
-     * @param classificationInitDocs
-     * @param slotInitDocP
-     */
     public CswCatalogChecker(SimpleSoapCswClient clientP,
-                             List<XmlObject> classificationInitDocsP,
-                             XmlObject slotInitDocP) {
+            List<XmlObject> classificationInitDocsP,
+            XmlObject slotInitDocP) {
         this.client = clientP;
         classificationInitDocs = classificationInitDocsP;
         slotInitDoc = slotInitDocP;
     }
 
     /**
-     * 
+     *
      * Recursive method that goes through all given {@link ClassificationNodeType}s based ONLY on the ids.
-     * 
-     * @param foundIds
-     * @param cNodes
-     * @param currentRequiredClassificationNodes
+     *
+     * @param foundIds the list to fill with the found identifiers
+     * @param cNodes nodes to extract identifiers from
+     * @param currentRequiredClassificationNodes the current classification nodes
      */
     private void addFoundNodes(Collection<String> foundIds,
-                               ClassificationNodeType[] cNodes,
-                               Map<String, Pair<String, String>> currentRequiredClassificationNodes) {
+            ClassificationNodeType[] cNodes,
+            Map<String, Pair<String, String>> currentRequiredClassificationNodes) {
         for (ClassificationNodeType cNode : cNodes) {
             foundIds.add(cNode.getId());
 
-            if (log.isDebugEnabled())
-                log.debug("Added found id: " + cNode.getId());
+            log.debug("Added found id: {}", cNode.getId());
 
             ClassificationNodeType[] ccNodes = cNode.getClassificationNodeArray();
             addFoundNodes(foundIds, ccNodes, currentRequiredClassificationNodes);
@@ -193,49 +188,13 @@ public class CswCatalogChecker {
     }
 
     /**
-     * 
-     * Recursive method that goes through all given {@link ClassificationNodeType}s also inspecting if the
-     * correct parents are set.
-     * 
-     * @param foundIds
-     * @param cNodes
-     * @param currentParent
-     * @param requiredClassificationNodes
-     */
-    @SuppressWarnings("unused")
-    private void addFoundNodes(Collection<String> foundIds,
-                               ClassificationNodeType[] cNodes,
-                               String currentParent,
-                               Map<String, Pair<String, String>> currentRequiredClassificationNodes) {
-        for (ClassificationNodeType cNode : cNodes) {
-            Pair<String, String> parentAndCode = currentRequiredClassificationNodes.get(cNode.getId());
-            if (parentAndCode != null && parentAndCode.getFirst().equals(currentParent)) {
-                if (parentAndCode.getSecond() != null && parentAndCode.getSecond().equals(cNode.getCode())) {
-                    foundIds.add(cNode.getId());
-
-                    if (log.isDebugEnabled())
-                        log.debug("Found node: " + XmlTools.inspect(cNode));
-                }
-                // check for child nodes
-                ClassificationNodeType[] ccNodes = cNode.getClassificationNodeArray();
-                addFoundNodes(foundIds, ccNodes, cNode.getId(), currentRequiredClassificationNodes);
-            }
-            else {
-                if (log.isDebugEnabled())
-                    log.debug("Found node that is NOT required (due to current scheme document!): "
-                            + XmlTools.inspect(cNode));
-            }
-        }
-    }
-
-    /**
-     * 
+     *
      * Check for all required slots, classifications etc. and inserts them if neccessary. After the insertion,
      * another check is run and the result of that check is returned. After a successful check the catalog is
      * updated so that it is not checked again during runtime.
-     * 
-     * @param c
-     * @throws OwsExceptionReport
+     *
+     * @param c the client configured for the catalog to check
+     * @throws OwsExceptionReport on any error
      */
     public boolean checkAndUpdateClient(SimpleSoapCswClient c) throws OwsExceptionReport {
         if (this.client.isDoNotCheck()) {
@@ -243,38 +202,41 @@ public class CswCatalogChecker {
             return true;
         }
 
-        log.info("Checking if capabilities are sufficient, and if classification schemes, classification nodes and needed slots are present in the catalog @ "
-                + c + " AND trying to update the catalog if neccessary.");
+        log.info("Checking if capabilities are sufficient, and if classification schemes, classification nodes and needed slots are present in the catalog @ {}"
+                + " AND trying to update the catalog if neccessary.", c);
 
         boolean hasCaps = isCapabilitiesSufficient();
         boolean hasClassification = checkForClassificationSchemes(c);
         boolean hasSlots = checkForSlots(c);
 
-        if (log.isDebugEnabled()) {
-            if ( !hasCaps)
-                log.debug("Capabilities not sufficient due to CapabilitiesDocument!");
-            if ( !hasClassification)
-                log.debug("ClassificationSchemes not sufficient!");
-            if ( !hasSlots)
-                log.debug("Slots not sufficient!");
+        if (!hasCaps) {
+            log.debug("Capabilities not sufficient due to CapabilitiesDocument!");
+        }
+        if (!hasClassification) {
+            log.debug("ClassificationSchemes not sufficient!");
+        }
+        if (!hasSlots) {
+            log.debug("Slots not sufficient!");
         }
 
-        if ( !hasSlots) {
+        if (!hasSlots) {
             sendInsertTransaction(c, slotInitDoc, requiredSlots.size());
             hasSlots = checkForSlots(c);
 
-            if ( !hasSlots)
+            if (!hasSlots) {
                 log.warn("Insterted required Slots, but still not sufficient!");
+            }
         }
-        if ( !hasClassification) {
+        if (!hasClassification) {
             for (XmlObject xmlObj : classificationInitDocs) {
                 int nClassificationSchemes = getClassificationSchemeCount(xmlObj);
                 sendInsertTransaction(c, xmlObj, nClassificationSchemes);
             }
             hasClassification = checkForClassificationSchemes(c);
 
-            if ( !hasClassification)
+            if (!hasClassification) {
                 log.warn("Insterted classification initialization docs, but still not sufficient!");
+            }
         }
 
         if (hasCaps && hasClassification && hasSlots) {
@@ -292,26 +254,25 @@ public class CswCatalogChecker {
     }
 
     /**
-     * 
+     *
      * Method loads the XML document for classification initialization and checks whether the service provides
      * all required classification schemes and nodes that are needed by default.
-     * 
+     *
      * First only the number of schemes is checked (and false returned if it is too small), then they are
      * examined in detail (checking all contained nodes etc.).
-     * 
+     *
      * As a side effect the lists {@link CswCatalogChecker#requiredClassificationNodes} and
      * {@link CswCatalogChecker#currentRequiredClassificationSchemes} are filled with values!
-     * 
-     * @param c
+     *
+     * @param c the client wrapping the catalog the check
      * @return true if the classification schemes are completely present in the given client
-     * @throws OwsExceptionReport
+     * @throws OwsExceptionReport on any error
      */
     private boolean checkClassificationScheme(SimpleSoapCswClient c, XmlObject classificationDoc) throws OwsExceptionReport {
-        if (log.isDebugEnabled())
-            log.debug("Parsing document with required classification schemes.");
+        log.debug("Parsing document with required classification schemes.");
 
-        Map<String, String> currentRequiredClassificationSchemes = new HashMap<String, String>();
-        Map<String, Pair<String, String>> currentRequiredClassificationNodes = new HashMap<String, Pair<String, String>>();
+        Map<String, String> currentRequiredClassificationSchemes = Maps.newHashMap();
+        Map<String, Pair<String, String>> currentRequiredClassificationNodes = Maps.newHashMap();
 
         GetRecordByIdDocument getRecDoc = GetRecordByIdDocument.Factory.newInstance();
         GetRecordByIdType getRec = getRecDoc.addNewGetRecordById();
@@ -323,23 +284,20 @@ public class CswCatalogChecker {
             IdentifiableType[] list = rold.getRegistryObjectList().getIdentifiableArray();
 
             parseClassificationSchemesAndNodes(list,
-                                               currentRequiredClassificationSchemes,
-                                               currentRequiredClassificationNodes);
-        }
-        // just a classification scheme
+                    currentRequiredClassificationSchemes,
+                    currentRequiredClassificationNodes);
+        } // just a classification scheme
         else if (classificationDoc instanceof ClassificationSchemeDocument) {
             ClassificationSchemeDocument csd = (ClassificationSchemeDocument) classificationDoc;
             ClassificationSchemeType cs = csd.getClassificationScheme();
 
             currentRequiredClassificationSchemes.put(cs.getId(), cs.getNodeType());
             parseClassificationNodes(cs.getClassificationNodeArray(), currentRequiredClassificationNodes);
-        }
-        else {
+        } else {
             throw new OwsExceptionReport("Could not parse alle required elements from file for client check.", null);
         }
 
-        log.info("Checking classficiation scheme(s): "
-                + Arrays.toString(currentRequiredClassificationSchemes.keySet().toArray()));
+        log.info("Checking classficiation scheme(s): {}", Arrays.toString(currentRequiredClassificationSchemes.keySet().toArray()));
 
         for (String id : currentRequiredClassificationSchemes.keySet()) {
             getRec.addId(id);
@@ -355,8 +313,7 @@ public class CswCatalogChecker {
         try {
             SOAPMessage message = this.client.send((Document) getRecDoc.getDomNode());
             response = this.client.extractContent(message);
-        }
-        catch (OwsExceptionReport e) {
+        } catch (OwsExceptionReport e) {
             log.warn("Could not send document to check for classification schemes!");
             throw e;
         }
@@ -373,22 +330,19 @@ public class CswCatalogChecker {
         }
 
         // check complete correctness of scheme(s)
-        Collection<String> testedSchemes = new ArrayList<String>();
-        Collection<String> foundIds = new ArrayList<String>();
+        Collection<String> testedSchemes = new ArrayList<>();
+        Collection<String> foundIds = new ArrayList<>();
         for (int i = 0; i < recordCount; i++) {
             ClassificationSchemeType currentCS;
             try {
                 ClassificationSchemeDocument classificationScheme = ClassificationSchemeDocument.Factory.parse(records.item(i));
                 currentCS = classificationScheme.getClassificationScheme();
-            }
-            catch (XmlException e) {
-                if (log.isDebugEnabled())
-                    log.debug("Could not parse response element to classification scheme.");
+            } catch (XmlException e) {
+                log.debug("Could not parse response element to classification scheme.");
                 continue;
             }
 
-            if (log.isDebugEnabled())
-                log.debug("Checking scheme: " + currentCS.getId());
+            log.debug("Checking scheme: {}", currentCS.getId());
 
             // check if the cs is internal and if the id and node type are as needed.
             if (currentCS.getIsInternal() && currentRequiredClassificationSchemes.containsKey(currentCS.getId())
@@ -408,19 +362,17 @@ public class CswCatalogChecker {
 
         boolean returnValue;
 
-        if ( !foundIds.containsAll(currentRequiredClassificationNodes.keySet())
+        if (!foundIds.containsAll(currentRequiredClassificationNodes.keySet())
                 || !foundIds.containsAll(currentRequiredClassificationSchemes.keySet())) {
             ArrayList<String> missing = new ArrayList<String>(currentRequiredClassificationSchemes.keySet());
             missing.addAll(currentRequiredClassificationNodes.keySet());
             missing.removeAll(foundIds);
-            log.warn("Not all required ids of classification scheme(s) found! Missing are: "
-                    + Arrays.toString(missing.toArray()));
+            log.warn("Not all required ids of classification scheme(s) found! Missing are: {}",
+                    Arrays.toString(missing.toArray()));
 
             returnValue = false;
-        }
-        else {
-            log.info("*** All required classification schemes and nodes found for scheme(s) "
-                    + Arrays.toString(testedSchemes.toArray()) + ". ***");
+        } else {
+            log.info("*** All required classification schemes and nodes found for scheme(s) {}. ***", Arrays.toString(testedSchemes.toArray()));
             returnValue = true;
         }
 
@@ -436,7 +388,7 @@ public class CswCatalogChecker {
     /**
      * Checks the given catalog for sufficient capabilities, classification schemes, classification nodes and
      * slots.
-     * 
+     *
      * @param c
      * @return
      * @throws OwsExceptionReport
@@ -454,13 +406,14 @@ public class CswCatalogChecker {
         boolean hasClassification = checkForClassificationSchemes(c);
         boolean hasSlots = checkForSlots(c);
 
-        if (log.isDebugEnabled()) {
-            if ( !hasCaps)
-                log.debug("Capabilities not sufficient due to CapabilitiesDocument!");
-            if ( !hasClassification)
-                log.debug("ClassificationSchemes not sufficient!");
-            if ( !hasSlots)
-                log.debug("Slots not sufficient!");
+        if (!hasCaps) {
+            log.debug("Capabilities not sufficient due to CapabilitiesDocument!");
+        }
+        if (!hasClassification) {
+            log.debug("ClassificationSchemes not sufficient!");
+        }
+        if (!hasSlots) {
+            log.debug("Slots not sufficient!");
         }
 
         if (hasCaps && hasClassification && hasSlots) {
@@ -472,7 +425,7 @@ public class CswCatalogChecker {
     /**
      * Method calls {@link CswCatalogChecker#checkClassificationScheme(SimpleSoapCswClient, XmlObject)} with
      * every object from the internal list and returnes the combined result.
-     * 
+     *
      * @param c
      * @return
      * @throws OwsExceptionReport
@@ -482,11 +435,10 @@ public class CswCatalogChecker {
 
         for (XmlObject xmlObj : classificationInitDocs) {
             boolean passed = checkClassificationScheme(c, xmlObj);
-            if ( !passed) {
+            if (!passed) {
                 all = false;
                 log.warn("Classification scheme did NOT pass test: " + XmlTools.inspect(xmlObj));
-            }
-            else {
+            } else {
                 log.info("Classification scheme passed test: " + XmlTools.inspect(xmlObj));
             }
         }
@@ -495,12 +447,12 @@ public class CswCatalogChecker {
     }
 
     /**
-     * 
+     *
      * Checks if the client has all required rim:Slot elements by comparing the available ones to the ones in
      * the XML Document for slot initialization (which is loaded at the beginning of the method).
-     * 
+     *
      * First only the ids of the slots are checked, afterwards the name and type is inspected as well.
-     * 
+     *
      * @param c
      * @return true if the needed slots are completely present in the given client
      * @throws OwsExceptionReport
@@ -531,8 +483,7 @@ public class CswCatalogChecker {
                         }
                     }
                 }
-            }
-            catch (XmlException xe) {
+            } catch (XmlException xe) {
                 log.error("Could not parse required slots from file for client check.", xe);
                 throw new OwsExceptionReport("Could not parse required slots from file for client check.", xe);
             }
@@ -551,8 +502,7 @@ public class CswCatalogChecker {
         try {
             SOAPMessage message = this.client.send((Document) getRecDoc.getDomNode());
             response = this.client.extractContent(message);
-        }
-        catch (OwsExceptionReport e) {
+        } catch (OwsExceptionReport e) {
             log.warn("Could not send document to check for classification schemes!");
             throw e;
         }
@@ -567,7 +517,7 @@ public class CswCatalogChecker {
             // id="urn:sir:id:SlotDefinition"
             Node oT = n.getAttributes().getNamedItem("objectType");
             Node id = n.getAttributes().getNamedItem("id");
-            if ( (oT != null && oT.getNodeValue().equals(SLOT_DESRCRIPTION_INSERTION_EO_TYPE))
+            if ((oT != null && oT.getNodeValue().equals(SLOT_DESRCRIPTION_INSERTION_EO_TYPE))
                     && (id != null && id.getNodeValue().equals(SLOT_DESCRIPTION_INSERTION_EO_ID))) {
                 try {
                     NodeList maybeSlots = n.getChildNodes();
@@ -577,13 +527,13 @@ public class CswCatalogChecker {
                         if (s.getNamespaceURI().equals(EBRIM_NAMESPACE_URI) && s.getLocalName().equals("Slot")) {
                             SlotDocument sD = SlotDocument.Factory.parse(s);
                             foundSlots.add(sD.getSlot());
-                            if (log.isDebugEnabled())
+                            if (log.isDebugEnabled()) {
                                 log.debug("Added slot from GetRecordsResponse: " + XmlTools.inspect(sD));
+                            }
                         }
                     }
                     break;
-                }
-                catch (XmlException e) {
+                } catch (XmlException e) {
                     log.error("Could not extract slots from GetRecordsResponse");
                     throw new OwsExceptionReport("Could not extract slots from GetRecordsResponse", null);
                 }
@@ -602,25 +552,24 @@ public class CswCatalogChecker {
             Collection<String> missing = new ArrayList<String>(requiredSlots.keySet());
             for (SlotType1 slot : foundSlots) {
                 String n = slot.getName();
-                if (missing.contains(n))
+                if (missing.contains(n)) {
                     missing.remove(slot.getName());
+                }
             }
 
-            if (log.isDebugEnabled())
-                log.debug("Missing slot names: " + Arrays.toString(missing.toArray()));
+            log.debug("Missing slot names: {}", Arrays.toString(missing.toArray()));
             return false;
         }
 
         // just to be safe, check if the slots have the correct name and type
         boolean allCorrect = true;
         for (SlotType1 s : foundSlots) {
-            if (log.isDebugEnabled())
-                log.debug("Checking record " + XmlTools.inspect(s));
+            log.trace("Checking record {}", XmlTools.inspect(s));
 
             String name = s.getName();
             if (requiredSlots.containsKey(name)) {
                 String type = s.getSlotType();
-                if ( !type.equals(requiredSlots.get(name))) {
+                if (!type.equals(requiredSlots.get(name))) {
                     log.error("Slot has the wrong type: " + name + " is " + type + "but is required to be "
                             + requiredSlots.get(name));
                     allCorrect = false;
@@ -628,7 +577,7 @@ public class CswCatalogChecker {
             }
         }
 
-        if ( !allCorrect) {
+        if (!allCorrect) {
             log.warn("Not all required slots with the correct type found - check the log for details.");
             return false;
         }
@@ -637,27 +586,19 @@ public class CswCatalogChecker {
         return true;
     }
 
-    /**
+    /*
      * Method checks if at least one element of the second collection is present in the first collection.
      * "true" is returned as soon as the first occurence of such an element is found.
-     * 
-     * @param first
-     * @param second
-     * @return
      */
     private boolean firstContainsAtLeastOneOfSecond(Collection<String> first, Collection<String> second) {
         for (String stringOfSecond : second) {
-            if (first.contains(stringOfSecond))
+            if (first.contains(stringOfSecond)) {
                 return true;
+            }
         }
         return false;
     }
 
-    /**
-     * 
-     * @param xmlObj
-     * @return
-     */
     private int getClassificationSchemeCount(XmlObject xmlObj) {
         int returnValue = Integer.MAX_VALUE;
 
@@ -669,8 +610,8 @@ public class CswCatalogChecker {
             Map<String, String> currentRequiredClassificationSchemes = new HashMap<String, String>();
             Map<String, Pair<String, String>> currentRequiredClassificationNodes = new HashMap<String, Pair<String, String>>();
             parseClassificationSchemesAndNodes(list,
-                                               currentRequiredClassificationSchemes,
-                                               currentRequiredClassificationNodes);
+                    currentRequiredClassificationSchemes,
+                    currentRequiredClassificationNodes);
 
             int n = Integer.valueOf(currentRequiredClassificationSchemes.size()).intValue();
             currentRequiredClassificationSchemes = null;
@@ -683,21 +624,18 @@ public class CswCatalogChecker {
             returnValue = 1;
         }
 
-        if (returnValue == Integer.MAX_VALUE)
+        if (returnValue == Integer.MAX_VALUE) {
             log.warn("Could not extract number of classification schemes from given document, returning " + returnValue
                     + ". Document is: " + XmlTools.inspect(xmlObj));
+        }
 
         return returnValue;
     }
 
-    /**
-     * 
+    /*
      * Method tries to parse given message's content to a {@link TransactionResponseDocument} and extract the
      * number of totally inserted elements. If it is smaller than the expected inserted documents an error is
      * logged. If the message is a {@link SOAPFault} an exception is thrown.
-     * 
-     * @param responseString
-     * @throws OwsExceptionReport
      */
     private void handleResponse(SOAPMessage message, int expectedInsertions) throws OwsExceptionReport {
         // try parsing content to TransactionResponseDocument
@@ -716,8 +654,7 @@ public class CswCatalogChecker {
             log.info("### RESPONSE FOR INSERT TRANSACTION ###\n" + XmlTools.inspect(transactionResp));
 
             return;
-        }
-        catch (XmlException e) {
+        } catch (XmlException e) {
             log.warn("Could not parse response to TransactionResponseDocument. Maybe it's a Fault?", e);
         }
 
@@ -727,21 +664,21 @@ public class CswCatalogChecker {
     }
 
     /**
-     * 
+     *
      * Method requests the {@link CapabilitiesDocument} from the service and checks if
-     * 
+     *
      * - at least one of the accepted service types coincide
-     * 
+     *
      * - at least one of the accepted version parameters coincide
-     * 
+     *
      * - at least one of the accepted service parameter names coincide
-     * 
+     *
      * - at least one of the accepted service type versions coincide.
-     * 
+     *
      * - an transaction service operation that supports SOAP is given.
-     * 
-     * @param capabilitiesDoc
-     * @throws OwsExceptionReport
+     *
+     * @return true if the described checks complete
+     * @throws OwsExceptionReport on any error
      */
     public boolean isCapabilitiesSufficient() throws OwsExceptionReport {
         // request the document:
@@ -751,7 +688,7 @@ public class CswCatalogChecker {
         ServiceIdentification serviceIdent = caps.getServiceIdentification();
 
         // check if service type is acceptable
-        if ( !acceptedServiceTypes.contains(serviceIdent.getServiceType().getStringValue())) {
+        if (!acceptedServiceTypes.contains(serviceIdent.getServiceType().getStringValue())) {
             log.warn("Error checking sufficiency of capabilities: No accepted service type ("
                     + Arrays.toString(acceptedServiceTypes.toArray()) + ") found!");
             return false;
@@ -761,8 +698,8 @@ public class CswCatalogChecker {
         DomainType[] parameters = caps.getOperationsMetadata().getParameterArray();
         for (DomainType domainType : parameters) {
             if (domainType.getName().equalsIgnoreCase(VERSION_PARAMETER_NAME)) {
-                if ( !firstContainsAtLeastOneOfSecond(acceptedVersionParameters,
-                                                      Arrays.asList(domainType.getValueArray()))) {
+                if (!firstContainsAtLeastOneOfSecond(acceptedVersionParameters,
+                        Arrays.asList(domainType.getValueArray()))) {
                     log.warn("Error checking sufficiency of capabilities: No accepted version parameter ("
                             + Arrays.toString(acceptedVersionParameters.toArray()) + ") found!");
                     return false;
@@ -774,8 +711,8 @@ public class CswCatalogChecker {
         // check if service parameter is acceptable
         for (DomainType domainType : parameters) {
             if (domainType.getName().equalsIgnoreCase(SERVICE_PARAMETER_NAME)) {
-                if ( !firstContainsAtLeastOneOfSecond(acceptedServiceParameters,
-                                                      Arrays.asList(domainType.getValueArray()))) {
+                if (!firstContainsAtLeastOneOfSecond(acceptedServiceParameters,
+                        Arrays.asList(domainType.getValueArray()))) {
                     log.warn("Error checking sufficiency of capabilities: No accepted service parameter ("
                             + Arrays.toString(acceptedServiceParameters.toArray()) + ") found!");
                     return false;
@@ -785,8 +722,8 @@ public class CswCatalogChecker {
         }
 
         // check if service type version is acceptable
-        if ( !firstContainsAtLeastOneOfSecond(acceptedServiceTypeVersions,
-                                              Arrays.asList(serviceIdent.getServiceTypeVersionArray()))) {
+        if (!firstContainsAtLeastOneOfSecond(acceptedServiceTypeVersions,
+                Arrays.asList(serviceIdent.getServiceTypeVersionArray()))) {
             log.warn("Error checking sufficiency of capabilities: No accepted service type version ("
                     + Arrays.toString(acceptedServiceTypeVersions.toArray()) + ") found!");
             return false;
@@ -815,7 +752,7 @@ public class CswCatalogChecker {
                 }
             }
         }
-        if ( !foundIt) {
+        if (!foundIt) {
             log.warn("Error checking sufficiency of capabilities: Did not find the needed value "
                     + SOAP_POST_ENCODING_VALUE + " of a constraint " + POST_ENCODING_CONSTRAINT_NAME
                     + " for an HTTP DCP of an operation named " + TRANSACTION_OPERATION_NAME);
@@ -825,32 +762,22 @@ public class CswCatalogChecker {
         return true;
     }
 
-    /**
-     * 
-     * @param classificationNodeArray
-     * @param requiredClassificationNodes
-     */
     private void parseClassificationNodes(ClassificationNodeType[] classificationNodeArray,
-                                          Map<String, Pair<String, String>> currentRequiredClassificationNodes) {
+            Map<String, Pair<String, String>> currentRequiredClassificationNodes) {
         for (ClassificationNodeType cNode : classificationNodeArray) {
             currentRequiredClassificationNodes.put(cNode.getId(),
-                                                   new Pair<String, String>(cNode.getParent(), cNode.getCode()));
+                    new Pair<>(cNode.getParent(), cNode.getCode()));
 
-            if (log.isDebugEnabled())
-                log.debug("Added Node to required list: " + XmlTools.inspect(cNode));
+            log.debug("Added Node to required list: {}", XmlTools.inspect(cNode));
 
             // process child nodes
             parseClassificationNodes(cNode.getClassificationNodeArray(), currentRequiredClassificationNodes);
         }
     }
 
-    /**
-     * @param list
-     * @param requiredClassificationNodes
-     */
     private void parseClassificationSchemesAndNodes(IdentifiableType[] list,
-                                                    Map<String, String> currentRequiredClassificationSchemes,
-                                                    Map<String, Pair<String, String>> currentRequiredClassificationNodes) {
+            Map<String, String> currentRequiredClassificationSchemes,
+            Map<String, Pair<String, String>> currentRequiredClassificationNodes) {
         for (IdentifiableType identifiableType : list) {
             if (identifiableType instanceof ClassificationSchemeType) {
                 ClassificationSchemeType cs = (ClassificationSchemeType) identifiableType;
@@ -858,20 +785,18 @@ public class CswCatalogChecker {
                 currentRequiredClassificationSchemes.put(cs.getId(), cs.getNodeType());
                 parseClassificationNodes(cs.getClassificationNodeArray(), currentRequiredClassificationNodes);
 
-                if (log.isDebugEnabled())
-                    log.debug("Added Scheme to required list: " + XmlTools.inspect(cs));
+                log.debug("Added Scheme to required list: {}", XmlTools.inspect(cs));
 
                 // process internal ClassificationNodes happens below, do not need to get deeper in hierarchy
                 // as list contains all elements...
                 // parseClassificationNodes(cs.getClassificationNodeArray(),
                 // currentRequiredClassificationNodes);
-
                 continue;
             }
             if (identifiableType instanceof ClassificationNodeType) {
                 ClassificationNodeType cn = (ClassificationNodeType) identifiableType;
                 currentRequiredClassificationNodes.put(cn.getId(),
-                                                       new Pair<String, String>(cn.getParent(), cn.getCode()));
+                        new Pair<>(cn.getParent(), cn.getCode()));
                 if (log.isDebugEnabled()) {
                     log.debug("Added Node to required list: " + XmlTools.inspect(cn));
                 }
@@ -879,14 +804,8 @@ public class CswCatalogChecker {
         }
     }
 
-    /**
-     * 
-     * @return
-     * @throws OwsExceptionReport
-     */
     private CapabilitiesDocument requestCapabilities() throws OwsExceptionReport {
-        if (log.isDebugEnabled())
-            log.debug("Requesting Capabilities...");
+        log.debug("Requesting Capabilities...");
 
         // build request
         GetCapabilitiesDocument getCapDoc = GetCapabilitiesDocument.Factory.newInstance();
@@ -900,33 +819,26 @@ public class CswCatalogChecker {
         SOAPMessage message = this.client.send(doc);
         XmlObject response = this.client.extractContent(message);
 
-        if (log.isDebugEnabled()) {
-            log.debug("Response from catalogue:\n" + response.xmlText(XmlTools.PRETTY_PRINT_OPTIONS));
-        }
+        log.trace("Response from catalogue:\n{}", response.xmlText(XmlTools.PRETTY_PRINT_OPTIONS));
 
         // parse and return response document
         try {
             CapabilitiesDocument capResponse = CapabilitiesDocument.Factory.parse(response.getDomNode());
             return capResponse;
-        }
-        catch (XmlException e) {
+        } catch (XmlException e) {
             log.error("Error parsing CapabilitiesDocument!", e);
             OwsExceptionReport er = new OwsExceptionReport("Error parsing CapabilitiesDocument.", e);
             er.addCodedException(ExceptionCode.NoApplicableCode,
-                                 "CswCatalogChecker.requestCapabilities()",
-                                 "\nRECEIVED MESSAGE:\n" + response.xmlText(XmlTools.PRETTY_PRINT_OPTIONS));
+                    "CswCatalogChecker.requestCapabilities()",
+                    "\nRECEIVED MESSAGE:\n" + response.xmlText(XmlTools.PRETTY_PRINT_OPTIONS));
             throw er;
         }
     }
 
-    /**
-     * 
+    /*
      * Send the given content wrapped in a {@link TransactionDocument} to the given client. The number of
      * features that are expected to be inserted is given as well. The response handling is passed on to the
      * method {@link CswCatalogChecker#handleResponse(SOAPMessage, int)}.
-     * 
-     * @param c
-     * @throws OwsExceptionReport
      */
     private void sendInsertTransaction(SimpleSoapCswClient c, XmlObject content, int inserted) throws OwsExceptionReport {
         log.info("Sending InsertTransaction to " + c);
@@ -947,30 +859,9 @@ public class CswCatalogChecker {
         try {
             SOAPMessage message = c.send((Document) transactionDoc.getDomNode());
             handleResponse(message, inserted);
-        }
-        catch (OwsExceptionReport e) {
+        } catch (OwsExceptionReport e) {
             log.error("Could not send transaction document!", e);
             throw e;
-        }
-    }
-
-    /**
-     * 
-     * Use of this method is discouraged. Please use
-     * {@link CswCatalogChecker#checkAndUpdateClient(SimpleSoapCswClient)}. This method simply tries to send
-     * the classification schemes and required slots.
-     * 
-     * @param c
-     * @throws OwsExceptionReport
-     */
-    public void sendRequiredElements(SimpleSoapCswClient c) throws OwsExceptionReport {
-        log.info("Sending required classification schemes, classification nodes and needed slots to the catalog @ " + c);
-
-        sendInsertTransaction(c, slotInitDoc, requiredSlots.size());
-
-        for (XmlObject xmlObj : classificationInitDocs) {
-            int nClassificationSchemes = getClassificationSchemeCount(xmlObj);
-            sendInsertTransaction(c, xmlObj, nClassificationSchemes);
         }
     }
 

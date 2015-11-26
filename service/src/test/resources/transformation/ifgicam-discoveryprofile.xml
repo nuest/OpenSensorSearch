@@ -390,7 +390,7 @@
 							<parameters>
 								<ParameterList>
 									<parameter name="radianceCurve">
-										<!-- one could specify steady-state response for each channel if 
+										<!-- one could specify steady-state response for each channel if
 										they had this info -->
 										<!-- for typical consumer video cams, this may not be available -->
 										<swe:NormalizedCurve>
@@ -512,7 +512,7 @@
 							<parameters>
 								<ParameterList>
 									<parameter name="radianceCurve">
-										<!-- one could specify steady-state response for each channel if 
+										<!-- one could specify steady-state response for each channel if
 										they had this info -->
 										<!-- for typical consumer video cams, this may not be available -->
 										<swe:NormalizedCurve>
@@ -534,14 +534,14 @@
 															<swe:field name="digitalNumber">
 																<swe:Quantity axisID="y" definition="urn:ogc:data:DN"/>
 															</swe:field>
-															<!-- NOTE:would put calibration values here 
+															<!-- NOTE:would put calibration values here
 													<swe:tupleValues/>-->
 														</swe:SimpleDataRecord>
 													</swe:elementType>
 												</swe:Curve>
 											</swe:function>
 										</swe:NormalizedCurve>
-										<!-- look angles are the same as red channel, so simply point to 
+										<!-- look angles are the same as red channel, so simply point to
 										it <samplePosition xlink:href="#SAMPLE_POSITION"/> -->
 									</parameter>
 								</ParameterList>
@@ -635,7 +635,7 @@
 							<parameters>
 								<ParameterList>
 									<parameter name="radianceCurve">
-										<!-- one could specify steady-state response for each channel if 
+										<!-- one could specify steady-state response for each channel if
 										they had this info -->
 										<!-- for typical consumer video cams, this may not be available -->
 										<swe:NormalizedCurve>
@@ -657,14 +657,14 @@
 															<swe:field name="digitalNumber">
 																<swe:Quantity axisID="y" definition="urn:ogc:data:DN"/>
 															</swe:field>
-															<!-- NOTE:would put calibration values here 
+															<!-- NOTE:would put calibration values here
 													<swe:tupleValues/>-->
 														</swe:SimpleDataRecord>
 													</swe:elementType>
 												</swe:Curve>
 											</swe:function>
 										</swe:NormalizedCurve>
-										<!-- look angles are the same as red channel, so simply point to 
+										<!-- look angles are the same as red channel, so simply point to
 										it <samplePosition xlink:href="#SAMPLE_POSITION"/> -->
 									</parameter>
 								</ParameterList>

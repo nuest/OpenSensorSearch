@@ -39,13 +39,13 @@ import org.n52.oss.sir.ows.OwsExceptionReport;
 
 /**
  * @author Jan Schulte
- * 
+ *
  */
 public interface IGetSensorStatusDAO {
 
     /**
      * Search the status of sensors by a given search criteria and a filter, than returns status information
-     * 
+     *
      * @param searchCriteria
      *        the search criteria
      * @param propertyFilter
@@ -58,7 +58,7 @@ public interface IGetSensorStatusDAO {
 
     /**
      * Search the status of a sensor by a given sensorID and a filter, than returns a status information
-     * 
+     *
      * @param sensorId
      *        the sensorId of the given sensor
      * @param propertyFilter
@@ -72,7 +72,7 @@ public interface IGetSensorStatusDAO {
     /**
      * Search the status of a sensor by a given service description and a filter, than returns a status
      * information
-     * 
+     *
      * @param servDesc
      *        the service description of the given sensor
      * @param propertyFilter

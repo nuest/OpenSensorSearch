@@ -35,9 +35,9 @@ import org.n52.oss.sir.api.SirSensorIdentification;
 
 /**
  * Internal request to search sensors
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public class SirSearchSensorRequest extends AbstractSirRequest {
 

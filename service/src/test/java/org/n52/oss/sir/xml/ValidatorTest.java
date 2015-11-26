@@ -40,7 +40,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 @SuppressWarnings("unused")
 public class ValidatorTest {
@@ -101,7 +101,7 @@ public class ValidatorTest {
          * System.out.println("Patterns:"); for (String string : validator.getActivatedPatterns()) {
          * System.out.println(string); } System.out.println("Rules:"); for (String string :
          * validator.getFiredRules()) { System.out.println(string); }
-         * 
+         *
          * if ( !v) { System.out.println("Failures:"); for (String string : validator.getValidationFailures())
          * { System.out.println(string); } } else { System.out.println("VALID!!!11"); }
          */
@@ -115,25 +115,25 @@ public class ValidatorTest {
          * File schematronFile = new
          * File("/home/daniel/workspace/SIR/WebContent/WEB-INF/conf/SensorML_Profile_for_Discovery.sch"); File
          * svrlFile = new File("/home/daniel/workspace/SIR/WebContent/WEB-INF/conf/iso_svrl_for_xslt2.xsl");
-         * 
+         *
          * SensorML4DiscoveryValidatorImpl validator = new SensorML4DiscoveryValidatorImpl(schematronFile,
          * svrlFile);
-         * 
+         *
          * boolean v = validator.validate(new
          * File("/home/daniel/workspace/SIR/data/transformation/SensorML_Profile_for_Discovery_Example.xml"));
          * if ( !v) { for (String string : validator.getValidationFailures()) { System.out.println(string); }
          * } else { System.out.println("VALID!!!11"); }
-         * 
+         *
          * v = validator.validate(new
          * File("/home/daniel/workspace/SIR/data/transformation/IFGI_HWS1-discoveryprofile.xml"));
-         * 
+         *
          * if ( !v) { for (String string : validator.getValidationFailures()) { System.out.println(string); }
          * } else { System.out.println("VALID!!!11"); }
          */
     }
 
     /**
-     * 
+     *
      * @param inputFile
      * @param transformationDir
      * @param dataDir
@@ -144,25 +144,25 @@ public class ValidatorTest {
          * String inputFile =
          * "D:/52n/OpenSensorSearch/52n-sir/target/test-classes/transformation/IFGI_HWS1-discoveryprofile.xml"
          * ; log.info("Transforming " + inputFile);
-         * 
+         *
          * try { Transformer transformer = TransformerFactory.newInstance().newTransformer(new
          * StreamSource("/home/daniel/workspace/SIR/data/discovery.xsl"));
-         * 
+         *
          * // test the input document FileReader inputReader = new FileReader(inputFile); SensorMLDocument
          * smlDoc = SensorMLDocument.Factory.parse(inputReader);
          * log.info(XmlTools.validateAndIterateErrors(smlDoc));
-         * 
+         *
          * // encapsulate input document in a Source Source input = new DOMSource(smlDoc.getDomNode());
-         * 
+         *
          * // create output string StringWriter sw = new StringWriter(); StreamResult output = new
          * StreamResult(sw);
-         * 
+         *
          * // do the transformation transformer.transform(input, output);
-         * 
+         *
          * // create output document String outputString = output.getWriter().toString();
-         * 
+         *
          * System.out.println(outputString);
-         * 
+         *
          * // clean up input = null; sw = null; output = null; outputString = null; } catch
          * (FileNotFoundException e) { log.error("", e); } catch (TransformerException e) { log.error("", e);
          * } catch (IOException e) { log.error("", e); } catch (XmlException e) { log.error("", e); }

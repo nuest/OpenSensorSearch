@@ -46,7 +46,7 @@ import com.google.inject.name.Named;
 
 /**
  * @author Jan Schulte
- * 
+ *
  */
 public class DescribeSensorListener implements ISirRequestListener {
 

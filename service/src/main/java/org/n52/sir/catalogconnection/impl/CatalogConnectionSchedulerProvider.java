@@ -35,9 +35,9 @@ import org.slf4j.LoggerFactory;
 import com.google.inject.Provider;
 
 /**
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class CatalogConnectionSchedulerProvider implements Provider<CatalogConnectionScheduler> {
 

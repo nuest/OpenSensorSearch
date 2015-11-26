@@ -34,7 +34,7 @@ import org.n52.oss.sir.api.SirInfoToBeInserted;
 
 /**
  * @author Jan Schulte
- * 
+ *
  */
 public class SirInsertSensorInfoRequest extends AbstractSirRequest {
 

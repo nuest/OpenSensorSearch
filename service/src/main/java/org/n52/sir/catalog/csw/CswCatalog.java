@@ -96,22 +96,22 @@ import x0.oasisNamesTcEbxmlRegrepXsdRim3.RegistryPackageDocument;
 import x0.oasisNamesTcEbxmlRegrepXsdRim3.ServiceType;
 
 /**
- * 
+ *
  * {@link ICatalog}-implementation based on OGCs Web Catalog Service (CSW - Catalgue Service for the Web,
  * sometimes CAT) - see http://www.opengeospatial.org/standards/cat. More specifically it requires the ebRIM
  * Application Profile of CAT - see http://www.opengeospatial.org/standards/cat2eoext4ebrim - that is accessed
  * via SOAP (using {@link SimpleSoapCswClient}).
- * 
+ *
  * It implements functionalities to:
- * 
+ *
  * - push all data from the SIR to the catalogue. - check the capabilities of a catalogue and if necessary to
  * insert required elements to the catalogue. - check if a document would be accepted by the catalog.
- * 
+ *
  * A push consists of the following steps: creating insert transactions for all existing SensorML descriptions
  * in the SIR, transmitting the inserts to the client, returning possible error reports of all transactions.
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class CswCatalog implements ICatalog {
 
@@ -167,9 +167,9 @@ public class CswCatalog implements ICatalog {
     }
 
     /**
-     * 
+     *
      * generate random integer between 10000 and 100000
-     * 
+     *
      * @param oldId
      * @return
      */
@@ -180,7 +180,7 @@ public class CswCatalog implements ICatalog {
     }
 
     /**
-     * 
+     *
      * @param ids
      * @return
      */
@@ -200,7 +200,7 @@ public class CswCatalog implements ICatalog {
     }
 
     /**
-     * 
+     *
      * @param lastPushToCatalog
      *        only insert transactions for sensors updated after the given date are created.
      * @return
@@ -385,9 +385,9 @@ public class CswCatalog implements ICatalog {
     }
 
     /**
-     * 
+     *
      * equality means "the same id"
-     * 
+     *
      * @param identifableArray
      * @return
      * @throws OwsExceptionReport
@@ -482,7 +482,7 @@ public class CswCatalog implements ICatalog {
     }
 
     /**
-     * 
+     *
      * @param responseString
      * @return
      * @throws OwsExceptionReport
@@ -530,9 +530,9 @@ public class CswCatalog implements ICatalog {
     }
 
     /**
-     * 
+     *
      * works directly on the given table
-     * 
+     *
      * @param transformedDocs
      * @return
      * @throws OwsExceptionReport
@@ -651,7 +651,7 @@ public class CswCatalog implements ICatalog {
 
     /**
      * Removes all id listed in the second parameter from the first list.
-     * 
+     *
      * @param registryObjectList
      *        the registry object list
      * @param idsToRemove
@@ -684,11 +684,11 @@ public class CswCatalog implements ICatalog {
     }
 
     /**
-     * 
+     *
      * Method tries to transform the given collection of sensor description documents. if there is a problem
      * with one of the documents the returned list will contain the kvp <"sensorID", NULL>. This allows
      * alerting the user to check the log for details.
-     * 
+     *
      * @param sensors
      * @return
      */

@@ -34,15 +34,15 @@ import org.n52.oss.sir.ows.OwsExceptionReport;
 /**
  * interface for the specific DAOFactories, offers methods to create the matching DAOs to the describeSensor
  * operation
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public interface IDescribeSensorDAO {
 
     /**
      * Returns a sensor description by a given sensorID in SIR
-     * 
+     *
      * @param sensorId
      *        the given sensor identification
      * @return Returns the requested sensorMLDocument

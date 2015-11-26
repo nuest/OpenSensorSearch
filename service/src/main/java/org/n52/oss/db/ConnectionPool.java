@@ -36,8 +36,9 @@ public interface ConnectionPool {
     /**
      * Abstract method returns an available connection from the pool. After the query operation, you have to
      * the user must "give back" the connection to the pool with the returnConnection method!
-     * 
+     *
      * @return DB Connection to execute the query
+     * @throws SQLException on connetion problems
      */
     public Connection getConnection() throws SQLException;
 

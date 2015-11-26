@@ -37,14 +37,14 @@ import org.n52.sir.SirConfigurator;
 
 /**
  * @author Jan Schulte
- * 
+ *
  */
 public class GMLDateParser {
 
     private static final GMLDateParser instance = new GMLDateParser();
 
     /**
-     * 
+     *
      * @return
      */
     public static GMLDateParser getInstance() {
@@ -62,7 +62,7 @@ public class GMLDateParser {
 
     /**
      * Parses a Calendar object to a string.
-     * 
+     *
      * @param timestamp
      * @return
      */
@@ -72,7 +72,7 @@ public class GMLDateParser {
 
     /**
      * Parses a string into a Calendar object.
-     * 
+     *
      * @param time
      *        String to be parsed
      * @return the Calendar Object

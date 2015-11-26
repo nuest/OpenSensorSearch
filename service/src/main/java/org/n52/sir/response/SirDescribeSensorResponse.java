@@ -42,7 +42,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * @author Jan Schulte
- * 
+ *
  */
 public class SirDescribeSensorResponse extends AbstractXmlResponse {
 

@@ -39,12 +39,12 @@ import org.slf4j.LoggerFactory;
 import com.google.inject.Inject;
 
 /**
- * 
+ *
  * Implementation of {@link ICatalogStatusHandler} that utilizes a database (via an instance of
  * {@link ICatalogStatusHandlerDAO}) to save the status description as a simple string.
- * 
+ *
  * @author Jan Schulte, Daniel Nüst
- * 
+ *
  */
 public class CatalogStatusHandlerImpl implements ICatalogStatusHandler {
 

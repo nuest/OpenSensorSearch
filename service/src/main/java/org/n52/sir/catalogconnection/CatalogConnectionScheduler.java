@@ -32,32 +32,32 @@ import org.n52.oss.sir.ows.OwsExceptionReport;
 import org.n52.sir.catalog.ICatalogConnection;
 
 /**
- * 
+ *
  * This interface encapsulates the submission of catalog connections using
  * {@link CatalogConnectionScheduler#submit(ICatalogConnection)}.
- * 
+ *
  * An {@link ICatalogConnection} can be submitted for (repeated) execution. It contains an identifier that can
  * be used to abort a (persistently saved) task using {@link CatalogConnectionScheduler#cancel(String)}.
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public interface CatalogConnectionScheduler {
 
     /**
      * Cancels the task with the given identifier.
-     * 
-     * @param identifier
+     *
+     * @param identifier the task to cancel
      */
     public abstract void cancel(String identifier);
 
     /**
      * Submits the given catalog connection for (repeated) execution. There is no guarantee for a specific
      * execution time or maximum delay of the operations that are scheduled.
-     * 
-     * @param iCatalogConnection
+     *
+     * @param iCatalogConnection a new catalog connection
      * @return true if submission was successful
-     * @throws OwsExceptionReport
+     * @throws OwsExceptionReport on any error
      */
     public abstract boolean submit(ICatalogConnection iCatalogConnection);
 

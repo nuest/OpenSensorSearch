@@ -74,7 +74,7 @@ import com.google.inject.Inject;
 
 /**
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class SensorML4DiscoveryValidatorImpl implements IProfileValidator {
 

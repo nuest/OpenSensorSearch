@@ -34,9 +34,9 @@ import java.util.Collection;
 
 /**
  * TODO see what is constant, and what should be in {@link OpenSearchConfigurator}.
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class OpenSearchConstants {
 

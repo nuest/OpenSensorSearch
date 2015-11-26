@@ -34,11 +34,11 @@ import org.n52.oss.opensearch.OpenSearchConstants;
 import com.google.inject.Inject;
 
 /**
- * 
+ *
  * TODO make GeoRSS!!!
- * 
+ *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- * 
+ *
  */
 public class RssListener extends AbstractFeedListener {
 
