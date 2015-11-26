@@ -36,6 +36,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -54,8 +55,6 @@ import org.n52.sir.ds.solr.SOLRInsertSensorInfoDAO;
 import org.n52.sir.ds.solr.SOLRSearchSensorDAO;
 import org.n52.sir.ds.solr.SolrConnection;
 import org.n52.sir.sml.SensorMLDecoder;
-
-import scala.actors.threadpool.Arrays;
 
 public class SearchByAllFieldsTest {
 

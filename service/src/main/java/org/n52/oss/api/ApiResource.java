@@ -44,15 +44,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.inject.Inject;
-import com.wordnik.swagger.annotations.Api;
-import com.wordnik.swagger.annotations.ApiOperation;
 
 @Path(ApiPaths.API)
-@Api(value = ApiPaths.API, description = "Base resource of the API linking the different versions and endpoints.")
 @Singleton
 public class ApiResource {
 
-    private static Logger log = LoggerFactory.getLogger(ApiResource.class);
+    private static final Logger log = LoggerFactory.getLogger(ApiResource.class);
 
     private URI baseUri;
 
@@ -68,7 +65,7 @@ public class ApiResource {
     }
 
     @GET
-    @ApiOperation(value = "List of available API versions")
+//    @ApiOperation(value = "List of available API versions")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getApiRoot() {
         StringBuilder sb = new StringBuilder();
@@ -105,7 +102,7 @@ public class ApiResource {
 
     @GET
     @Path(ApiPaths.API_VERSION)
-    @ApiOperation(value = "List of available endpoints of this version")
+//    @ApiOperation(value = "List of available endpoints of this version")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getVersionRoot() {
         StringBuilder sb = new StringBuilder();

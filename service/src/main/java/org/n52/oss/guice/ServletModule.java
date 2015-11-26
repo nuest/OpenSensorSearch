@@ -37,8 +37,6 @@ import org.n52.oss.api.UserAccessResource;
 import org.n52.oss.api.ValidatorResource;
 import org.n52.oss.opensearch.OpenSearch;
 import org.n52.sir.SIR;
-import org.n52.sir.harvest.exec.IJSExecute;
-import org.n52.sir.harvest.exec.impl.RhinoJSExecute;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -58,7 +56,6 @@ public class ServletModule extends JerseyServletModule {
         // String basepath = getServletContext().getRealPath("/");
         // bindConstant().annotatedWith(Names.named("context.basepath")).to(basepath);
 
-        bind(IJSExecute.class).to(RhinoJSExecute.class);
         // bind(IValidatorFactory.class).to(ValidatorFactoryImpl.class);
         // bind(SchedulerFactory.class).to(StdSchedulerFactory.class).in(Singleton.class);
 

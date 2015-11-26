@@ -45,13 +45,33 @@
                     </execution>
                 </executions>
 
-                <!-- <dependencies> -->
-                <!-- <dependency> -->
-                <!-- <groupId>org.apache.maven.surefire</groupId> -->
-                <!-- <artifactId>surefire-junit47</artifactId> -->
-                <!-- <version>2.15</version> -->
-                <!-- </dependency> -->
-                <!-- </dependencies> -->
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.18.1</version>
+                <executions>
+                    <execution>
+                        <id>integration-test</id>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                        <configuration>
+                            <excludes>
+                                <exclude>**solr/*.java</exclude>
+                            </excludes>
+                            <argLine>-Xmx2048m</argLine>
+                            <summaryFile>target/failsafe-reports/failsafe-summary.xml</summaryFile>
+                            <systemPropertyVariables>
+                                <test.host>127.0.0.1</test.host>
+                                <!--<test.port>${jetty.http.port}</test.port>-->
+                                <!--<test.context>${it.contextpath}</test.context>-->
+                            </systemPropertyVariables>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

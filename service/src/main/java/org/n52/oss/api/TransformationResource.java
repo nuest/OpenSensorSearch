@@ -59,15 +59,13 @@ import org.w3c.dom.Document;
 
 import com.google.inject.Inject;
 import com.google.inject.servlet.RequestScoped;
-import com.wordnik.swagger.annotations.Api;
-import com.wordnik.swagger.annotations.ApiOperation;
 
 /**
  * @author Yakoub, Daniel
  * 
  */
 @Path(ApiPaths.TRANSFORMATION_PATH)
-@Api(value = "/" + ApiPaths.TRANSFORMATION_PATH, description = "Conversion of SensorML document to different formats")
+//@Api(value = "/" + ApiPaths.TRANSFORMATION_PATH, description = "Conversion of SensorML document to different formats")
 @RequestScoped
 public class TransformationResource {
 
@@ -103,7 +101,7 @@ public class TransformationResource {
     // }
 
     @GET
-    @ApiOperation(value = "index of the available transformations")
+//    @ApiOperation(value = "index of the available transformations")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getIndex() {
         StringBuilder sb = new StringBuilder();
@@ -122,7 +120,7 @@ public class TransformationResource {
     }
 
     @POST
-    @ApiOperation(value = "Convert sensor description to a specific form", notes = "The output can be json or ebrim.")
+//    @ApiOperation(value = "Convert sensor description to a specific form", notes = "The output can be json or ebrim.")
     @Produces(MediaType.APPLICATION_JSON)
     public Response convertSmlToJson(String data) {
         log.debug("Transforming to json: {}", data);
@@ -143,7 +141,7 @@ public class TransformationResource {
     }
 
     @POST
-    @ApiOperation(value = "Convert sensor description to a specific form", notes = "The output can be json or ebrim.")
+//    @ApiOperation(value = "Convert sensor description to a specific form", notes = "The output can be json or ebrim.")
     @Produces(MediaType.APPLICATION_XML)
     public Response convertSmlToEbrim(String data) {
         log.debug("Transforming to EbRIM: {}", data.substring(0, Math.min(data.length(), 1000)));

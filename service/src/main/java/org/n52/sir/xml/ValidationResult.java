@@ -29,9 +29,8 @@
 package org.n52.sir.xml;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
-
-import scala.actors.threadpool.Arrays;
 
 public class ValidationResult {
 

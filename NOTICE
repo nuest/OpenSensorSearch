@@ -34,13 +34,11 @@ This project includes:
   Google Guice - Extensions - MultiBindings under The Apache Software License, Version 2.0
   Google Guice - Extensions - Servlet under The Apache Software License, Version 2.0
   Gson under The Apache Software License, Version 2.0
-  Guava (Google Common Libraries) under The Apache Software License, Version 2.0
   Guava: Google Core Libraries for Java under The Apache Software License, Version 2.0
   Hamcrest All under New BSD License
   Hamcrest Core under New BSD License
   Hamcrest JSON under MIT License
   HttpClient under Apache License
-  ICU4J under ICU License
   Jackson under The Apache Software License, Version 2.0
   Jackson-annotations under The Apache Software License, Version 2.0 or GNU Lesser General Public License, Version 2.1
   Jackson-core under The Apache Software License, Version 2.0 or GNU Lesser General Public License, Version 2.1
@@ -56,8 +54,6 @@ This project includes:
   JAXB API bundle for GlassFish V3 under CDDL 1.1 or GPL2 w/ CPE
   JAXB RI under CDDL 1.1 or GPL2 w/ CPE
   jdom under JDOM license (Apache style), https://github.com/hunterhacker/jdom/blob/master/LICENSE.txt
-  Jena under BSD
-  Jena IRI under BSD-style license
   jersey-bundle under CDDL 1.1 or GPL2 w/ CPE
   jersey-client under CDDL 1.1 or GPL2 w/ CPE
   jersey-core under CDDL 1.1 or GPL2 w/ CPE
@@ -78,7 +74,6 @@ This project includes:
   jsr311-api under CDDL License
   jstl under CDDL 1.1 or GPL2 w/ CPE
   JUnit under Common Public License Version 1.0
-  Log4j Implemented Over SLF4J under Apache Software Licenses
   Logback Classic Module under Eclipse Public License - v 1.0 or GNU Lesser General Public License
   Logback Core Module under Eclipse Public License - v 1.0 or GNU Lesser General Public License
   Lucene Analyzers under Apache 2
@@ -110,11 +105,10 @@ This project includes:
   OGC SWECommon schema (spec. v1.0.0) under The Apache Software License, Version 2.0
   OGC SWECommon schema (spec. v1.0.1) under The Apache Software License, Version 2.0
   Open Sensor Search common classes under The Apache Software License, Version 2.0
-  Open Sensor Search integration tests under GNU General Public License (GPL), Version 2.0
-  Open Sensor Search integration tests for SIR under GNU General Public License (GPL), Version 2.0
   Open Sensor Search Parent under GNU General Public License (GPL), Version 2.0
-  Open Sensor Search Service under The Apache Software License, Version 2.0
-  Open Sensor Search Website under The Apache Software License, Version 2.0
+  Open Sensor Search Service under GNU General Public License (GPL), Version 2.0
+  Open Sensor Search webapp under GNU General Public License (GPL), Version 2.0
+  Open Sensor Search Website under GNU General Public License (GPL), Version 2.0
   ParaNamer Core under BSD
   Postgis JDBC Driver under GNU Lesser General Public License
   Postgis JDBC Driver Stubs under GNU Lesser General Public License
@@ -127,8 +121,6 @@ This project includes:
   Saxon-HE under Mozilla Public License Version 2.0
   Scala Library under BSD-like
   ScalaBeans under The Apache Software License, Version 2.0
-  Sensor Observable Registry under The Apache Software License, Version 2.0
-  Sensor Web Client External Tools under GNU GENERAL PUBLIC LICENSE Version 2, June 1991
   Servlet Specification API under Apache License Version 2.0
   SIR common classes under The Apache Software License, Version 2.0
   SIR JSON Bindings under The Apache Software License, Version 2.0

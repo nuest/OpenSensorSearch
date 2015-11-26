@@ -28,6 +28,7 @@
  */
 package org.n52.sir.listener;
 
+import com.google.common.collect.Sets;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Collection;
@@ -52,7 +53,6 @@ import org.n52.sir.util.SORTools;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.collect.Sets;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 

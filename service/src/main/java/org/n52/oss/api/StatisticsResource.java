@@ -46,8 +46,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.google.inject.Inject;
-import com.wordnik.swagger.annotations.Api;
-import com.wordnik.swagger.annotations.ApiOperation;
 
 /**
  * 
@@ -57,7 +55,7 @@ import com.wordnik.swagger.annotations.ApiOperation;
  * 
  */
 @Path(ApiPaths.STATISTICS_PATH)
-@Api(value = ApiPaths.STATISTICS_PATH, description = "Endpoint of all of the statistics related to sensors in OSS")
+//@Api(value = ApiPaths.STATISTICS_PATH, description = "Endpoint of all of the statistics related to sensors in OSS")
 @Singleton
 public class StatisticsResource {
 
@@ -77,7 +75,7 @@ public class StatisticsResource {
     }
 
     @GET
-    @ApiOperation(value = "List of available statistics")
+//    @ApiOperation(value = "List of available statistics")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getStatisticsIndex() {
         StringBuilder sb = new StringBuilder();
@@ -103,7 +101,7 @@ public class StatisticsResource {
 
     @GET
     @Path(ApiPaths.SUB_SENSORS)
-    @ApiOperation(value = "Find the number of sensors stored in OSS")
+//    @ApiOperation(value = "Find the number of sensors stored in OSS")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getNumberOfSensors() {
         StringBuilder sb = new StringBuilder();
@@ -122,7 +120,7 @@ public class StatisticsResource {
 
     @GET
     @Path(ApiPaths.SUB_PHENOMENA)
-    @ApiOperation(value = "Find the number of phenomena stored in OSS")
+//    @ApiOperation(value = "Find the number of phenomena stored in OSS")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getNumberOfPhenomena() {
         StringBuilder sb = new StringBuilder();
@@ -141,7 +139,7 @@ public class StatisticsResource {
 
     @GET
     @Path(ApiPaths.SUB_SERVICES)
-    @ApiOperation(value = "Find the number of services stored in OSS")
+//    @ApiOperation(value = "Find the number of services stored in OSS")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getNumberOfServices() {
         StringBuilder sb = new StringBuilder();

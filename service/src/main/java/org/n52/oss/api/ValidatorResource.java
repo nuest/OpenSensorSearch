@@ -58,15 +58,13 @@ import org.slf4j.LoggerFactory;
 
 import com.google.inject.Inject;
 import com.google.inject.servlet.RequestScoped;
-import com.wordnik.swagger.annotations.Api;
-import com.wordnik.swagger.annotations.ApiOperation;
 
 /**
  * @author Yakoub
  * 
  */
 @Path(ApiPaths.CHECK_PATH)
-@Api(value = "/" + ApiPaths.CHECK_PATH, description = "validation of SensorML for future harvesting")
+//@Api(value = "/" + ApiPaths.CHECK_PATH, description = "validation of SensorML for future harvesting")
 @RequestScoped
 public class ValidatorResource {
 
@@ -88,7 +86,7 @@ public class ValidatorResource {
     }
 
     @GET
-    @ApiOperation(value = "index of the available validations")
+//    @ApiOperation(value = "index of the available validations")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getIndex() {
         StringBuilder sb = new StringBuilder();
@@ -112,7 +110,7 @@ public class ValidatorResource {
 
     @POST
     @Path(ApiPaths.CHECK_SENSORML)
-    @ApiOperation(value = "Validates a given SensorML Document")
+//    @ApiOperation(value = "Validates a given SensorML Document")
     @Produces(MediaType.APPLICATION_JSON)
     public Response checkReturnJSON(String data, @QueryParam("version")
     @DefaultValue("1")
@@ -158,7 +156,7 @@ public class ValidatorResource {
 
     @POST
     @Path("/sml")
-    @ApiOperation(value = "Validates a given SensorML Document")
+//    @ApiOperation(value = "Validates a given SensorML Document")
     @Produces(MediaType.APPLICATION_XML)
     public Response checkReturnXML(String data, @QueryParam("version")
     @DefaultValue("1")
