@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -33,19 +33,13 @@ import org.x52North.sir.x032.SearchCriteriaDocument.SearchCriteria.Phenomenon.SO
 import org.x52North.sor.x031.GetMatchingDefinitionsRequestDocument.GetMatchingDefinitionsRequest;
 
 /**
- * 
- * @author Daniel Nüst
- * 
+ *
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
+ *
  */
 public enum SirMatchingType {
     EQUIVALENT_TYPE, SUB_TYPE, SUPER_TYPE;
 
-    /**
-     * 
-     * @param schemaMatchingType
-     * @return
-     * @throws OwsExceptionReport
-     */
     public static SirMatchingType getSirMatchingType(MatchingType schemaMatchingType) throws OwsExceptionReport {
         if (schemaMatchingType.equals(MatchingType.SUPER_TYPE)) {
             return SirMatchingType.SUPER_TYPE;
@@ -63,12 +57,6 @@ public enum SirMatchingType {
         }
     }
 
-    /**
-     * 
-     * @param string
-     * @return
-     * @throws OwsExceptionReport
-     */
     public static SirMatchingType getSirMatchingType(String string) throws OwsExceptionReport {
         if (string.equalsIgnoreCase(SirMatchingType.SUPER_TYPE.toString())) {
             return SirMatchingType.SUPER_TYPE;
@@ -86,12 +74,6 @@ public enum SirMatchingType {
         }
     }
 
-    /**
-     * 
-     * @param sirMatchingType
-     * @return
-     * @throws OwsExceptionReport
-     */
     public static org.x52North.sor.x031.GetMatchingDefinitionsRequestDocument.GetMatchingDefinitionsRequest.MatchingType.Enum getSorMatchingType(SirMatchingType sirMatchingType) throws OwsExceptionReport {
         if (sirMatchingType.equals(SirMatchingType.SUPER_TYPE)) {
             return GetMatchingDefinitionsRequest.MatchingType.SUPER_TYPE;
@@ -110,11 +92,6 @@ public enum SirMatchingType {
         throw er;
     }
 
-    /**
-     * 
-     * @return
-     * @throws OwsExceptionReport
-     */
     public org.x52North.sir.x032.SearchCriteriaDocument.SearchCriteria.Phenomenon.SORParameters.MatchingType.Enum getSchemaMatchingType() throws OwsExceptionReport {
         if (this.equals(SirMatchingType.SUPER_TYPE)) {
             return org.x52North.sir.x032.SearchCriteriaDocument.SearchCriteria.Phenomenon.SORParameters.MatchingType.SUPER_TYPE;

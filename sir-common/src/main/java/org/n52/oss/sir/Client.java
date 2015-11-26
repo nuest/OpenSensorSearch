@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -55,13 +55,13 @@ import org.slf4j.LoggerFactory;
 
 /**
  * @author Jan Schulte, Daniel Nüst (daniel.nuest@uni-muenster.de)
- * 
+ *
  */
 public class Client {
 
     private static final String GET_METHOD = "GET";
 
-    private static Logger log = LoggerFactory.getLogger(Client.class);
+    private static final Logger log = LoggerFactory.getLogger(Client.class);
 
     private static final String POST_METHOD = "POST";
 
@@ -69,16 +69,14 @@ public class Client {
 
     protected URI uri = null;
 
-    private static HttpClientBuilder httpClientBuilder;
+    private HttpClientBuilder httpClientBuilder;
 
-    static {
+    public Client() {
         httpClientBuilder = HttpClientBuilder.create();
         // increase timeout for slow servers
         RequestConfig config = RequestConfig.custom().setConnectionRequestTimeout(CONNECTION_TIMEOUT).setSocketTimeout(CONNECTION_TIMEOUT).build();
         httpClientBuilder.setDefaultRequestConfig(config);
-    }
 
-    public Client() {
         log.info("NEW {}", this);
     }
 
@@ -99,16 +97,14 @@ public class Client {
         try {
             response = xSendPostRequest(XmlObject.Factory.parse(gcDoc), requestUri);
             responseObject = XmlObject.Factory.parse(response.getDomNode());
-        }
-        catch (XmlException xmle) {
+        } catch (XmlException xmle) {
             String msg = "Error on parsing Capabilities document: " + xmle.getMessage()
                     + (response == null ? "" : "\n" + response.xmlText());
             log.warn(msg);
             OwsExceptionReport se = new OwsExceptionReport();
             se.addCodedException(OwsExceptionReport.ExceptionCode.InvalidRequest, null, msg);
             throw se;
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             String errMsg = "Error doing GetCapabilities to " + serviceType + " @ " + requestUri.toString() + " : "
                     + e.getMessage();
             log.warn(errMsg);
@@ -144,8 +140,8 @@ public class Client {
 
         if (requestUri == null) {
             OwsExceptionReport oer = new OwsExceptionReport(ExceptionCode.NoApplicableCode,
-                                                            requestMethod,
-                                                            "given URL is null for request " + request);
+                    requestMethod,
+                    "given URL is null for request " + request);
             return oer.getDocument();
         }
 
@@ -157,24 +153,23 @@ public class Client {
                 log.debug("Client connecting via GET to '{}' with request '{}'", requestUri, request);
 
                 String fullUri = null;
-                if (request == null || request.isEmpty())
+                if (request == null || request.isEmpty()) {
                     fullUri = requestUri.toString();
-                else
+                } else {
                     fullUri = requestUri.toString() + "?" + request;
+                }
 
                 log.debug("GET call: {}", fullUri);
                 HttpGet get = new HttpGet(fullUri);
                 method = get;
-            }
-            else if (requestMethod.equals(POST_METHOD)) {
+            } else if (requestMethod.equals(POST_METHOD)) {
                 log.debug("Client connecting via POST to {}", requestUri);
                 HttpPost postMethod = new HttpPost(requestUri.toString());
 
                 postMethod.setEntity(new StringEntity(request, ContentType.create(SirConstants.REQUEST_CONTENT_TYPE)));
 
                 method = postMethod;
-            }
-            else {
+            } else {
                 throw new IllegalArgumentException("requestMethod not supported!");
             }
 
@@ -185,28 +180,24 @@ public class Client {
                     XmlObject responseObject = XmlObject.Factory.parse(is);
                     return responseObject;
                 }
-            }
-            catch (XmlException e) {
+            } catch (XmlException e) {
                 log.error("Error parsing response.", e);
 
                 // TODO add handling to identify HTML response
                 // if (responseString.contains(HTML_TAG_IN_RESPONSE)) {
                 // log.error("Received HTML!\n" + responseString + "\n");
                 // }
-
                 String msg = "Could not parse response (received via " + requestMethod + ") to the request\n\n"
                         + request + "\n\n\n" + Tools.getStackTrace(e);
                 // msg = msg + "\n\nRESPONSE STRING:\n<![CDATA[" + responseObject.xmlText() + "]]>";
 
                 OwsExceptionReport er = new OwsExceptionReport(ExceptionCode.NoApplicableCode, "Client.doSend()", msg);
                 return er.getDocument();
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 log.error("Error executing method on httpClient.", e);
                 return new OwsExceptionReport(ExceptionCode.NoApplicableCode, "service", e.getMessage()).getDocument();
             }
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             log.error("Could not create http client.", e);
             return null;
         }

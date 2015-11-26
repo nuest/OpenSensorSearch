@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -31,8 +31,8 @@ package org.n52.sir.json;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * @author Daniel Nüst
- * 
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
+ *
  */
 @XmlRootElement
 public class SimpleSensorDescription {

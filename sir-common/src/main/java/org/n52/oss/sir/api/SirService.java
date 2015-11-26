@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -29,11 +29,11 @@
 package org.n52.oss.sir.api;
 
 /**
- * 
+ *
  * represents a SIR internal service
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public class SirService {
 

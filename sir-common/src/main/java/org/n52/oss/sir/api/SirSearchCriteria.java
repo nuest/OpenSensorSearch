@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -34,7 +34,7 @@ import java.util.Collection;
 
 /**
  * @author Jan Schulte, Daniel Nüst
- * 
+ *
  */
 public class SirSearchCriteria {
 
@@ -137,8 +137,9 @@ public class SirSearchCriteria {
 
     public boolean isUsingSOR() {
         for (SirSearchCriteria_Phenomenon p : this.phenomena) {
-            if (p.usesSOR())
+            if (p.usesSOR()) {
                 return true;
+            }
         }
         return false;
     }

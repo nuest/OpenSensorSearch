@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -38,22 +38,19 @@ import org.slf4j.LoggerFactory;
 
 /**
  * @author Jan Schulte, Daniel Nüst
- * 
+ *
  */
 public class TimePeriod {
 
-    private static Logger log = LoggerFactory.getLogger(TimePeriod.class);
+    private static final Logger log = LoggerFactory.getLogger(TimePeriod.class);
 
-    /**
-     * http://schemas.stylusstudio.com/opengis/n9b256d84/simpleType_TimeIndeterminateValueType.html
-     * 
-     */
     public static class IndeterminateTime {
 
         // dateformater for ISO 8601 Date format
         private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
         public static enum IndeterminateTimeType {
+
             NOW, UNKNOWN;
         }
 
@@ -80,15 +77,15 @@ public class TimePeriod {
         public IndeterminateTime(String s) {
             try {
                 this.d = sdf.parse(s);
-            }
-            catch (ParseException e) {
+            } catch (ParseException e) {
                 log.warn("Error parsing IndeterminateTime from String {}", s);
             }
 
             if (this.d == null) {
                 IndeterminateTimeType t = IndeterminateTimeType.valueOf(s.toUpperCase());
-                if (t != null)
+                if (t != null) {
                     this.itt = t;
+                }
             }
 
             log.error("NEW {} from {}", this, s);
@@ -123,8 +120,8 @@ public class TimePeriod {
 
     /**
      * combindes this time period and the given time period for the maximal extend.
-     * 
-     * @param other
+     *
+     * @param other the time period to use for the union
      */
     public void union(TimePeriod other) {
         if (this.startTime.d.after(other.getStartTime().d)) {

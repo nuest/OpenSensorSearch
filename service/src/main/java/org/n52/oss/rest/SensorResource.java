@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -65,13 +65,13 @@ import com.google.inject.servlet.RequestScoped;
 
 /**
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  */
 @Path(ApiPaths.SENSORS_PATH)
 @RequestScoped
 public class SensorResource {
 
-    private static Logger log = LoggerFactory.getLogger(SensorResource.class);
+    private static final Logger log = LoggerFactory.getLogger(SensorResource.class);
 
     private ISearchSensorDAO dao;
 

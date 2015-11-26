@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -33,7 +33,7 @@ import java.util.Date;
 
 /**
  * @author Jan Schulte, Daniel Nüst
- * 
+ *
  */
 public class SirSearchResultElement {
 
@@ -112,25 +112,29 @@ public class SirSearchResultElement {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ( (this.sensorId == null) ? 0 : this.sensorId.hashCode());
+        result = prime * result + ((this.sensorId == null) ? 0 : this.sensorId.hashCode());
         return result;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj)
+        if (this == obj) {
             return true;
-        if (obj == null)
+        }
+        if (obj == null) {
             return false;
-        if (getClass() != obj.getClass())
+        }
+        if (getClass() != obj.getClass()) {
             return false;
+        }
         SirSearchResultElement other = (SirSearchResultElement) obj;
         if (this.sensorId == null) {
-            if (other.sensorId != null)
+            if (other.sensorId != null) {
                 return false;
-        }
-        else if ( !this.sensorId.equals(other.sensorId))
+            }
+        } else if (!this.sensorId.equals(other.sensorId)) {
             return false;
+        }
         return true;
     }
 

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -34,7 +34,7 @@ import org.apache.xmlbeans.XmlObject;
 
 /**
  * @author Jan Schulte, Daniel Nüst
- * 
+ *
  */
 public class SirInfoToBeInserted_SensorDescription extends SirInfoToBeInserted {
 

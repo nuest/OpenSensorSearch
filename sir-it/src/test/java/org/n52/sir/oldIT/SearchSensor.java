@@ -40,7 +40,7 @@ import org.x52North.sir.x032.SearchSensorResponseDocument;
 
 /**
  * 
- * @author Daniel Nüst
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public class SearchSensor extends SirTest {

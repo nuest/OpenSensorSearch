@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -42,7 +42,7 @@ import org.n52.oss.sir.ows.OwsExceptionReport;
  * information in a format (that is accepted by the catalog) into the catalog. Methods for checking the
  * capabilites of the encapsulated catalog and the correctness of documents beforehand are available as well.
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public interface ICatalog {

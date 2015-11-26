@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -66,12 +66,12 @@ import x0.oasisNamesTcEbxmlRegrepXsdRim3.RegistryPackageDocument;
  * 
  * Testclass for transformations.
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public class Sml2EbrimTransformation {
 
-    private static Logger log = LoggerFactory.getLogger(Sml2EbrimTransformation.class);
+    private static final Logger log = LoggerFactory.getLogger(Sml2EbrimTransformation.class);
 
     private static String xsltDir = "/xslt";
 

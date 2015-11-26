@@ -73,7 +73,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class OpenSearchIT {
 
-    private static Logger log = LoggerFactory.getLogger(OpenSearchIT.class);
+    private static final Logger log = LoggerFactory.getLogger(OpenSearchIT.class);
 
     private static Client client;
 

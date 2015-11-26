@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -46,7 +46,7 @@ import com.google.inject.Singleton;
 @Singleton
 public class DebugFilter implements Filter {
 
-    private static Logger log = LoggerFactory.getLogger(DebugFilter.class);
+    private static final Logger log = LoggerFactory.getLogger(DebugFilter.class);
 
     public DebugFilter() {
         log.warn("DebugFilter is ACTIVE - potential performance risk!");

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -30,9 +30,9 @@ package org.n52.oss.sir.api;
 
 /**
  * Represents an internal service description, which includes the service and a service specific sensor ID
- * 
+ *
  * @author Jan Schulte
- * 
+ *
  */
 public class SirServiceReference extends SirSensorIdentification {
 

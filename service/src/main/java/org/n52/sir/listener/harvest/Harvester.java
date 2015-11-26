@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -75,12 +75,12 @@ import org.slf4j.LoggerFactory;
  * 
  * IMPORTANT: implementing harvesters must call the reset() method after a harvest is complete.
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public abstract class Harvester implements Callable<ISirResponse> {
 
-    private static Logger log = LoggerFactory.getLogger(Harvester.class);
+    private static final Logger log = LoggerFactory.getLogger(Harvester.class);
 
     protected HashMap<String, String> failedSensors;
 

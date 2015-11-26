@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -86,7 +86,7 @@ public class SensorMLDecoder {
 
     private static final Object BOUNDING_BOX_FIELD_DEFINITION = "urn:ogc:def:property:OGC:1.0:observedBBOX";
 
-    private static Logger log = LoggerFactory.getLogger(SensorMLDecoder.class);
+    private static final Logger log = LoggerFactory.getLogger(SensorMLDecoder.class);
 
     private static final ArrayList<String> X_AXIS_IDENTIFIERS = new ArrayList<>(Arrays.asList(new String[] {"x",
                                                                                                             "easting"}));

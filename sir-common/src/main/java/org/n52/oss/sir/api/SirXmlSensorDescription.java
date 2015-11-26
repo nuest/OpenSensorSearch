@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -31,8 +31,8 @@ package org.n52.oss.sir.api;
 import org.apache.xmlbeans.XmlObject;
 
 /**
- * @author Daniel Nüst
- * 
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
+ *
  */
 public class SirXmlSensorDescription extends SirSensorDescription {
 

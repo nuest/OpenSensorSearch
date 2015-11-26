@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -44,7 +44,7 @@ import org.n52.oss.util.XmlTools;
  * 
  * Some helper methods when dealing with SOAP classes (from the package <code>java.xml.soap</code>).
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public class SoapTools {

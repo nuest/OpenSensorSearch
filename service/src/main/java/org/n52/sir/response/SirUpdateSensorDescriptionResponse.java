@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -40,12 +40,12 @@ import org.x52North.sir.x032.UpdateSensorDescriptionResponseDocument.UpdateSenso
 import org.x52North.sir.x032.UpdateSensorDescriptionResponseDocument.UpdateSensorDescriptionResponse.UpdatedSensors;
 
 /**
- * @author Daniel Nüst
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public class SirUpdateSensorDescriptionResponse extends AbstractXmlResponse {
 
-    private static Logger log = LoggerFactory.getLogger(SirUpdateSensorDescriptionResponse.class);
+    private static final Logger log = LoggerFactory.getLogger(SirUpdateSensorDescriptionResponse.class);
 
     private int numberOfUpdatedSensorDescriptions;
 

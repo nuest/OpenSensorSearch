@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -46,7 +46,7 @@ import org.x52North.sir.x032.InsertSensorInfoResponseDocument.InsertSensorInfoRe
  */
 public class SirInsertSensorInfoResponse extends AbstractXmlResponse {
 
-    private static Logger log = LoggerFactory.getLogger(SirInsertSensorInfoResponse.class);
+    private static final Logger log = LoggerFactory.getLogger(SirInsertSensorInfoResponse.class);
 
     private Collection<String> insertedSensors = new ArrayList<String>();
 

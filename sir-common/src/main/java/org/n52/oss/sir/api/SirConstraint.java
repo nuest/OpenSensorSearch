@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -30,15 +30,15 @@ package org.n52.oss.sir.api;
 
 /**
  * @author Jan Schulte
- * 
+ *
  */
 public class SirConstraint {
 
     /**
      * Types of Constraints
-     * 
+     *
      * @author Jan Schulte
-     * 
+     *
      */
     public enum ConsType {
         isBetween, isEqualTo, isGreaterThan, isGreaterThanOrEqualTo, isLessThan, isLessThanOrEqualTo, isNotEqualTo
@@ -46,9 +46,9 @@ public class SirConstraint {
 
     /**
      * Value of Type
-     * 
+     *
      * @author Jan Schulte
-     * 
+     *
      */
     public enum ValueType {
         Boolean, Double, String

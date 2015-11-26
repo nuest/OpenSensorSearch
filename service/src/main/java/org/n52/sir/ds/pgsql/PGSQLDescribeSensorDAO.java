@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -50,7 +50,7 @@ import com.google.inject.Inject;
  */
 public class PGSQLDescribeSensorDAO implements IDescribeSensorDAO {
 
-    private static Logger log = LoggerFactory.getLogger(PGSQLDescribeSensorDAO.class);
+    private static final Logger log = LoggerFactory.getLogger(PGSQLDescribeSensorDAO.class);
 
     private PGConnectionPool cpool;
 

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -34,9 +34,9 @@ import org.x52North.sir.x032.SearchCriteriaDocument.SearchCriteria.Phenomenon;
 import org.x52North.sir.x032.SearchCriteriaDocument.SearchCriteria.Phenomenon.SORParameters;
 
 /**
- * 
- * @author Daniel Nüst
- * 
+ *
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
+ *
  */
 public class SirSearchCriteria_Phenomenon {
 
@@ -48,11 +48,6 @@ public class SirSearchCriteria_Phenomenon {
 
     private String sorUrl;
 
-    /**
-     * 
-     * @param phenomenon
-     * @throws OwsExceptionReport
-     */
     public SirSearchCriteria_Phenomenon(Phenomenon phenomenon) throws OwsExceptionReport {
 
         this.phenomenonName = phenomenon.getPhenomenonName();
@@ -66,86 +61,48 @@ public class SirSearchCriteria_Phenomenon {
         }
     }
 
-    /**
-     * @param phenomenonName
-     * 
-     */
     public SirSearchCriteria_Phenomenon(String phenomenonName) {
         this.phenomenonName = phenomenonName;
     }
 
-    /**
-     * @param phenomenonName
-     * @param sorUrl
-     * @param matchingType
-     * @param searchDepth
-     */
     public SirSearchCriteria_Phenomenon(String phenomenonName,
-                                        String sorUrl,
-                                        SirMatchingType matchingType,
-                                        int searchDepth) {
+            String sorUrl,
+            SirMatchingType matchingType,
+            int searchDepth) {
         this.phenomenonName = phenomenonName;
         this.sorUrl = sorUrl;
         this.matchingType = matchingType;
         this.searchDepth = searchDepth;
     }
 
-    /**
-     * @return the matchingType
-     */
     public SirMatchingType getMatchingType() {
         return this.matchingType;
     }
 
-    /**
-     * @return the phenomenonName
-     */
     public String getPhenomenonName() {
         return this.phenomenonName;
     }
 
-    /**
-     * @return the searchDepth
-     */
     public int getSearchDepth() {
         return this.searchDepth;
     }
 
-    /**
-     * @return the sorUrl
-     */
     public String getSorUrl() {
         return this.sorUrl;
     }
 
-    /**
-     * @param matchingType
-     *        the matchingType to set
-     */
     public void setMatchingType(SirMatchingType matchingType) {
         this.matchingType = matchingType;
     }
 
-    /**
-     * @param phenomenonName
-     *        the phenomenonName to set
-     */
     public void setPhenomenonName(String phenomenonName) {
         this.phenomenonName = phenomenonName;
     }
 
-    /**
-     * @param searchDepth
-     *        the searchDepth to set
-     */
     public void setSearchDepth(int searchDepth) {
         this.searchDepth = searchDepth;
     }
 
-    /**
-     * @param sorUrl
-     *        the sorUrl to set
-     */
     public void setSorUrl(String sorUrl) {
         this.sorUrl = sorUrl;
     }
@@ -166,15 +123,15 @@ public class SirSearchCriteria_Phenomenon {
     }
 
     /**
-     * 
      * @return true if all parameters for SOR are given
      */
     public boolean usesSOR() {
-        if (this.sorUrl == null || this.matchingType == null)
+        if (this.sorUrl == null || this.matchingType == null) {
             return false;
-        return Tools.noneEmpty(new String[] {this.sorUrl,
-                                             this.matchingType.toString(),
-                                             Integer.toString(this.searchDepth)});
+        }
+        return Tools.noneEmpty(new String[]{this.sorUrl,
+            this.matchingType.toString(),
+            Integer.toString(this.searchDepth)});
     }
 
 }

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -56,7 +56,7 @@ import com.google.inject.Singleton;
  * not implemented. It also provides methods to access the appropriate instances of
  * {@link ICatalogStatusHandler} and {@link ICatalogFactory} for tasks that run within this servlet.
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 @Singleton
@@ -103,7 +103,7 @@ public class Timer {
         }
     }
 
-    private static Logger log = LoggerFactory.getLogger(Timer.class);
+    private static final Logger log = LoggerFactory.getLogger(Timer.class);
 
     private Map<URI, ICatalog> catalogCache = new HashMap<>();
 

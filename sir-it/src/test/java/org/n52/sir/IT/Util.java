@@ -50,7 +50,7 @@ import org.n52.oss.sir.Client;
 
 public class Util {
 
-    private static Logger log = LoggerFactory.getLogger(Util.class);
+    private static final Logger log = LoggerFactory.getLogger(Util.class);
 
     public static Client configureSirClient() {
         Injector i = Guice.createInjector(new AbstractModule() {

@@ -61,7 +61,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author Yakoub
  */
 public class OpenSearchSpatialExtensionIT {
-    private static Logger log = LoggerFactory.getLogger(OpenSearchTemporalExtensionIT.class);
+    private static final Logger log = LoggerFactory.getLogger(OpenSearchTemporalExtensionIT.class);
     private static String lon_lat_radius_query = "http://localhost:8080/OpenSensorSearch/search?q=pre&lat=1.5&lon=3.49&radius=2&httpAccept=application%2Fjson";
     private Date start = new Date(1262296800000l);
     private Date end = new Date(1325282400000l);

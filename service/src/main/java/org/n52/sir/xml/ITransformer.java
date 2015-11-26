@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -52,7 +52,7 @@ import x0.oasisNamesTcEbxmlRegrepXsdRim3.RegistryPackageDocument;
  * The transformation can be based on different kinds of inputs and outputs: Apart from the method relying on
  * java.xml.transform classes there is a convenience method for XMLBeans using {@link XmlObject}.
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public interface ITransformer {

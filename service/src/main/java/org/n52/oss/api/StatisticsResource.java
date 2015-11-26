@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -59,7 +59,7 @@ import com.google.inject.Inject;
 @Singleton
 public class StatisticsResource {
 
-    private static Logger log = LoggerFactory.getLogger(StatisticsResource.class);
+    private static final Logger log = LoggerFactory.getLogger(StatisticsResource.class);
 
     private IGetCapabilitiesDAO capabilitiesDao;
 

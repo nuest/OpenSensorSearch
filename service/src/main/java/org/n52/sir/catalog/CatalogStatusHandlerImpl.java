@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -48,7 +48,7 @@ import com.google.inject.Inject;
  */
 public class CatalogStatusHandlerImpl implements ICatalogStatusHandler {
 
-    private static Logger log = LoggerFactory.getLogger(CatalogStatusHandlerImpl.class);
+    private static final Logger log = LoggerFactory.getLogger(CatalogStatusHandlerImpl.class);
 
     private static final int MAXIMUM_INFOLIST_SIZE = 100;
 

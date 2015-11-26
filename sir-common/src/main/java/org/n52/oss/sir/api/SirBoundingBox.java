@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -37,7 +37,7 @@ import org.postgis.Polygon;
 
 /**
  * @author Jan Schulte
- * 
+ *
  */
 public class SirBoundingBox {
 
@@ -78,9 +78,9 @@ public class SirBoundingBox {
             }
             this.srid = p.getSrid();
             this.dimension = p.getDimension();
-        }
-        else
+        } else {
             throw new UnsupportedOperationException("Cannot create bounding box from given geometry: " + boundingGeom);
+        }
     }
 
     public int getDimension() {
@@ -103,7 +103,7 @@ public class SirBoundingBox {
     }
 
     public double[] getLowerCornerPoint() {
-        return new double[] {Math.min(this.south, this.north), Math.min(this.east, this.west)};
+        return new double[]{Math.min(this.south, this.north), Math.min(this.east, this.west)};
     }
 
     public double getNorth() {
@@ -127,7 +127,7 @@ public class SirBoundingBox {
     }
 
     public double[] getUpperCornerPoint() {
-        return new double[] {Math.max(this.south, this.north), Math.max(this.east, this.west)};
+        return new double[]{Math.max(this.south, this.north), Math.max(this.east, this.west)};
     }
 
     public double getWest() {
@@ -160,12 +160,12 @@ public class SirBoundingBox {
 
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append("Bounding Box: ");
-        sb.append("East: " + this.east);
-        sb.append(", South: " + this.south);
-        sb.append(", West: " + this.west);
-        sb.append(", North: " + this.north);
+        sb.append("East: ").append(this.east);
+        sb.append(", South: ").append(this.south);
+        sb.append(", West: ").append(this.west);
+        sb.append(", North: ").append(this.north);
         return sb.toString();
     }
 
@@ -180,7 +180,7 @@ public class SirBoundingBox {
      * @return center of bounding box as lat, lon
      */
     public double[] getCenter() {
-        return new double[] { (this.south + this.north) / 2, (this.east + this.west) / 2};
+        return new double[]{(this.south + this.north) / 2, (this.east + this.west) / 2};
     }
 
 }

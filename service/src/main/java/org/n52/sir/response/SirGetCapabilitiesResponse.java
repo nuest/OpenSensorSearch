@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -64,7 +64,7 @@ public class SirGetCapabilitiesResponse extends AbstractXmlResponse {
 
     private static final Object ACCEPT_VERSIONS_PARAMETER_NAME = "AcceptVersions";
 
-    private static Logger log = LoggerFactory.getLogger(SirGetCapabilitiesResponse.class);
+    private static final Logger log = LoggerFactory.getLogger(SirGetCapabilitiesResponse.class);
 
     private static final Object VERSION_PARAMETER_NAME = "version";
 

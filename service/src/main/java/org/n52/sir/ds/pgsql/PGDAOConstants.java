@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -68,7 +68,7 @@ public class PGDAOConstants {
 
     public static String lastUpdate;
 
-    private static Logger log = LoggerFactory.getLogger(PGDAOConstants.class);
+    private static final Logger log = LoggerFactory.getLogger(PGDAOConstants.class);
 
     public static int maxcon = 0;
 

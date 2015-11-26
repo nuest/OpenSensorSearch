@@ -63,7 +63,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  * @author Yakoub
  */
 public class OpenSearchTemporalExtensionIT {
-    private static Logger log = LoggerFactory.getLogger(OpenSearchTemporalExtensionIT.class);
+    private static final Logger log = LoggerFactory.getLogger(OpenSearchTemporalExtensionIT.class);
     
     // TODO get the base URL using dependency injectin
     private static String query = "http://localhost:8080/OpenSensorSearch/search?q=test&dtstart=2009-12-31T22:00:00Z&dtend=2011-12-30T22:00:00Z&httpAccept=application%2Fjson";

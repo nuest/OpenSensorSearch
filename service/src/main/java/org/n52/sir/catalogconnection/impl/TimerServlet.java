@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -53,7 +53,7 @@ import com.google.inject.Inject;
  * not implemented. It also provides methods to access the appropriate instances of
  * {@link ICatalogStatusHandler} and {@link ICatalogFactory} for tasks that run within this servlet.
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 @Deprecated
@@ -95,7 +95,7 @@ public class TimerServlet extends GenericServlet {
 
     private static final String IS_DAEMON_INIT_PARAM_NAME = "isDaemon";
 
-    private static Logger log = LoggerFactory.getLogger(TimerServlet.class);
+    private static final Logger log = LoggerFactory.getLogger(TimerServlet.class);
 
     /**
      * The identifier that can be used to access the instance of this servlet an run-time.

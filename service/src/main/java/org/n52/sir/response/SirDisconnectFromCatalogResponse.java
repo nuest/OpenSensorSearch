@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -41,7 +41,7 @@ import org.x52North.sir.x032.DisconnectFromCatalogResponseDocument.DisconnectFro
  */
 public class SirDisconnectFromCatalogResponse extends AbstractXmlResponse {
 
-    private static Logger log = LoggerFactory.getLogger(SirDisconnectFromCatalogResponse.class);
+    private static final Logger log = LoggerFactory.getLogger(SirDisconnectFromCatalogResponse.class);
 
     /**
      * the url to the catalog service

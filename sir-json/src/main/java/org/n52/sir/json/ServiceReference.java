@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -32,9 +32,9 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * 
- * @author Daniel Nüst
- * 
+ *
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
+ *
  */
 @XmlRootElement
 public class ServiceReference { // extends SirSensorIdentification {

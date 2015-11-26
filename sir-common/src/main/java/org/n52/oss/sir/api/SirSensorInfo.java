@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -32,7 +32,7 @@ import org.apache.xmlbeans.XmlObject;
 
 /**
  * @author Jan Schulte
- * 
+ *
  */
 public class SirSensorInfo {
 

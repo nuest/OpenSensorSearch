@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -47,12 +47,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public class TestSensorFactory {
 
-    private static Logger log = LoggerFactory.getLogger(TestSensorFactory.class);
+    private static final Logger log = LoggerFactory.getLogger(TestSensorFactory.class);
 
     public static final String OGC_PROPERTY_PREFIX = "urn:ogc:def:property:OGC:1.0:";
 

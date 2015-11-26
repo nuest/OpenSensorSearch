@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -47,7 +47,7 @@ import com.google.inject.Singleton;
 @Singleton
 public class CorsFilter implements Filter {
 
-    private static Logger log = LoggerFactory.getLogger(CorsFilter.class);
+    private static final Logger log = LoggerFactory.getLogger(CorsFilter.class);
 
     public static String VALID_METHODS = "HEAD, GET, OPTIONS, POST";
 

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -70,7 +70,7 @@ import com.google.inject.servlet.RequestScoped;
 @RequestScoped
 public class AutoCompleteResource {
 
-    private static Logger log = LoggerFactory.getLogger(SOLRSearchSensorDAO.class);
+    private static final Logger log = LoggerFactory.getLogger(SOLRSearchSensorDAO.class);
 
     private static final String REQUEST_PARAM_AUTOCOMPLETE = "q";
 

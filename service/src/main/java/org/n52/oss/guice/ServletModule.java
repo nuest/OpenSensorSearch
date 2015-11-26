@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -45,7 +45,7 @@ import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
 
 public class ServletModule extends JerseyServletModule {
 
-    private static Logger log = LoggerFactory.getLogger(ServletModule.class);
+    private static final Logger log = LoggerFactory.getLogger(ServletModule.class);
 
     public ServletModule() {
         super();

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -41,7 +41,7 @@ import org.n52.oss.sir.ows.OwsExceptionReport;
  * {@link ICatalogConnection} instances that contain the neccessary parameters to create and save a connection
  * to a catalog.
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public interface ICatalogFactory {

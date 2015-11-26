@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -39,26 +39,18 @@ import com.google.inject.name.Named;
 
 public class SirClient extends Client {
 
-    private static Logger log = LoggerFactory.getLogger(SirClient.class);
-    private String sirVersion;
+    private static final Logger log = LoggerFactory.getLogger(SirClient.class);
+
+    private final String sirVersion;
 
     @Inject
-    public SirClient(@Named("oss.sir.sirClient.url")
-    String sirUrl, @Named("oss.sir.version")
-    String sirVersion) {
+    public SirClient(@Named("oss.sir.sirClient.url") String sirUrl, @Named("oss.sir.version") String sirVersion) {
         super(sirUrl);
         this.sirVersion = sirVersion;
     }
 
-    /**
-     * 
+    /*
      * creates a GET request to retrieve the sensor description of the given sensor,
-     * 
-     * @param sensorId
-     * @param encodeURLs
-     *        for usage in XML documents
-     * @return
-     * @throws UnsupportedEncodingException
      */
     public String createDescribeSensorURL(String sensorId, boolean encodeURLs) throws UnsupportedEncodingException {
         StringBuilder sb = new StringBuilder();
@@ -83,8 +75,9 @@ public class SirClient extends Client {
         log.debug("Created description URL for sensor {}: {}", sensorId, sb.toString());
 
         // URL must be encoded for usage in XML documents
-        if (encodeURLs)
+        if (encodeURLs) {
             return URLEncoder.encode(sb.toString(), "UTF-8");
+        }
 
         return sb.toString();
     }

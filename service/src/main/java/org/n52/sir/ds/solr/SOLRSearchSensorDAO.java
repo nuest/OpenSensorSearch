@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -26,7 +26,6 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
  */
-
 
 package org.n52.sir.ds.solr;
 
@@ -59,7 +58,7 @@ import com.google.inject.Inject;
  */
 public class SOLRSearchSensorDAO implements ISearchSensorDAO {
 
-    private static Logger log = LoggerFactory.getLogger(SOLRSearchSensorDAO.class);
+    private static final Logger log = LoggerFactory.getLogger(SOLRSearchSensorDAO.class);
 
     private SolrConnection connection;
 

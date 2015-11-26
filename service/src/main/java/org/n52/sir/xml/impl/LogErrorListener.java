@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -36,7 +36,7 @@ import org.slf4j.LoggerFactory;
 
 public class LogErrorListener implements ErrorListener {
 
-    private static Logger log = LoggerFactory.getLogger(LogErrorListener.class);
+    private static final Logger log = LoggerFactory.getLogger(LogErrorListener.class);
 
     @Override
     public void error(TransformerException ex) throws TransformerException {

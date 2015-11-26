@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -41,12 +41,12 @@ import org.x52North.sir.x032.DeleteSensorInfoResponseDocument.DeleteSensorInfoRe
 import org.x52North.sir.x032.DeleteSensorInfoResponseDocument.DeleteSensorInfoResponse.DeletedSensors;
 
 /**
- * @author Daniel Nüst
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public class SirDeleteSensorInfoResponse extends AbstractXmlResponse {
 
-    private static Logger log = LoggerFactory.getLogger(SirDeleteSensorInfoResponse.class);
+    private static final Logger log = LoggerFactory.getLogger(SirDeleteSensorInfoResponse.class);
 
     private Collection<String> deletedSensors = new ArrayList<String>();
 

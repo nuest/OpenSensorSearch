@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -51,9 +51,9 @@ public class SerializeService {
         Service service = new Service("http://host:port/path", "SOS");
 
         this.mapper.writeValue(this.baos, service);
-        
+
         System.out.println(new String(this.baos.toByteArray()));
-        
+
         // TODO add assertion to test
     }
 

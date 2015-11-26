@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -55,12 +55,12 @@ import org.x52North.sor.x031.GetMatchingDefinitionsResponseDocument;
 import com.google.inject.Inject;
 
 /**
- * @author Daniel Nüst
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public class SORClient {
 
-    private static Logger log = LoggerFactory.getLogger(SORClient.class);
+    private static final Logger log = LoggerFactory.getLogger(SORClient.class);
 
     private static final String SECTION_ALL = "ALL";
 

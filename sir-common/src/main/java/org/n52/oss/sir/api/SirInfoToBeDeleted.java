@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -29,8 +29,8 @@
 package org.n52.oss.sir.api;
 
 /**
- * @author Daniel Nüst
- * 
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
+ *
  */
 public class SirInfoToBeDeleted {
 
@@ -40,18 +40,10 @@ public class SirInfoToBeDeleted {
 
     private SirServiceInfo serviceInfo;
 
-    /**
-     * 
-     */
     public SirInfoToBeDeleted() {
         //
     }
 
-    /**
-     * @param sensorIdentification
-     * @param deleteSensor
-     * @param serviceInfo
-     */
     public SirInfoToBeDeleted(SirSensorIdentification sensorIdentification,
                               boolean deleteSensor,
                               SirServiceInfo serviceInfo) {
@@ -82,24 +74,21 @@ public class SirInfoToBeDeleted {
     }
 
     /**
-     * @param deleteSensor
-     *        the deleteSensor to set
+     * @param deleteSensor the deleteSensor to set
      */
     public void setDeleteSensor(boolean deleteSensor) {
         this.deleteSensor = deleteSensor;
     }
 
     /**
-     * @param sensorIdentification
-     *        the sensorIdentification to set
+     * @param sensorIdentification the sensorIdentification to set
      */
     public void setSensorIdentification(SirSensorIdentification sensorIdentification) {
         this.sensorIdentification = sensorIdentification;
     }
 
     /**
-     * @param serviceInfo
-     *        the serviceInfo to set
+     * @param serviceInfo the serviceInfo to set
      */
     public void setServiceInfo(SirServiceInfo serviceInfo) {
         this.serviceInfo = serviceInfo;

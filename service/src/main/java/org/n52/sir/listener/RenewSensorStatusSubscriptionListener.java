@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -34,7 +34,7 @@ import org.n52.oss.sir.SirConstants;
  * 
  * Placeholder class, all functionality is in super class {@link SensorStatusSubscriptionListener}.
  * 
- * @author Daniel Nüst
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public class RenewSensorStatusSubscriptionListener extends SensorStatusSubscriptionListener {

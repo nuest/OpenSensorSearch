@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -35,7 +35,7 @@ import java.util.Map;
 import net.opengis.sensorML.x101.ContactDocument.Contact;
 
 /**
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public class TestComponent extends TestSensor {

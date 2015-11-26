@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -45,7 +45,7 @@ import org.slf4j.LoggerFactory;
  * Class for executing the method {@link ICatalog#pushAllDataToCatalog()}. Error handling, logging and status
  * updating are included.
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public class PushCatalogTask extends TimerTask {
@@ -60,7 +60,7 @@ public class PushCatalogTask extends TimerTask {
 
     private static final String LAST_PUSH_WITH_REPORTS = "Last push finished with errors, see the log for details. Error count: ";
 
-    private static Logger log = LoggerFactory.getLogger(PushCatalogTask.class);
+    private static final Logger log = LoggerFactory.getLogger(PushCatalogTask.class);
 
     private ICatalog catalog;
 

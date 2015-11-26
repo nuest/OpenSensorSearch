@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -51,7 +51,7 @@ import com.google.inject.name.Names;
 
 public class PGSQLModule extends AbstractConfigModule {
 
-    private static Logger log = LoggerFactory.getLogger(PGSQLModule.class);
+    private static final Logger log = LoggerFactory.getLogger(PGSQLModule.class);
 
     private static final String HOME_CONFIG_FILE = "org.n52.oss.service.db.properties";
 

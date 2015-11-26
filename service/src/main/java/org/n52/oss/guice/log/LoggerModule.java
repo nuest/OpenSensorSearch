@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -36,7 +36,7 @@ import com.google.inject.matcher.Matchers;
 
 public class LoggerModule extends AbstractModule {
 
-    private static Logger log = LoggerFactory.getLogger(LoggerModule.class);
+    private static final Logger log = LoggerFactory.getLogger(LoggerModule.class);
 
     @Override
     protected void configure() {

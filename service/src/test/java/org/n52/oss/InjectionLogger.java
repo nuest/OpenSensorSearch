@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -60,7 +60,7 @@ public class InjectionLogger {
     private static class ClassWithLogger {
 
         @InjectLogger
-        private static Logger log;
+        private static final Logger log;
 
         public ClassWithLogger() {
             log.debug("NEW {}", this);

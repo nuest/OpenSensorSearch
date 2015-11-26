@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -47,7 +47,7 @@ import com.google.inject.Module;
  */
 public class ServiceLoaderConfigurationModule extends AbstractModule {
 
-    private static Logger log = LoggerFactory.getLogger(ServiceLoaderConfigurationModule.class);
+    private static final Logger log = LoggerFactory.getLogger(ServiceLoaderConfigurationModule.class);
 
     private static Collection<String> loadedModules = new ArrayList<>();
 

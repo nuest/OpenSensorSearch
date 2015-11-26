@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -41,7 +41,7 @@ public class IgnoreDateValueComparator extends DefaultComparator {
     }
 
     @SuppressWarnings("unused")
-    private static Logger log = LoggerFactory.getLogger(IgnoreDateValueComparator.class);
+    private static final Logger log = LoggerFactory.getLogger(IgnoreDateValueComparator.class);
 
     @Override
     public void compareValues(String prefix, Object expectedValue, Object actualValue, JSONCompareResult result) throws JSONException {

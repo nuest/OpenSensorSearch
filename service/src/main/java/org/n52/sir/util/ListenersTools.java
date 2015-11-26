@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -39,7 +39,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ListenersTools {
 
-    private static Logger log = LoggerFactory.getLogger(ListenersTools.class);
+    private static final Logger log = LoggerFactory.getLogger(ListenersTools.class);
 
     public static void checkServiceParameter(String service) throws OwsExceptionReport {
         if (service == null || service.equalsIgnoreCase("NOT_SET")) {

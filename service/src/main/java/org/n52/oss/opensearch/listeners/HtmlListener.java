@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -78,7 +78,7 @@ import com.google.inject.Inject;
  * 
  * TODO move text snippets to properties file
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public class HtmlListener implements OpenSearchListener {
@@ -174,11 +174,6 @@ public class HtmlListener implements OpenSearchListener {
 
     /**
      * Writes a HTML response for the SearchResultElements in the given writer
-     * 
-     * @param searchResult
-     * @param writer
-     * @param searchText
-     * @throws UnsupportedEncodingException
      */
     private void createHTMLContent(Collection<SirSearchResultElement> searchResult,
                                    PrintWriter writer,
@@ -284,9 +279,6 @@ public class HtmlListener implements OpenSearchListener {
     }
 
     /**
-     * @param writer
-     * @param sirSearchResultElement
-     * @return
      * @throws UnsupportedEncodingException
      */
     private String createHTMLEntry(SirSearchResultElement sirSearchResultElement, String searchText) throws UnsupportedEncodingException {
@@ -625,20 +617,6 @@ public class HtmlListener implements OpenSearchListener {
 //        return accessURL;
 //    }
 
-    private ICapabilitiesPermalinkMapper getCPMapper(String serviceURL) {
-        return this.mappers.get(serviceURL);
-    }
-
-    private boolean serviceCapabilitiesSupported(String serviceURL) {
-        // TODO implement a service loader mechanism to support several services
-        return this.mappers.containsKey(serviceURL);
-    }
-
-    /**
-     * @param serviceReference
-     * @param url
-     * @return
-     */
     private XmlObject updateCache(SirServiceReference serviceReference, URL url) {
         log.info("Updating chache for service reverence " + serviceReference);
 
@@ -657,11 +635,7 @@ public class HtmlListener implements OpenSearchListener {
             this.capabilitiesCache.put(url, caps);
             this.capabilitiesCacheAge.put(url, new Date());
         }
-        catch (OwsExceptionReport e) {
-            log.error("Could not get service capabilities.", e);
-            return null;
-        }
-        catch (URISyntaxException e) {
+        catch (OwsExceptionReport | URISyntaxException e) {
             log.error("Could not get service capabilities.", e);
             return null;
         }

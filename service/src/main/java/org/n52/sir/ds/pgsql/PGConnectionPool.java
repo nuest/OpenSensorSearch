@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -44,7 +44,7 @@ import org.slf4j.LoggerFactory;
  */
 public class PGConnectionPool extends AbstractConnectionPool {
     
-    private static Logger log = LoggerFactory.getLogger(PGConnectionPool.class);
+    private static final Logger log = LoggerFactory.getLogger(PGConnectionPool.class);
 
     /**
      * constructor with necessary parameters as strings

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -36,17 +36,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author Daniel Nüst
- * 
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
+ *
  */
 public class Tools {
 
-    private static Logger log = LoggerFactory.getLogger(Tools.class);
+    private static final Logger log = LoggerFactory.getLogger(Tools.class);
 
     public static boolean atLeastOneIsNotEmpty(String[] strings) {
         for (String string : strings) {
-            if ( !string.isEmpty())
+            if (!string.isEmpty()) {
                 return true;
+            }
         }
         return false;
     }
@@ -65,13 +66,14 @@ public class Tools {
 
     public static boolean noneEmpty(String[] strings) {
         for (String string : strings) {
-            if (string.isEmpty())
+            if (string.isEmpty()) {
                 return false;
+            }
         }
         return true;
     }
 
-    /**
+    /*
      * remove trailing and leading white spaces, replace newline characters with space character.
      */
     public static String simplifyString(String stringToSimplify) {
@@ -83,9 +85,9 @@ public class Tools {
     public static String convertStreamToString(InputStream is) throws Exception {
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         StringBuilder sb = new StringBuilder();
-        String line = null;
-        while ( (line = reader.readLine()) != null) {
-            sb.append(line + "\n");
+        String line;
+        while ((line = reader.readLine()) != null) {
+            sb.append(line).append("\n");
         }
         is.close();
         return sb.toString();

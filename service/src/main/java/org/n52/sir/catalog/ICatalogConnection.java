@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -38,7 +38,7 @@ import java.net.URL;
  * {@link ICatalogConnection#NO_PUSH_INTERVAL} and {@link ICatalogConnection#UNSAVED_CONNECTION_ID} shall be
  * used for instantiation.
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public interface ICatalogConnection {

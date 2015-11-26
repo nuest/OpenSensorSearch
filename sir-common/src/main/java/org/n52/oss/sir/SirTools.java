@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -40,7 +40,7 @@ import org.slf4j.LoggerFactory;
 
 public class SirTools {
 
-    private static Logger log = LoggerFactory.getLogger(SirTools.class);
+    private static final Logger log = LoggerFactory.getLogger(SirTools.class);
 
     public static SensorMLDocument wrapSystemTypeInSensorMLDocument(SystemType stToSet) {
         SensorMLDocument document;

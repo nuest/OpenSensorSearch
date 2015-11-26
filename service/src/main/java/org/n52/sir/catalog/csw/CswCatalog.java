@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -110,14 +110,14 @@ import x0.oasisNamesTcEbxmlRegrepXsdRim3.ServiceType;
  * A push consists of the following steps: creating insert transactions for all existing SensorML descriptions
  * in the SIR, transmitting the inserts to the client, returning possible error reports of all transactions.
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public class CswCatalog implements ICatalog {
 
     private static final String INSERT_HANDLE_SENSOR_DESCRIPTIONS = "InsertSensorDescription";
 
-    private static Logger log = LoggerFactory.getLogger(CswCatalog.class);
+    private static final Logger log = LoggerFactory.getLogger(CswCatalog.class);
 
     private static final int MAXIMUM_COUNT_OF_SENSORS_IN_DOC = 10;
 

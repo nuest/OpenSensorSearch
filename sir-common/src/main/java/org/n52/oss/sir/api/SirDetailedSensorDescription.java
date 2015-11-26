@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -32,7 +32,7 @@ import java.util.Collection;
 import java.util.Date;
 
 public class SirDetailedSensorDescription extends SirSensorDescription {
-    
+
     private String id;
     private Collection<String> keywords;
     private Date begineDate;

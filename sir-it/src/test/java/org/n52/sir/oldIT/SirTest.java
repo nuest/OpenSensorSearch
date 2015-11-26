@@ -37,7 +37,7 @@ import org.n52.oss.sir.Client;
 import org.n52.sir.IT.Util;
 
 /**
- * @author Daniel Nüst
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public abstract class SirTest {

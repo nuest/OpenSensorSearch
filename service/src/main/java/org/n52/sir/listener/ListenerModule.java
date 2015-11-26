@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -43,7 +43,7 @@ import com.google.inject.multibindings.Multibinder;
  */
 public class ListenerModule extends AbstractModule {
 
-    private static Logger log = LoggerFactory.getLogger(ListenerModule.class);
+    private static final Logger log = LoggerFactory.getLogger(ListenerModule.class);
 
     @Override
     protected void configure() {

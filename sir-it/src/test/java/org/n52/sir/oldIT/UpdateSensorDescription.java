@@ -40,7 +40,7 @@ import org.x52North.sir.x032.UpdateSensorDescriptionResponseDocument;
 
 /**
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public class UpdateSensorDescription extends SirTest {

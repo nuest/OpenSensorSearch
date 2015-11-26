@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -42,13 +42,13 @@ import com.google.inject.Singleton;
  * 
  * TODO move everything in configurator to external configuration file!
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 @Singleton
 public class OpenSearchConfigurator {
 
-    private static Logger log = LoggerFactory.getLogger(OpenSearchConfigurator.class);
+    private static final Logger log = LoggerFactory.getLogger(OpenSearchConfigurator.class);
 
     private int capabilitiesCacheMaximumAgeSeconds = 60 * 60;
 

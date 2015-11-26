@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -103,7 +103,7 @@ import com.google.inject.name.Named;
  * 
  * Catalog: http://p5.neracoos.org/IOOSCatalog/sos_platforms.xml
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public class IOOSHarvester extends FileHarvester {

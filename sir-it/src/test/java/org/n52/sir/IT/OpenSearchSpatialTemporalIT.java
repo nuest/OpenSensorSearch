@@ -75,7 +75,7 @@ import com.google.gson.Gson;
  * @author Yakoub
  */
 public class OpenSearchSpatialTemporalIT {
-    private static Logger log = LoggerFactory.getLogger(OpenSearchSpatialTemporalIT.class);
+    private static final Logger log = LoggerFactory.getLogger(OpenSearchSpatialTemporalIT.class);
 
     private static String lon_lat_radius_query = "http://localhost:8080/OpenSensorSearch/search?q=pre&";
 

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -55,7 +55,7 @@ import org.x52North.sir.x032.StatusDocument.Status;
  */
 public class SirGetSensorStatusResponse extends AbstractXmlResponse {
 
-    private static Logger log = LoggerFactory.getLogger(SirGetSensorStatusResponse.class);
+    private static final Logger log = LoggerFactory.getLogger(SirGetSensorStatusResponse.class);
 
     /**
      * the sensor status descriptions

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -60,14 +60,14 @@ import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
 /**
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public class CswFactory implements ICatalogFactory {
 
     private static final String CONFIG_FILE_LIST_SEPARATOR = ",";
 
-    private static Logger log = LoggerFactory.getLogger(CswFactory.class);
+    private static final Logger log = LoggerFactory.getLogger(CswFactory.class);
 
     private List<XmlObject> classificationInitDocs;
 

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -84,7 +84,7 @@ import com.google.inject.name.Named;
  * The transformation is based on the file {@link SMLtoEbRIMTransformer#TRANSFORMATION_FILE_NAME} and uses
  * XSLT 2.0 (http://www.w3.org/TR/xslt20/).
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public class SMLtoEbRIMTransformer implements ITransformer {
@@ -109,7 +109,7 @@ public class SMLtoEbRIMTransformer implements ITransformer {
 
     private static final String INDENT_OUTPUT_PROPERTY_VALUE = "yes";
 
-    private static Logger log = LoggerFactory.getLogger(SMLtoEbRIMTransformer.class);
+    private static final Logger log = LoggerFactory.getLogger(SMLtoEbRIMTransformer.class);
 
     private static TransformerFactory tFactory = TransformerFactory.newInstance();
 

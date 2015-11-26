@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -60,7 +60,7 @@ public class SensorMLStringConverter {
 
     private static final String LIST_ITEM_DELIMITER = ", ";
 
-    private static Logger log = LoggerFactory.getLogger(SensorMLStringConverter.class);
+    private static final Logger log = LoggerFactory.getLogger(SensorMLStringConverter.class);
 
     public SensorMLStringConverter() {
         //

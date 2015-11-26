@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -43,7 +43,7 @@ import org.slf4j.LoggerFactory;
  */
 public class HttpGetRequestDecoder implements IHttpGetRequestDecoder {
 
-    private static Logger log = LoggerFactory.getLogger(HttpGetRequestDecoder.class);
+    private static final Logger log = LoggerFactory.getLogger(HttpGetRequestDecoder.class);
 
     protected HttpGetRequestDecoder() {
         log.info("NEW {}", this);

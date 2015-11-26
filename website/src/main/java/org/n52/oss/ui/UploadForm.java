@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -37,7 +37,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class UploadForm {
 
-    private static Logger log = LoggerFactory.getLogger(UploadForm.class);
+    private static final Logger log = LoggerFactory.getLogger(UploadForm.class);
 
     private String name;
 

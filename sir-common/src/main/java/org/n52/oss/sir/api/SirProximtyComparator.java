@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -53,7 +53,7 @@ public class SirProximtyComparator implements Comparator<SirSearchResultElement>
         SirBoundingBox b2 = ((SirSimpleSensorDescription) o2.getSensorDescription()).getBoundingBox();
         double[] c1 = b1.getCenter();
         double[] c2 = b2.getCenter();
-        
+
         double d1 =Math.pow((c1[0]-this.longitude),2)+Math.pow(c1[1]-this.latitude,2);
         double d2 =Math.pow((c2[0]-this.longitude),2)+Math.pow(c2[1]-this.latitude,2);
         return (int)(d1-d2);

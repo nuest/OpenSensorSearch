@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -40,7 +40,7 @@ import x0.oasisNamesTcEbxmlRegrepXsdRim3.IdentifiableType;
  * cached here to avoid requesting it again from the catalog. Attention: The equality check is purely based on
  * the attribute "id" of {@link IdentifiableType}.
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public class CswCatalogCache {

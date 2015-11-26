@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -69,7 +69,7 @@ import com.google.inject.servlet.RequestScoped;
 @RequestScoped
 public class TransformationResource {
 
-    private static Logger log = LoggerFactory.getLogger(TransformationResource.class);
+    private static final Logger log = LoggerFactory.getLogger(TransformationResource.class);
 
     private SensorMLDecoder decoder;
 

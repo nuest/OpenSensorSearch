@@ -45,12 +45,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public class CatalogIT {
 
-    private static Logger log = LoggerFactory.getLogger(CatalogIT.class);
+    private static final Logger log = LoggerFactory.getLogger(CatalogIT.class);
 
     private static void getCap() {
         URL url;

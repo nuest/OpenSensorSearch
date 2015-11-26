@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -35,7 +35,7 @@ import com.google.inject.AbstractModule;
 
 public class SolrModule extends AbstractModule {
 
-    private static Logger log = LoggerFactory.getLogger(SolrModule.class);
+    private static final Logger log = LoggerFactory.getLogger(SolrModule.class);
 
     @Override
     protected void configure() {

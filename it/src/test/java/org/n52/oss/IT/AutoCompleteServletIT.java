@@ -58,7 +58,7 @@ import org.slf4j.LoggerFactory;
  * @author Yakoub
  */
 public class AutoCompleteServletIT {
-    private static Logger log = LoggerFactory.getLogger(AutoCompleteServletIT.class);
+    private static final Logger log = LoggerFactory.getLogger(AutoCompleteServletIT.class);
     private String insertedSensorId;
 
     // @Before

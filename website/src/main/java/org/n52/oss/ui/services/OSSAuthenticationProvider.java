@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -62,7 +62,7 @@ import com.google.gson.Gson;
 @Service("userAuthService")
 public class OSSAuthenticationProvider implements AuthenticationProvider {
 
-    private static Logger log = LoggerFactory.getLogger(OSSAuthenticationProvider.class);
+    private static final Logger log = LoggerFactory.getLogger(OSSAuthenticationProvider.class);
 
     public class AuthToken {
         String auth_token;

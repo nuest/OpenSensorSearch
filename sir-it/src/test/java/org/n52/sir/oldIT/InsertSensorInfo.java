@@ -41,7 +41,7 @@ import org.x52North.sir.x032.InsertSensorInfoResponseDocument;
 
 /**
  * 
- * @author Daniel Nüst
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public class InsertSensorInfo extends SirTest {

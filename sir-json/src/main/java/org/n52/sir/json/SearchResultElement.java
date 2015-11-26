@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -40,7 +40,7 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 /**
  * @author Jan Schulte, Daniel Nüst
- * 
+ *
  */
 @XmlRootElement
 @JsonInclude(Include.NON_NULL)
@@ -237,13 +237,14 @@ public class SearchResultElement {
         return builder.toString();
     }
 
-    private String toString(Collection< ? > collection, int maxLen) {
+    private String toString(Collection< ?> collection, int maxLen) {
         StringBuilder builder = new StringBuilder();
         builder.append("[");
         int i = 0;
-        for (Iterator< ? > iterator = collection.iterator(); iterator.hasNext() && i < maxLen; i++) {
-            if (i > 0)
+        for (Iterator<?> iterator = collection.iterator(); iterator.hasNext() && i < maxLen; i++) {
+            if (i > 0) {
                 builder.append(", ");
+            }
             builder.append(iterator.next());
         }
         builder.append("]");

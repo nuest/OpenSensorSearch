@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -41,12 +41,12 @@ import com.google.inject.Inject;
 /**
  * FIXME one method in utillity class > remove class.
  * 
- * @author Daniel Nüst
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public class SORTools {
 
-    private static Logger log = LoggerFactory.getLogger(SORTools.class);
+    private static final Logger log = LoggerFactory.getLogger(SORTools.class);
 
     @Inject
     SORClient client;

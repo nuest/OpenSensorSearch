@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -51,7 +51,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 
 public class Util {
 
-    private static Logger log = LoggerFactory.getLogger(Util.class);
+    private static final Logger log = LoggerFactory.getLogger(Util.class);
 
     public static String readResourceFile(String s) {
         URL resource = Util.class.getResource(s);

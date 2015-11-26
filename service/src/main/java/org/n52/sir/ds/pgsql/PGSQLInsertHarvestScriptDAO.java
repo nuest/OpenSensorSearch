@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -46,7 +46,7 @@ import org.slf4j.LoggerFactory;
  */
 public class PGSQLInsertHarvestScriptDAO implements IInsertHarvestScriptDAO {
 
-    private static Logger log = LoggerFactory.getLogger(PGSQLInsertHarvestScriptDAO.class);
+    private static final Logger log = LoggerFactory.getLogger(PGSQLInsertHarvestScriptDAO.class);
 
     private PGConnectionPool cpool;
 

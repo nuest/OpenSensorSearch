@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -52,7 +52,7 @@ public class StartupThread extends Thread {
 
     protected static final int STARTUP_DELAY_SECS = 10;
 
-    private static Logger log = LoggerFactory.getLogger(StartupThread.class);
+    private static final Logger log = LoggerFactory.getLogger(StartupThread.class);
 
     private CatalogConnectionScheduler scheduler;
 

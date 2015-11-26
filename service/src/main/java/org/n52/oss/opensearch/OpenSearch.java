@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -68,13 +68,13 @@ import com.google.inject.servlet.RequestScoped;
 
 /**
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  */
 @Path(ApiPaths.OPENSEARCH_PATH)
 @RequestScoped
 public class OpenSearch {
 
-    private static Logger log = LoggerFactory.getLogger(OpenSearch.class);
+    private static final Logger log = LoggerFactory.getLogger(OpenSearch.class);
 
     private OpenSearchConfigurator configurator;
 

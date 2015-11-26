@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -59,7 +59,7 @@ import com.google.gson.Gson;
  * 
  */
 public class RemoteHarvestJob implements Job {
-    private static Logger log = LoggerFactory.getLogger(RemoteHarvestJob.class);
+    private static final Logger log = LoggerFactory.getLogger(RemoteHarvestJob.class);
 
     @Override
     public void execute(JobExecutionContext arg0) throws JobExecutionException {

@@ -10,6 +10,7 @@
 	
     <artifactId>sir-common</artifactId>
     <version>2.0.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 	
     <name>SIR common classes</name>
 
@@ -40,15 +41,14 @@
             <groupId>com.google.inject</groupId>
             <artifactId>guice</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.n52.sensorweb</groupId>
-            <artifactId>52n-xml-wrs-v101</artifactId>
+            <artifactId>52n-xml-sir-v032</artifactId>
             <version>${sensorweb.schemas.version}</version>
         </dependency>
         <dependency>
             <groupId>org.n52.sensorweb</groupId>
-            <artifactId>52n-xml-sir-v032</artifactId>
+            <artifactId>52n-xml-csw-v202</artifactId>
             <version>${sensorweb.schemas.version}</version>
         </dependency>
         <dependency>
@@ -59,27 +59,10 @@
             <groupId>org.n52.sensorweb</groupId>
             <artifactId>52n-xml-sps-v100</artifactId>
             <version>${sensorweb.schemas.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.n52.sensorweb</groupId>
-                    <artifactId>52n-xml-gml-v311</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.n52.sensorweb</groupId>
             <artifactId>52n-xml-sos-v100</artifactId>
-            <version>${sensorweb.schemas.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.n52.sensorweb</groupId>
-                    <artifactId>52n-xml-gml-v311</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.n52.sensorweb</groupId>
-            <artifactId>52n-xml-kml-v220</artifactId>
             <version>${sensorweb.schemas.version}</version>
         </dependency>
 
@@ -88,6 +71,37 @@
             <artifactId>httpclient</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.n52.sensorweb</groupId>
+            <artifactId>52n-xml-ows-v100</artifactId>
+            <version>${sensorweb.schemas.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.n52.sensorweb</groupId>
+            <artifactId>52n-xml-ows-v110</artifactId>
+            <version>${sensorweb.schemas.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.n52.sensorweb</groupId>
+            <artifactId>52n-xml-sensorML-v101</artifactId>
+            <version>${sensorweb.schemas.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.n52.sensorweb</groupId>
+            <artifactId>52n-xml-xlink-v110</artifactId>
+            <version>${sensorweb.schemas.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.n52.sensorweb</groupId>
+            <artifactId>52n-xml-rim-v300</artifactId>
+            <version>${sensorweb.schemas.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+        </dependency>
+        
         <dependency>
             <groupId>org.postgis</groupId>
             <artifactId>postgis-jdbc</artifactId>

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -45,7 +45,7 @@ import com.google.inject.spi.TypeListener;
  */
 public class Slf4jTypeListener implements TypeListener {
 
-    private static Logger log = LoggerFactory.getLogger(Slf4jTypeListener.class);
+    private static final Logger log = LoggerFactory.getLogger(Slf4jTypeListener.class);
 
     public Slf4jTypeListener() {
         log.info("NEW {}", this);

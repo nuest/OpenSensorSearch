@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -44,7 +44,7 @@ public class PGSQLUserAccountDAO implements IUserAccountDAO {
     /**
      * the logger, used to log exceptions and additionally information
      */
-    private static Logger log = LoggerFactory.getLogger(PGSQLUserAccountDAO.class);
+    private static final Logger log = LoggerFactory.getLogger(PGSQLUserAccountDAO.class);
 
     /**
      * Connection pool for creating connections to the DB

@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -46,7 +46,7 @@ public class SerializeSensorDescription {
     private ObjectMapper mapper;
     private ByteArrayOutputStream baos;
     private SimpleSensorDescription expected;
-    
+
     @BeforeClass
     public static void prepare() {
         f = new File(SerializeSensorDescription.class.getResource("/sensordescription.json").getFile());

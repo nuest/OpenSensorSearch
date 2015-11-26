@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -36,7 +36,7 @@ import java.util.Collection;
  * 
  * TODO move this into a module and as a service endpoint /catalog
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public interface ICatalogStatusHandler {

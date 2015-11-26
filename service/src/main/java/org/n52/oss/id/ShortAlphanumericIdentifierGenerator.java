@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -37,7 +37,7 @@ import org.slf4j.LoggerFactory;
 
 public class ShortAlphanumericIdentifierGenerator implements IdentifierGenerator {
 
-    private static Logger log = LoggerFactory.getLogger(ShortAlphanumericIdentifierGenerator.class);
+    private static final Logger log = LoggerFactory.getLogger(ShortAlphanumericIdentifierGenerator.class);
 
     public static final int ID_LENGTH = 10;
 

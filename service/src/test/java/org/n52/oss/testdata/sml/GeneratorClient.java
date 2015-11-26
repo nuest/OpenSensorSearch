@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -64,7 +64,7 @@ import org.x52North.sir.x032.VersionAttribute.Version.Enum;
 
 /**
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 @SuppressWarnings("unused")
@@ -84,7 +84,7 @@ public class GeneratorClient {
 
     private static final Enum SERVICE_VERSION = VersionAttribute.Version.X_0_3_1;
 
-    private static Logger log = LoggerFactory.getLogger(GeneratorClient.class);
+    private static final Logger log = LoggerFactory.getLogger(GeneratorClient.class);
 
     private static DefaultHttpClient httpClient = new DefaultHttpClient();
 

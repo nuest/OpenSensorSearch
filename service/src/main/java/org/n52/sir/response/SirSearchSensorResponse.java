@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -62,7 +62,7 @@ import org.x52North.sir.x032.SimpleSensorDescriptionDocument.SimpleSensorDescrip
  */
 public class SirSearchSensorResponse extends AbstractXmlResponse {
 
-	private static Logger log = LoggerFactory
+	private static final Logger log = LoggerFactory
 			.getLogger(SirSearchSensorResponse.class);
 
 	/**

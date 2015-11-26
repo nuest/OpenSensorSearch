@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -70,7 +70,7 @@ import com.google.inject.Singleton;
 @Provider
 public class OwsExMessageBodyWriter implements MessageBodyWriter<OwsExceptionReport> {
 
-    private static Logger log = LoggerFactory.getLogger(OwsExMessageBodyWriter.class);
+    private static final Logger log = LoggerFactory.getLogger(OwsExMessageBodyWriter.class);
 
     private final TransformerFactory tf;
 

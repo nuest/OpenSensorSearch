@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -113,7 +113,7 @@ import org.x52North.sir.x032.VersionAttribute.Version.Enum;
 
 public class HttpPostRequestDecoder implements IHttpPostRequestDecoder {
 
-    private static Logger log = LoggerFactory.getLogger(HttpPostRequestDecoder.class);
+    private static final Logger log = LoggerFactory.getLogger(HttpPostRequestDecoder.class);
 
     protected HttpPostRequestDecoder() {
         log.info("NEW {}", this);

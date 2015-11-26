@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -32,39 +32,27 @@ import java.util.Collection;
 
 /**
  * @author Jan Schulte
- * 
+ *
  */
 public class SirServiceInfo {
 
     private Collection<SirServiceReference> serviceReferences;
 
-    /**
-     * 
-     * @param b
-     * @param servRef
-     */
     public SirServiceInfo(Collection<SirServiceReference> servRef) {
         this.serviceReferences = servRef;
     }
 
-    /**
-     * @return the servDesc
-     */
     public Collection<SirServiceReference> getServiceReferences() {
         return this.serviceReferences;
     }
 
-    /**
-     * @param servRefs
-     *        the servDesc to set
-     */
     public void setServiceReference(Collection<SirServiceReference> servRefs) {
         this.serviceReferences = servRefs;
     }
 
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append("SirServiceInfo: ");
         sb.append(this.serviceReferences);
         return sb.toString();

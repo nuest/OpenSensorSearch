@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -51,9 +51,9 @@ public class SerializeSearchResult {
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         this.mapper.writeValue(baos, resultElement);
-        
+
         System.out.println(new String(baos.toByteArray()));
-        
+
         // TODO add assertion to test
     }
 

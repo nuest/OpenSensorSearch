@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -40,7 +40,6 @@ import javax.xml.namespace.QName;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
@@ -55,6 +54,8 @@ import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlError;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlOptions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 
@@ -81,11 +82,13 @@ import x0.oasisNamesTcEbxmlRegrepXsdRim3.SlotType1;
 /**
  * Class for helper methods dealing with XML, especially deeper inspection of XML-Documents respectively beans
  * (i.e. instances of (subclasses of) {@link XmlObject}).
- * 
- * @author Daniel Nüst (d.nuest@52north.org)
- * 
+ *
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
+ *
  */
 public class XmlTools {
+
+    private static final Logger log = LoggerFactory.getLogger(XmlTools.class);
 
     private static final int DEFAULT_INDENT = 4;
 
@@ -120,7 +123,7 @@ public class XmlTools {
     public static final String SA_NAMESPACE_PREFIX = "sa";
 
     public static final QName SCHEMA_LOCATION_ATTRIBUTE_QNAME = new QName(XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI,
-                                                                          "schemaLocation");
+            "schemaLocation");
 
     private static final String SIR_NAMESPACE_PREFIX = "sir";
 
@@ -167,22 +170,18 @@ public class XmlTools {
         DEFAULT_OPTIONS.setSavePrettyPrintIndent(DEFAULT_INDENT);
     }
 
-    /**
-     * 
-     * @param request
-     */
     public static void addSirAndSensorMLSchemaLocation(XmlObject xml) {
         XmlCursor c = xml.newCursor();
         c.setAttributeText(SCHEMA_LOCATION_ATTRIBUTE_QNAME,
-                           "http://52north.org/sir/0.3.2 http://52north.org/schema/sir/0.3.2/sirAll.xsd"
-                                   + "http://www.opengis.net/sensorML/1.0.1 http://schemas.opengis.net/sensorML/1.0.1/sensorML.xsd");
+                "http://52north.org/sir/0.3.2 http://52north.org/schema/sir/0.3.2/sirAll.xsd"
+                + "http://www.opengis.net/sensorML/1.0.1 http://schemas.opengis.net/sensorML/1.0.1/sensorML.xsd");
         c.dispose();
     }
 
     public static void addSirSchemaLocation(XmlObject xml) {
         XmlCursor c = xml.newCursor();
         c.setAttributeText(SCHEMA_LOCATION_ATTRIBUTE_QNAME,
-                           "http://52north.org/sir/0.3.2 http://52north.org/schema/sir/0.3.2/sirAll.xsd");
+                "http://52north.org/sir/0.3.2 http://52north.org/schema/sir/0.3.2/sirAll.xsd");
         c.dispose();
     }
 
@@ -307,21 +306,6 @@ public class XmlTools {
             return inspect(eo);
         }
 
-        if (it instanceof SlotType1) {
-            SlotType1 st = (SlotType1) it;
-            return inspect(st);
-        }
-
-        if (it instanceof SlotDocument) {
-            SlotDocument sd = (SlotDocument) it;
-            return inspect(sd);
-        }
-
-        if (it instanceof ClassificationNodeDocument) {
-            ClassificationNodeDocument t = (ClassificationNodeDocument) it;
-            return inspect(t);
-        }
-
         if (it instanceof ClassificationSchemeType) {
             ClassificationSchemeType t = (ClassificationSchemeType) it;
             return inspect(t);
@@ -339,11 +323,6 @@ public class XmlTools {
 
         if (it instanceof PersonType) {
             PersonType t = (PersonType) it;
-            return inspect(t);
-        }
-
-        if (it instanceof PersonNameType) {
-            PersonNameType t = (PersonNameType) it;
             return inspect(t);
         }
 
@@ -369,26 +348,6 @@ public class XmlTools {
 
         if (it instanceof ServiceBindingType) {
             ServiceBindingType t = (ServiceBindingType) it;
-            return inspect(t);
-        }
-
-        if (it instanceof TransactionResponseType) {
-            TransactionResponseType t = (TransactionResponseType) it;
-            return inspect(t);
-        }
-
-        if (it instanceof TransactionSummaryType) {
-            TransactionSummaryType t = (TransactionSummaryType) it;
-            return inspect(t);
-        }
-
-        if (it instanceof InsertResultType) {
-            InsertResultType t = (InsertResultType) it;
-            return inspect(t);
-        }
-
-        if (it instanceof BriefRecordType) {
-            BriefRecordType t = (BriefRecordType) it;
             return inspect(t);
         }
 
@@ -571,13 +530,9 @@ public class XmlTools {
         return sb.toString();
     }
 
-    /**
-     * 
+    /*
      * Returns {@link XmlObject#xmlText()}, but only a maximum of {@link XmlTools#MAX_INSPECT_STRING_LENGTH}
      * characters.
-     * 
-     * @param xmlObj
-     * @return
      */
     public static String inspect(XmlObject xmlObj) {
         String s = xmlObj.xmlText();
@@ -588,8 +543,9 @@ public class XmlTools {
             s = s.substring(commentEnd, s.length() - commentEnd);
         }
 
-        if (s.length() <= MAX_INSPECT_STRING_LENGTH)
+        if (s.length() <= MAX_INSPECT_STRING_LENGTH) {
             return s;
+        }
         return s.substring(0, MAX_INSPECT_STRING_LENGTH) + "... ( " + (s.length() - MAX_INSPECT_STRING_LENGTH)
                 + " more characters)";
     }
@@ -617,12 +573,10 @@ public class XmlTools {
         source.xmlText(options);
     }
 
-    /**
+    /*
      * does the same stuff that {@link XmlTools#xmlOptionsForNamespaces()} does, but without depending on an
      * instanciation of {@link SirConfigurator}. The following values are NOT used from sir config file:
      * character encoding, sir namespace url, and sir namespace prefix.
-     * 
-     * @return
      */
     public static XmlOptions unconfiguredXmlOptionsForNamespaces() {
         XmlOptions options = new XmlOptions();
@@ -642,11 +596,8 @@ public class XmlTools {
         return options;
     }
 
-    /**
+    /*
      * http://xmlbeans.apache.org/docs/2.0.0/guide/conValidationWithXmlBeans.html
-     * 
-     * @param xml
-     * @return
      */
     public static String validateAndIterateErrors(XmlObject xml) {
         ArrayList<XmlError> validationErrors = new ArrayList<>();
@@ -656,7 +607,7 @@ public class XmlTools {
         boolean isValid = xml.validate(validationOptions);
 
         StringBuilder sb = new StringBuilder();
-        if ( !isValid) {
+        if (!isValid) {
             sb.append("XmlObject of class <");
             sb.append(xml.getClass().getSimpleName());
             sb.append(" /> is NOT valid! The validation errors are:");
@@ -666,8 +617,7 @@ public class XmlTools {
                 sb.append("\n\t");
                 sb.append(iter.next().toString());
             }
-        }
-        else {
+        } else {
             sb.append("XmlObject ");
             sb.append(xml.getClass().getSimpleName());
             sb.append(" (");
@@ -680,8 +630,8 @@ public class XmlTools {
 
     /**
      * gives {@link XmlOptions} to set the default namespaces via {@link XmlObject}.xmlText(setOptions()).
-     * 
-     * @return
+     *
+     * @return a new instance of xml options with preconfigured namespaces
      */
     public static XmlOptions xmlOptionsForNamespaces() {
         XmlOptions options = new XmlOptions();
@@ -715,12 +665,8 @@ public class XmlTools {
             transformer.transform(source, result);
 
             return stringWriter.getBuffer().toString();
-        }
-        catch (TransformerConfigurationException e) {
-            e.printStackTrace();
-        }
-        catch (TransformerException e) {
-            e.printStackTrace();
+        } catch (TransformerException e) {
+            log.error("Error transforming given node", e);
         }
         return "ERROR transforming given Node";
     }
@@ -732,8 +678,9 @@ public class XmlTools {
     public static String getXmlContentLimited(XmlObject xml, int max, boolean removeComments) {
         String s = xml.xmlText();
 
-        if (removeComments)
+        if (removeComments) {
             s = s.replaceAll("(?s)<!--.*?-->", "");
+        }
 
         return s.substring(0, Math.min(s.length(), max));
     }

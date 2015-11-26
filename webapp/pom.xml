@@ -15,14 +15,35 @@
 
     <properties>
         <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
-
-        <restlet.version>2.1.6</restlet.version>
     </properties>
 
     <build>
         <finalName>oss-service</finalName>
 
         <plugins>
+
+            <!-- disable plugin when building the module indepentently -->
+            <plugin>
+                <groupId>org.jasig.maven</groupId>
+                <artifactId>maven-notice-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>check-license</id>
+                        <phase />
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>check-license</id>
+                        <phase />
+                    </execution>
+                </executions>
+            </plugin>
+
             <plugin>
                 <!-- http://wiki.eclipse.org/Jetty/Feature/Jetty_Maven_Plugin -->
                 <!-- jetty:run-exploded invoces lifecycle phase package -->
@@ -32,11 +53,7 @@
 
                 <configuration>
                     <scanIntervalSeconds>2</scanIntervalSeconds>
-                    <!-- if you embed the following in <webApp>, then jetty:run-exploded
-                    will result in error "When configuring a basic element the configuration
-                    cannot contain any child elements. Configuration element 'war'." -->
-                    <contextPath>${service.path}</contextPath> <!-- is ignored for run-exploded, but used by Webby: Right-click, Debug as,
-						Webby ... -->
+                    <contextPath>${service.path}</contextPath>
                     <war>target/${project.build.finalName}</war>
                 </configuration>
             </plugin>
@@ -133,11 +150,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.n52.oss</groupId>
-            <artifactId>sir-json</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-all</artifactId>
             <scope>test</scope>
@@ -228,12 +240,11 @@
 
         <dependency>
             <groupId>org.n52.oss</groupId>
-            <artifactId>common</artifactId>
+            <artifactId>sir-common</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.n52.oss</groupId>
-            <artifactId>sir-common</artifactId>
+            <artifactId>sir-json</artifactId>
         </dependency>
 
     </dependencies>

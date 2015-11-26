@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -90,7 +90,7 @@ import x0.oasisNamesTcEbxmlRegrepXsdRim3.SlotType1;
  * catalogue service, i.e. insert the slots and classification elements via insert transactions. The latter is
  * implemented for Buddata ebXML Registry/Repository (see http://code.google.com/p/buddata-ebxml-registry/).
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public class CswCatalogChecker {
@@ -115,7 +115,7 @@ public class CswCatalogChecker {
 
     private static final String INSERT_HANDLE_ADD_CLASSIFICATIONS = "InsertClassificationScheme";
 
-    private static Logger log = LoggerFactory.getLogger(CswCatalogChecker.class);
+    private static final Logger log = LoggerFactory.getLogger(CswCatalogChecker.class);
 
     private static final String POST_ENCODING_CONSTRAINT_NAME = "PostEncoding";
 

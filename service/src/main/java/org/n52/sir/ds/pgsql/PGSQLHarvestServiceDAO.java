@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -49,7 +49,7 @@ import com.google.inject.Inject;
  */
 public class PGSQLHarvestServiceDAO implements IHarvestServiceDAO {
 
-    private static Logger log = LoggerFactory.getLogger(PGSQLHarvestServiceDAO.class);
+    private static final Logger log = LoggerFactory.getLogger(PGSQLHarvestServiceDAO.class);
 
     private PGConnectionPool cpool;
 

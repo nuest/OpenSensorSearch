@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -37,12 +37,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author Daniel Nüst
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public abstract class SensorStatusSubscriptionListener implements ISirRequestListener {
 
-    private static Logger log = LoggerFactory.getLogger(SensorStatusSubscriptionListener.class);
+    private static final Logger log = LoggerFactory.getLogger(SensorStatusSubscriptionListener.class);
 
     public SensorStatusSubscriptionListener() {
         log.info("NEW {}", this);

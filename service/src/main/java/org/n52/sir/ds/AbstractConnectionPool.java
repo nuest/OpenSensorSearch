@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -43,7 +43,7 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class AbstractConnectionPool implements ConnectionPool {
 
-    private static Logger log = LoggerFactory.getLogger(AbstractConnectionPool.class);
+    private static final Logger log = LoggerFactory.getLogger(AbstractConnectionPool.class);
 
     protected BasicDataSource dataSource = new BasicDataSource();
 

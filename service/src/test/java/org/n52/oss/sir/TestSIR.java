@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -54,12 +54,12 @@ import org.slf4j.LoggerFactory;
  * 
  * TODO make unit tests out of these hacked tests
  * 
- * @author Daniel Nüst (d.nuest@52north.org)
+ * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
  * 
  */
 public class TestSIR {
 
-    private static Logger log = LoggerFactory.getLogger(TestSIR.class);
+    private static final Logger log = LoggerFactory.getLogger(TestSIR.class);
 
     /**
      * Sends an HTTP GET request to a url

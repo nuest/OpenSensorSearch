@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -29,10 +29,8 @@
 package org.n52.oss.sir.ows;
 
 /**
- * class contains element names and namespaces used to encode the O&M responses
- * 
+ *
  * @author Jan Schulte, Daniel Nüst (daniel.nuest@uni-muenster.de)
- * 
  */
 public class OWSConstants {
 
@@ -42,9 +40,6 @@ public class OWSConstants {
 
     public static final String OWS_VERSION = "1.0.0";
 
-    /**
-     * Constant for the schema repository of OWS
-     */
     public static final String SCHEMA_LOCATION = "http://schemas.opengis.net/ows/1.0.0/owsAll.xsd";
 
 }

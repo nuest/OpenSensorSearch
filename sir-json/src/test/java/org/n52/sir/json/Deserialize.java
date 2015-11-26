@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -60,7 +60,7 @@ public class Deserialize {
     public void test() throws Exception {
         SearchResult result = this.mapper.readValue(this.searchResult, SearchResult.class);
         System.out.println(result);
-        
+
         // TODO add assertion to test
     }
 

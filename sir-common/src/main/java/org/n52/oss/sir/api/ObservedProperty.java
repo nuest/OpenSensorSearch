@@ -1,4 +1,4 @@
-/**
+/*
  * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
  * Software GmbH
  *
@@ -30,7 +30,7 @@ package org.n52.oss.sir.api;
 
 /**
  * @author Jan Schulte, Daniel Nüst
- * 
+ *
  */
 public class ObservedProperty {
 
