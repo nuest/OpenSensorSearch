@@ -1,19 +1,31 @@
 /**
- * ﻿Copyright (C) 2012 52°North Initiative for Geospatial Open Source Software GmbH
+ * Copyright (C) 2013 52°North Initiative for Geospatial Open Source
+ * Software GmbH
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
+ * This program is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License version 2 as published
+ * by the Free Software Foundation.
  *
- *     http://www.apache.org/licenses/LICENSE-2.0
+ * If the program is linked with libraries which are licensed under one of
+ * the following licenses, the combination of the program with the linked
+ * library is not considered a "derivative work" of the program:
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ *     - Apache License, version 2.0
+ *     - Apache Software License, version 1.0
+ *     - GNU Lesser General Public License, version 3
+ *     - Mozilla Public License, versions 1.0, 1.1 and 2.0
+ *     - Common Development and Distribution License (CDDL), version 1.0
+ *
+ * Therefore the distribution of the program linked with libraries licensed
+ * under the aforementioned licenses, is permitted by the copyright holders
+ * if the distribution is compliant with both the GNU General Public
+ * License version 2 and the aforementioned licenses.
+ *
+ * This program is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
+ * Public License for more details.
  */
-
 package org.n52.sir.IT;
 
 import static org.junit.Assert.assertTrue;
@@ -24,7 +36,6 @@ import org.apache.xmlbeans.XmlObject;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.n52.oss.sir.Client;
-import org.n52.oss.ui.beans.HarvestServiceBean;
 import org.x52North.sir.x032.HarvestServiceRequestDocument;
 import org.x52North.sir.x032.HarvestServiceResponseDocument;
 
@@ -49,37 +60,6 @@ public class HarvestServiceIT {
     }
 
     @Test
-    public void harvestWeatherServiceBean() throws Exception {
-        // HttpClientBuilder httpClientBuilder = HttpClientBuilder.create();
-        // // increase timeout for slow servers
-        // RequestConfig config =
-        // RequestConfig.custom().setConnectionRequestTimeout(6000).setSocketTimeout(6000).build();
-        // httpClientBuilder.setDefaultRequestConfig(config);
-        // try (CloseableHttpClient c = httpClientBuilder.build();) {
-        // HttpGet get = new HttpGet("http://www.google.de");
-        // CloseableHttpResponse response = c.execute(get);
-        //
-        // int respCode = response.getStatusLine().getStatusCode();
-        //
-        // IOUtils.copy(response.getEntity().getContent(), System.out);
-        // response.close();
-        // }
-
-        // buildRequest
-        HarvestServiceBean hsb = new HarvestServiceBean(this.harvestedServiceURL, this.harvestedServiceType);
-        hsb.buildRequest();
-
-        // send request
-        String response = client.sendPostRequest(hsb.getRequestString());
-
-        // parse and validate response
-        HarvestServiceResponseDocument cd = HarvestServiceResponseDocument.Factory.parse(response);
-        assertTrue(cd.validate());
-
-        // FIXME test must check whether the correct number of sensors was added, and more
-    }
-
-    // @Test
     public void harvestWeatherServiceDoc() throws Exception {
         File f = new File(ClassLoader.getSystemResource("requests/HarvestService.xml").getFile());
         HarvestServiceRequestDocument hsrd = HarvestServiceRequestDocument.Factory.parse(f);

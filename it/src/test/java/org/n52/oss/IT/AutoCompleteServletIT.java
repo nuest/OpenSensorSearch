@@ -45,7 +45,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.xmlbeans.XmlException;
 import org.junit.Test;
 import org.n52.oss.sir.ows.OwsExceptionReport;
-import org.n52.oss.util.Util;
 import org.n52.sir.ds.solr.SOLRInsertSensorInfoDAO;
 import org.n52.sir.ds.solr.SolrConnection;
 import org.n52.sir.sml.SensorMLDecoder;

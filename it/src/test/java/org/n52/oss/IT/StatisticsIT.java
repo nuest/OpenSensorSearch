@@ -39,7 +39,6 @@ import org.json.JSONException;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.n52.oss.api.ApiPaths;
-import org.n52.oss.util.Util;
 import org.skyscreamer.jsonassert.JSONAssert;
 
 public class StatisticsIT {

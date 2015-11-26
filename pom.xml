@@ -85,6 +85,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
         <module>service</module>
         <module>website</module>
         <module>it</module>
+        <module>sir-it</module>
     </modules>
 
     <properties>

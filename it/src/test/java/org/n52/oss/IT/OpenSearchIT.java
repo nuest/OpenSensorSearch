@@ -58,7 +58,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.n52.oss.sir.Client;
 import org.n52.oss.sir.ows.OwsExceptionReport;
-import org.n52.oss.util.GuiceUtil;
 import org.n52.sir.json.MapperFactory;
 import org.n52.sir.json.SearchResult;
 import org.n52.sir.json.SearchResultElement;
@@ -80,7 +79,7 @@ public class OpenSearchIT {
 
     @BeforeClass
     public static void prepare() throws XmlException, IOException, OwsExceptionReport, HttpException {
-        client = GuiceUtil.configureSirClient();
+        client = Util.configureSirClient();
 
         insertSensor("requests/testsensor.xml");
         // insertSensor("requests/sensors/testSensor02.xml");

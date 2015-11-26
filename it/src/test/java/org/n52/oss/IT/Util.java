@@ -26,44 +26,64 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
  */
-package org.n52.oss.util;
+package org.n52.oss.IT;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.Properties;
+import java.io.InputStreamReader;
+import java.io.StringWriter;
 
+import javax.ws.rs.core.Response;
+
+import org.apache.http.HttpResponse;
+import org.n52.sir.json.MapperFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fasterxml.jackson.core.JsonGenerationException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.name.Names;
+import org.n52.oss.sir.Client;
 
-public class GuiceUtil {
+public class Util {
 
-    private static Logger log = LoggerFactory.getLogger(GuiceUtil.class);
+    private static Logger log = LoggerFactory.getLogger(Util.class);
 
-    public static Injector configurePropertiesFiles() {
+    public static Client configureSirClient() {
         Injector i = Guice.createInjector(new AbstractModule() {
 
             @Override
             protected void configure() {
-                try {
-                    Properties sirProps = new Properties();
-                    Properties dbProps = new Properties();
-                    sirProps.load(GuiceUtil.class.getResourceAsStream("/prop/sir.properties"));
-                    dbProps.load(GuiceUtil.class.getResourceAsStream("/prop/db.properties"));
-                    Names.bindProperties(binder(), sirProps);
-                    Names.bindProperties(binder(), dbProps);
-
-                    log.info("Bound properties for tests: \n\t{}\n\t{}", sirProps.toString(), dbProps.toString());
-                } catch (IOException e) {
-                    log.error("Could not bind properties.", e);
-                }
+                // FIXME remove fixed url for tests
+                bindConstant().annotatedWith(Names.named("oss.sir.sirClient.url")).to("http://localhost:8080/OpenSensorSearch/sir");
+                bind(Client.class);
+                log.info("Configured client for tests.");
             }
         });
 
-        return i;
+        return i.getInstance(Client.class);
+    }
+
+    public static String entityToString(Response response) throws JsonGenerationException,
+            JsonMappingException,
+            IOException {
+        StringWriter writer = new StringWriter();
+        MapperFactory.getMapper().writeValue(writer, response.getEntity());
+        return writer.toString();
+    }
+
+    public static String getResponsePayload(HttpResponse response) throws IOException {
+        StringBuilder builder = new StringBuilder();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+        String s;
+        while ((s = reader.readLine()) != null) {
+            builder.append(s);
+        }
+
+        return builder.toString().trim();
     }
 
 }

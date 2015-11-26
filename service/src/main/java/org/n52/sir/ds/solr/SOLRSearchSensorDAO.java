@@ -26,9 +26,7 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
  * Public License for more details.
  */
-/**
- * @author Yakoub
- */
+
 
 package org.n52.sir.ds.solr;
 
@@ -56,6 +54,9 @@ import org.slf4j.LoggerFactory;
 
 import com.google.inject.Inject;
 
+/**
+ * @author Yakoub
+ */
 public class SOLRSearchSensorDAO implements ISearchSensorDAO {
 
     private static Logger log = LoggerFactory.getLogger(SOLRSearchSensorDAO.class);

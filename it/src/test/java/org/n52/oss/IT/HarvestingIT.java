@@ -39,6 +39,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Collection;
+import java.util.Collections;
 
 import org.apache.xmlbeans.XmlException;
 import org.apache.xmlbeans.XmlObject;
@@ -47,9 +48,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.n52.oss.sir.Client;
 import org.n52.oss.sir.api.SirSearchResultElement;
-import org.n52.oss.util.GuiceUtil;
-import org.n52.sir.ds.solr.SOLRSearchSensorDAO;
-import org.n52.sir.ds.solr.SolrConnection;
 import org.x52North.sir.x032.HarvestServiceRequestDocument;
 import org.x52North.sir.x032.HarvestServiceResponseDocument;
 import org.x52North.sir.x032.HarvestServiceResponseDocument.HarvestServiceResponse.InsertedSensor;
@@ -62,17 +60,17 @@ public class HarvestingIT {
 
     private String serviceType = "SOS";
 
-    private SOLRSearchSensorDAO dao;
+//    private SOLRSearchSensorDAO dao;
 
     @BeforeClass
     public static void setUp() {
-        client = GuiceUtil.configureSirClient();
+        client = Util.configureSirClient();
     }
 
     @Before
     public void prepare() {
-        SolrConnection c = new SolrConnection("http://localhost:8983/solr", 2000);
-        this.dao = new SOLRSearchSensorDAO(c);
+//        SolrConnection c = new SolrConnection("http://localhost:8983/solr", 2000);
+//        this.dao = new SOLRSearchSensorDAO(c);
     }
 
     @Test
@@ -89,7 +87,8 @@ public class HarvestingIT {
 
         for (int i = 0; i < sensors.length; i++) {
             String id = sensors[i].getSensorIDInSIR();
-            Collection<SirSearchResultElement> elements = this.dao.searchByID(id);
+            // FIXME use HTTP client to search Solr
+            Collection<SirSearchResultElement> elements = Collections.EMPTY_LIST; // this.dao.searchByID(id);
             assertTrue(elements.size() > 0);
         }
     }

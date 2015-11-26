@@ -7,7 +7,6 @@ Open Sensor Search (OSS) is a platform for discovery of in-situ sensor data. acr
 
 OSS is written in Java and organized as a Maven multi-module project. The modules and their functionaliy are briefly desribed here, but they also contain their own README.md files with more detailed information.
 
-* **arsearch**: service endpoints that can as callback URLs for popular augmented reality applications
 * **it**: integration tests
 * **service**: service implementation of the OSS API
 * **sir-common**: common files for the SIR modules 
