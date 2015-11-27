@@ -43,7 +43,6 @@ import org.slf4j.LoggerFactory;
  * Class encapsulates a {@link TimerServlet} where tasks are forwared to.
  *
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>
- *
  */
 public class CatalogConnectionSchedulerImpl implements CatalogConnectionScheduler {
 
@@ -53,10 +52,6 @@ public class CatalogConnectionSchedulerImpl implements CatalogConnectionSchedule
 
     private static final int SECONDS_TO_MILLISECONDS_FACTOR = 1000;
 
-    /**
-     *
-     * @param timer
-     */
     protected CatalogConnectionSchedulerImpl() {
         log.info("NEW {}", this);
     }
@@ -75,19 +70,12 @@ public class CatalogConnectionSchedulerImpl implements CatalogConnectionSchedule
         try {
             submit(conn, DEFAULT_DELAY_MILLISECS);
             return true;
-        }
-        catch (OwsExceptionReport e) {
+        } catch (OwsExceptionReport e) {
             log.error("Could not submit catalog connection.", e);
             return false;
         }
     }
 
-    /**
-     *
-     * @param conn
-     * @param delay
-     * @throws OwsExceptionReport
-     */
     private void submit(ICatalogConnection conn, long delay) throws OwsExceptionReport {
         ICatalog catalog = null; // this.timerServlet.getCatalog(conn);
 
@@ -95,12 +83,11 @@ public class CatalogConnectionSchedulerImpl implements CatalogConnectionSchedule
                 && conn.getPushIntervalSeconds() == ICatalogConnection.NO_PUSH_INTERVAL) {
             // push only once
             submitOnce(new PushCatalogTask(conn.getConnectionID(), null, // this.timerServlet.getCatalogStatusHandler(),
-                                           catalog), delay);
-        }
-        else {
+                    catalog), delay);
+        } else {
             // schedule periodic push
             submitRepeating(conn.getConnectionID(), new PushCatalogTask(conn.getConnectionID(), null, // this.timerServlet.getCatalogStatusHandler(),
-                                                                        catalog), delay, conn.getPushIntervalSeconds()
+                    catalog), delay, conn.getPushIntervalSeconds()
                     * SECONDS_TO_MILLISECONDS_FACTOR);
         }
     }
@@ -111,6 +98,7 @@ public class CatalogConnectionSchedulerImpl implements CatalogConnectionSchedule
         }
         Date runAt = new Date();
         runAt.setTime(runAt.getTime() + delay);
+        // FIXME re-enabled internal tasking
         // this.timerServlet.submit(task, runAt);
     }
 
@@ -119,7 +107,8 @@ public class CatalogConnectionSchedulerImpl implements CatalogConnectionSchedule
             log.debug("Scheduling Task: " + task + " for execution now and with period of " + period
                     + "ms after a delay of " + delay + "ms.");
         }
-        // this.timerServlet.submit(identifier, task, delay, period);
+        // FIXME re-enable internal tasking
+//        this.timerServlet.submit(identifier, task, delay, period);
     }
 
     @Override

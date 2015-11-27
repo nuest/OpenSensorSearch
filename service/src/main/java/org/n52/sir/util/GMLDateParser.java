@@ -39,45 +39,25 @@ import org.n52.sir.SirConfigurator;
  * @author Jan Schulte
  *
  */
+@Deprecated // re-use SOS parsers
 public class GMLDateParser {
 
     private static final GMLDateParser instance = new GMLDateParser();
 
-    /**
-     *
-     * @return
-     */
     public static GMLDateParser getInstance() {
         return instance;
     }
 
-    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat(SirConfigurator.getInstance().getGmlDateFormat());
+    private final SimpleDateFormat simpleDateFormat = new SimpleDateFormat(SirConfigurator.getInstance().getGmlDateFormat());
 
-    /**
-     * private constructor for singleton pattern
-     */
     private GMLDateParser() {
         //
     }
 
-    /**
-     * Parses a Calendar object to a string.
-     *
-     * @param timestamp
-     * @return
-     */
     public String parseDate(Calendar timestamp) {
         return this.simpleDateFormat.format(timestamp.getTime());
     }
 
-    /**
-     * Parses a string into a Calendar object.
-     *
-     * @param time
-     *        String to be parsed
-     * @return the Calendar Object
-     * @throws ParseException
-     */
     public Calendar parseString(String time) throws ParseException {
         Calendar cal = Calendar.getInstance();
         Date date = null;

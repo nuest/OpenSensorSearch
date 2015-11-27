@@ -28,11 +28,10 @@
  */
 package org.n52.sir.catalogconnection.impl;
 
+import javax.inject.Provider;
 import org.n52.sir.catalogconnection.CatalogConnectionScheduler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.inject.Provider;
 
 /**
  *

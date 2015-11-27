@@ -194,6 +194,7 @@ public class CswCatalogChecker {
      * updated so that it is not checked again during runtime.
      *
      * @param c the client configured for the catalog to check
+     * @return true if the client is disabled for checking of if all criteria are fulfilled
      * @throws OwsExceptionReport on any error
      */
     public boolean checkAndUpdateClient(SimpleSoapCswClient c) throws OwsExceptionReport {
@@ -389,9 +390,9 @@ public class CswCatalogChecker {
      * Checks the given catalog for sufficient capabilities, classification schemes, classification nodes and
      * slots.
      *
-     * @param c
-     * @return
-     * @throws OwsExceptionReport
+     * @param c the client to connect to the catalog
+     * @return true if the client is disabled for checking or if all criteria are fulfilled
+     * @throws OwsExceptionReport on any error
      */
     public boolean checkClient(SimpleSoapCswClient c) throws OwsExceptionReport {
         if (this.client.isDoNotCheck()) {
@@ -399,8 +400,7 @@ public class CswCatalogChecker {
             return true;
         }
 
-        log.info("Checking if capabilities are sufficient, and if classification schemes, classification nodes and needed slots are present in the catalog @ "
-                + c);
+        log.info("Checking if capabilities are sufficient, and if classification schemes, classification nodes and needed slots are present in the catalog @ {}", c);
 
         boolean hasCaps = isCapabilitiesSufficient();
         boolean hasClassification = checkForClassificationSchemes(c);

@@ -78,7 +78,7 @@ public class SearchByValidTimeTest {
 	}
 
 	@Test
-	public void searchByValidTime() {
+	public void searchByValidTime() throws IOException {
         SOLRSearchSensorDAO dao = new SOLRSearchSensorDAO(connection);
 		Date start = new Date(1262296800000l);
 		Date end = new Date(1325282400000l);

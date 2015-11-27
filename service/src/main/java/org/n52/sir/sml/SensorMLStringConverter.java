@@ -66,7 +66,7 @@ public class SensorMLStringConverter {
         //
     }
 
-    /**
+    /*
      * discovery profile expects _one_ {@link SystemType} as a {@link Member}.
      */
     public Collection<String> getText(SensorML sensorML) {
@@ -89,7 +89,7 @@ public class SensorMLStringConverter {
         return getText(sensDoc.getSensorML());
     }
 
-    /**
+    /*
      * method for the extraction of string descriptions
      */
     public Collection<String> getText(SystemType system) {
@@ -98,20 +98,23 @@ public class SensorMLStringConverter {
         // add identification to text field
         Identification[] identifications = system.getIdentificationArray();
         String sIdent = createIdentifierString(identifications);
-        if ( !sIdent.isEmpty())
+        if (!sIdent.isEmpty()) {
             texts.add(sIdent);
+        }
 
         // add classification to text field
         Classification[] classifications = system.getClassificationArray();
         String sClass = createClassificationString(classifications);
-        if ( !sClass.isEmpty())
+        if (!sClass.isEmpty()) {
             texts.add(sClass);
+        }
 
         // add keywords to text field
         Keywords[] keywords = system.getKeywordsArray();
         String sKeywords = createKeywordsString(keywords);
-        if ( !sKeywords.isEmpty())
+        if (!sKeywords.isEmpty()) {
             texts.add(sKeywords);
+        }
 
         return texts;
     }
@@ -129,8 +132,8 @@ public class SensorMLStringConverter {
             }
         }
         sbClass.replace(sbClass.length() - 2, sbClass.length(), ""); // remove
-                                                                     // last
-                                                                     // space
+        // last
+        // space
         sbClass.append(SECTION_END);
         return sbClass.toString();
     }

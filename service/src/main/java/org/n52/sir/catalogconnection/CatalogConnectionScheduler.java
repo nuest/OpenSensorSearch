@@ -28,7 +28,6 @@
  */
 package org.n52.sir.catalogconnection;
 
-import org.n52.oss.sir.ows.OwsExceptionReport;
 import org.n52.sir.catalog.ICatalogConnection;
 
 /**
@@ -57,7 +56,6 @@ public interface CatalogConnectionScheduler {
      *
      * @param iCatalogConnection a new catalog connection
      * @return true if submission was successful
-     * @throws OwsExceptionReport on any error
      */
     public abstract boolean submit(ICatalogConnection iCatalogConnection);
 

@@ -61,25 +61,24 @@ public class HarvestServiceListener implements ISirRequestListener {
 
     private static final String OPERATION_NAME = SirConstants.Operations.HarvestService.name();
 
-    private ExecutorService exec;
+    private final ExecutorService exec;
 
-    private IHarvestServiceDAO harvServDao;
+    private final IHarvestServiceDAO harvServDao;
 
-    private SOSServiceHarvester sosHarvester;
+    private final SOSServiceHarvester sosHarvester;
 
-    private SPSServiceHarvester spsHarvester;
+    private final SPSServiceHarvester spsHarvester;
 
-    private IOOSHarvester ioosHarvester;
+    private final IOOSHarvester ioosHarvester;
 
-    /**
+    /*
      * FIXME instantiate a new harvester for every request
-     *
      */
     @Inject
     public HarvestServiceListener(IHarvestServiceDAO dao,
-                                  SOSServiceHarvester sosHarvester,
-                                  SPSServiceHarvester spsHarvester,
-                                  IOOSHarvester ioosHarvester) {
+            SOSServiceHarvester sosHarvester,
+            SPSServiceHarvester spsHarvester,
+            IOOSHarvester ioosHarvester) {
         this.exec = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
 
         this.harvServDao = dao;
@@ -104,8 +103,7 @@ public class HarvestServiceListener implements ISirRequestListener {
         try {
             ISirResponse response = future.get();
             return response;
-        }
-        catch (InterruptedException | ExecutionException e) {
+        } catch (InterruptedException | ExecutionException e) {
             throw new OwsExceptionReport(request.getServiceUrl(), e);
         }
     }
@@ -119,8 +117,7 @@ public class HarvestServiceListener implements ISirRequestListener {
         try {
             ISirResponse response = future.get();
             return response;
-        }
-        catch (InterruptedException | ExecutionException e) {
+        } catch (InterruptedException | ExecutionException e) {
             throw new OwsExceptionReport(request.getServiceUrl(), e);
         }
     }
@@ -134,8 +131,7 @@ public class HarvestServiceListener implements ISirRequestListener {
         try {
             ISirResponse response = future.get();
             return response;
-        }
-        catch (InterruptedException | ExecutionException e) {
+        } catch (InterruptedException | ExecutionException e) {
             throw new OwsExceptionReport(request.getServiceUrl(), e);
         }
     }
@@ -148,26 +144,25 @@ public class HarvestServiceListener implements ISirRequestListener {
         String serviceType = harvServReq.getServiceType().toUpperCase();
         try {
             switch (serviceType) {
-            case SirConstants.SOS_SERVICE_TYPE:
-                response = harvestSOS(harvServReq);
-                break;
-            case SirConstants.SPS_SERVICE_TYPE:
-                response = harvestSPS(harvServReq);
-                break;
-            case SirConstants.IOOSCATAL0G_SERVICE_TYPE:
-                response = harvestIOOSCatalog(harvServReq);
-                break;
-            default:
-                OwsExceptionReport report = new OwsExceptionReport(ExceptionCode.InvalidParameterValue,
-                                                                   "serviceType",
-                                                                   "Harvesting for the given service type '"
-                                                                           + harvServReq.getServiceType()
-                                                                           + "' not supported!");
-                return new ExceptionResponse(report);
+                case SirConstants.SOS_SERVICE_TYPE:
+                    response = harvestSOS(harvServReq);
+                    break;
+                case SirConstants.SPS_SERVICE_TYPE:
+                    response = harvestSPS(harvServReq);
+                    break;
+                case SirConstants.IOOSCATAL0G_SERVICE_TYPE:
+                    response = harvestIOOSCatalog(harvServReq);
+                    break;
+                default:
+                    OwsExceptionReport report = new OwsExceptionReport(ExceptionCode.InvalidParameterValue,
+                            "serviceType",
+                            "Harvesting for the given service type '"
+                            + harvServReq.getServiceType()
+                            + "' not supported!");
+                    return new ExceptionResponse(report);
             }
 
-        }
-        catch (OwsExceptionReport e) {
+        } catch (OwsExceptionReport e) {
             return new ExceptionResponse(e);
         }
 

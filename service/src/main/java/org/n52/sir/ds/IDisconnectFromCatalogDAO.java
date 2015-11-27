@@ -42,7 +42,7 @@ public interface IDisconnectFromCatalogDAO {
      * @param cswURL
      *        url to the catalog service
      * @return Returns the catalog ID in SIR or null, if not exists
-     * @throws OwsExceptionReport
+     * @throws OwsExceptionReport on any error
      */
     String deleteConnection(String cswURL) throws OwsExceptionReport;
 

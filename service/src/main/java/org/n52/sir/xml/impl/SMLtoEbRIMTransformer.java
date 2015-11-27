@@ -71,8 +71,8 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import x0.oasisNamesTcEbxmlRegrepXsdRim3.RegistryPackageDocument;
 
-import com.google.inject.Inject;
 import com.google.inject.name.Named;
+import javax.inject.Inject;
 
 /**
  *
@@ -131,7 +131,7 @@ public class SMLtoEbRIMTransformer implements ITransformer {
      *        the directory with the XSLT transformation files needed
      * @param validate
      *        validation of inputs and outputs
-     * @throws InstantiationError
+     * @throws InstantiationError on any error
      */
     @Inject
     public SMLtoEbRIMTransformer(@Named("oss.transform.xsltDir")

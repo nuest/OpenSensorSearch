@@ -28,6 +28,7 @@
  */
 package org.n52.sir.catalog.csw;
 
+import com.google.common.collect.Maps;
 import java.util.HashMap;
 
 import x0.oasisNamesTcEbxmlRegrepXsdRim3.IdentifiableType;
@@ -48,26 +49,21 @@ public class CswCatalogCache {
     private HashMap<String, IdentifiableType> cache;
 
     public CswCatalogCache() {
-        this.cache = new HashMap<String, IdentifiableType>();
+        this.cache = Maps.newHashMap();
     }
 
-    /**
-     *
-     * @param cnt
-     */
     public void add(IdentifiableType iT) {
         this.cache.put(iT.getId(), iT);
     }
 
     /**
-     *
      * Uses the id of the given identifiable to check against the cached identifiables.
      *
-     * @param identifiableType
+     * @param identifiableType the type to check based on id
      * @return true if an identifiable with the same id is already cached.
      */
-    public boolean contains(IdentifiableType iT) {
-        return this.cache.containsKey(iT.getId());
+    public boolean contains(IdentifiableType identifiableType) {
+        return this.cache.containsKey(identifiableType.getId());
     }
 
 }

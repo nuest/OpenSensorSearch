@@ -63,6 +63,7 @@ public class TimerServlet extends GenericServlet {
      * Inner class to handle storage and cancelling of tasks at runtime.
      */
     private static class TaskElement {
+
         protected Date date;
         protected long delay;
         protected String id;
@@ -152,9 +153,9 @@ public class TimerServlet extends GenericServlet {
             this.catalogStatusHandler = (ICatalogStatusHandler) context.getAttribute(ICatalogStatusHandler.NAME_IN_CONTEXT);
             if (this.catalogStatusHandler == null) {
                 log.warn("Could not get catalog status handler from servlet context!");
-            }
-            else
+            } else {
                 log.debug("Got catalog status handler from servlet context: {}", this.catalogStatusHandler);
+            }
         }
         return this.catalogStatusHandler;
     }
@@ -176,11 +177,10 @@ public class TimerServlet extends GenericServlet {
     }
 
     /**
+     * "Finally, fixed-rate execution is appropriate for scheduling multiple repeating timer tasks that must
+     * remain synchronized with respect to one another." See Timer#scheduleAtFixedRate(TimerTask, long, long)} for details.
      *
-     * " Finally, fixed-rate execution is appropriate for scheduling multiple repeating timer tasks that must
-     * remain synchronized with respect to one another." See
-     * {@link Timer#scheduleAtFixedRate(TimerTask, long, long)} for details.
-     *
+     * @param identifier the id of the task
      * @param task the task to run
      * @param delay the delay until starting the task the first time
      * @param period repetition interval

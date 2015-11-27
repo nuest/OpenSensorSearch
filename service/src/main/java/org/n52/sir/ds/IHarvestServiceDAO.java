@@ -48,7 +48,7 @@ public interface IHarvestServiceDAO {
      * @param serviceType
      *        The Service type
      * @return Returns the ServiceID in the Database
-     * @throws OwsExceptionReport
+     * @throws OwsExceptionReport on any error
      */
     public String addService(String serviceUrl, String serviceType) throws OwsExceptionReport;
 
@@ -58,7 +58,7 @@ public interface IHarvestServiceDAO {
      * @param sensor
      *        the inserted sensor
      * @return Returns the SensorID in the Database
-     * @throws OwsExceptionReport
+     * @throws OwsExceptionReport on any error
      */
     public SirSensor insertSensor(SirSensor sensor) throws OwsExceptionReport;
 

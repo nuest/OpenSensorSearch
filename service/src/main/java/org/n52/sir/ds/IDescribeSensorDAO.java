@@ -46,7 +46,7 @@ public interface IDescribeSensorDAO {
      * @param sensorId
      *        the given sensor identification
      * @return Returns the requested sensorMLDocument
-     * @throws OwsExceptionReport
+     * @throws OwsExceptionReport on any error
      */
     public XmlObject getSensorDescription(String sensorId) throws OwsExceptionReport;
 

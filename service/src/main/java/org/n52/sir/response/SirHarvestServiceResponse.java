@@ -79,10 +79,8 @@ public class SirHarvestServiceResponse extends AbstractXmlResponse {
 
     private boolean validateReponse;
 
-    /**
+    /*
      * TODO make injectable so that validate variable is injected here!
-     *
-     * @param validate
      */
     public SirHarvestServiceResponse(boolean validate) {
         this.validateReponse = validate;
@@ -134,8 +132,9 @@ public class SirHarvestServiceResponse extends AbstractXmlResponse {
         XmlTools.addSirAndSensorMLSchemaLocation(harvServResp);
 
         if (this.validateReponse) {
-            if ( !document.validate())
+            if (!document.validate()) {
                 log.warn("Service created invalid document!\n" + XmlTools.validateAndIterateErrors(document));
+            }
         }
 
         return document;
@@ -237,17 +236,17 @@ public class SirHarvestServiceResponse extends AbstractXmlResponse {
     public String toString() {
         StringBuffer sb = new StringBuffer();
         sb.append("SirHarvestServiceResponse: ");
-        sb.append("ServiceType: " + this.serviceType);
-        sb.append(", ServiceURL: " + this.serviceUrl);
-        sb.append(", Number Found Sensors: " + this.numberOfFoundSensors);
-        sb.append(", Number Inserted Sensors: " + this.numberOfInsertedSensors);
-        sb.append(", Number Deleted Sensors: " + this.numberOfDeletedSensors);
-        sb.append(", Number Updated Sensors: " + this.numberOfUpdatedSensors);
-        sb.append(", Number Failed Sensors: " + this.numberOfFailedSensors);
-        sb.append(", Inserted Sensors: " + this.insertedSensors);
-        sb.append(", Deleted Sensors: " + this.deletedSensors);
-        sb.append(", Updated Sensors: " + this.updatedSensors);
-        sb.append(", Failed Sensors: " + this.failedSensors);
+        sb.append("ServiceType: ").append(this.serviceType);
+        sb.append(", ServiceURL: ").append(this.serviceUrl);
+        sb.append(", Number Found Sensors: ").append(this.numberOfFoundSensors);
+        sb.append(", Number Inserted Sensors: ").append(this.numberOfInsertedSensors);
+        sb.append(", Number Deleted Sensors: ").append(this.numberOfDeletedSensors);
+        sb.append(", Number Updated Sensors: ").append(this.numberOfUpdatedSensors);
+        sb.append(", Number Failed Sensors: ").append(this.numberOfFailedSensors);
+        sb.append(", Inserted Sensors: ").append(this.insertedSensors);
+        sb.append(", Deleted Sensors: ").append(this.deletedSensors);
+        sb.append(", Updated Sensors: ").append(this.updatedSensors);
+        sb.append(", Failed Sensors: ").append(this.failedSensors);
         return sb.toString();
     }
 

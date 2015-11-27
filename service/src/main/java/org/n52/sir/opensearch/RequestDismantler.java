@@ -48,12 +48,11 @@ public class RequestDismantler {
 
     public SirSearchCriteria createCriteria(Map<String, String> parameters) {
         // TODO daniel: implement method
-
         return null;
     }
 
     public SirBoundingBox getBoundingBox(HttpServletRequest req) {
-        Set< ? > keySet = req.getParameterMap().keySet();
+        Set< ?> keySet = req.getParameterMap().keySet();
         boolean containsName = keySet.contains(OpenSearchConstants.NAME_PARAM);
         boolean containsLatLon = keySet.contains(OpenSearchConstants.LAT_PARAM)
                 && keySet.contains(OpenSearchConstants.LON_PARAM);
@@ -62,32 +61,30 @@ public class RequestDismantler {
         // boolean containsGeometry = keySet.contains("geometry");
 
         if (containsLatLon && containsName) {
-            log.warn("More than one location definition, using latlon");
+            log.warn("More than one location definition, using lat/lon");
             containsName = false;
         }
 
         if (containsName) {
             return getBoundingBoxFromGazetteer(req.getParameter(OpenSearchConstants.NAME_PARAM));
-        }
-        else if (containsLatLon) {
+        } else if (containsLatLon) {
             double radius, lat, lon;
 
             try {
-                if ( !containsRadius) {
+                if (!containsRadius) {
                     radius = OpenSearchConstants.DEFAULT_RADIUS;
                     log.debug("No radius given, falling back to default {}",
-                              Double.valueOf(OpenSearchConstants.DEFAULT_RADIUS));
-                }
-                else
+                            Double.valueOf(OpenSearchConstants.DEFAULT_RADIUS));
+                } else {
                     radius = Double.parseDouble(req.getParameter(OpenSearchConstants.RADIUS_PARAM));
+                }
 
                 lat = Double.parseDouble(req.getParameter(OpenSearchConstants.LAT_PARAM));
                 lon = Double.parseDouble(req.getParameter(OpenSearchConstants.LON_PARAM));
-            }
-            catch (NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 log.error("Could not parse lat, lon or radius from request paramters: "
-                                  + Arrays.deepToString(req.getParameterMap().values().toArray()),
-                          e);
+                        + Arrays.deepToString(req.getParameterMap().values().toArray()),
+                        e);
                 return null;
             }
 
@@ -102,14 +99,8 @@ public class RequestDismantler {
         return null;
     }
 
-    /**
-     *
+    /*
      * map lat lon und radius to a bouding box
-     *
-     * @param lat
-     * @param lon
-     * @param radius
-     * @return
      */
     public SirBoundingBox getBoundingBoxFromLatLon(double lat, double lon, double radius) {
         // stackoverflow.com/questions/1689096/calculating-bounding-box-a-certain-distance-away-from-a-lat-long-coordinate-in-j
@@ -132,7 +123,7 @@ public class RequestDismantler {
     }
 
     public boolean requestContainsGeoParameters(HttpServletRequest req) {
-        Set< ? > keySet = req.getParameterMap().keySet();
+        Set< ?> keySet = req.getParameterMap().keySet();
         boolean containsName = keySet.contains(OpenSearchConstants.NAME_PARAM);
         boolean containsLatLon = keySet.contains(OpenSearchConstants.LAT_PARAM)
                 && keySet.contains(OpenSearchConstants.LON_PARAM);

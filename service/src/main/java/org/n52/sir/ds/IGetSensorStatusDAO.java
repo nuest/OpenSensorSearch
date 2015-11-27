@@ -51,10 +51,10 @@ public interface IGetSensorStatusDAO {
      * @param propertyFilter
      *        the filter for status filtering
      * @return Returns a collection of status descriptions
-     * @throws OwsExceptionReport
+     * @throws OwsExceptionReport on any error
      */
     public Collection<SirStatusDescription> getSensorStatusBySearchCriteria(SirSearchCriteria searchCriteria,
-                                                                            Collection<SirPropertyFilter> propertyFilter) throws OwsExceptionReport;
+            Collection<SirPropertyFilter> propertyFilter) throws OwsExceptionReport;
 
     /**
      * Search the status of a sensor by a given sensorID and a filter, than returns a status information
@@ -64,10 +64,10 @@ public interface IGetSensorStatusDAO {
      * @param propertyFilter
      *        the filter for status filtering
      * @return Returns a collection of status descriptions
-     * @throws OwsExceptionReport
+     * @throws OwsExceptionReport on any error
      */
     public Collection<SirStatusDescription> getSensorStatusBySensorID(InternalSensorID sensorId,
-                                                                      Collection<SirPropertyFilter> propertyFilter) throws OwsExceptionReport;
+            Collection<SirPropertyFilter> propertyFilter) throws OwsExceptionReport;
 
     /**
      * Search the status of a sensor by a given service description and a filter, than returns a status
@@ -78,9 +78,9 @@ public interface IGetSensorStatusDAO {
      * @param propertyFilter
      *        the filter for status filtering
      * @return Returns a collection of status descriptions
-     * @throws OwsExceptionReport
+     * @throws OwsExceptionReport on any error
      */
     public Collection<SirStatusDescription> getSensorStatusByServiceDescription(SirServiceReference servDesc,
-                                                                                Collection<SirPropertyFilter> propertyFilter) throws OwsExceptionReport;
+            Collection<SirPropertyFilter> propertyFilter) throws OwsExceptionReport;
 
 }

@@ -47,7 +47,11 @@ public interface IConnectToCatalogDAO {
 
     /**
      * checks in database if connection exists. If exists, the ConnectionID is returned, else null
+     *
+     * @param url the catalog endpoint
+     * @param pushInterval the repetition interval in seconds
      * @return Returns the catalog ID in SIR or null, if not exists
+     * @throws OwsExceptionReport on any error
      */
     String getConnectionID(URL url, int pushInterval) throws OwsExceptionReport;
 

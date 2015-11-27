@@ -92,6 +92,7 @@ public interface ICatalog {
      * transactions so the return type can be a list of errors that occurred.
      *
      * @throws OwsExceptionReport on any error
+     * @return a collection of error messages, if any occured
      */
     public abstract List<OwsExceptionReport> pushAllDataToCatalog() throws OwsExceptionReport;
 
@@ -104,7 +105,7 @@ public interface ICatalog {
      * @param lastPush
      *        The {@link Date} after which the updates must have happened to be included in the push.
      * @return a collection of error messages, if any occured
-     * @throws OwsExceptionReport on nonr-recoverable errors 
+     * @throws OwsExceptionReport on nonr-recoverable errors
      */
     // FIXME use compound exceptin report from iceland
     List<OwsExceptionReport> pushAllDataToCatalog(Date lastPush) throws OwsExceptionReport;

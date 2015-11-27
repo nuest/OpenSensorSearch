@@ -51,7 +51,7 @@ public interface IInsertSensorStatusDAO {
      * @param status
      *        the status
      * @return Returns the sensorID in the SIR
-     * @throws OwsExceptionReport
+     * @throws OwsExceptionReport on any error
      */
     public String insertSensorStatus(SirSensorIdentification ident, Collection<SirStatus> status) throws OwsExceptionReport;
 

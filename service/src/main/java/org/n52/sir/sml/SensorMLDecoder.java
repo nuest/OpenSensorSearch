@@ -82,18 +82,18 @@ import org.slf4j.LoggerFactory;
  * @author Jan Schulte, Daniel Nüst
  *
  */
+@Deprecated // uses SOS decoders
 public class SensorMLDecoder {
 
     private static final Object BOUNDING_BOX_FIELD_DEFINITION = "urn:ogc:def:property:OGC:1.0:observedBBOX";
 
     private static final Logger log = LoggerFactory.getLogger(SensorMLDecoder.class);
 
-    private static final ArrayList<String> X_AXIS_IDENTIFIERS = new ArrayList<>(Arrays.asList(new String[] {"x",
-                                                                                                            "easting"}));
+    private static final ArrayList<String> X_AXIS_IDENTIFIERS = new ArrayList<>(Arrays.asList(new String[]{"x",
+        "easting"}));
 
-    private static final ArrayList<String> Y_AXIS_IDENTIFIERS = new ArrayList<>(Arrays.asList(new String[] {"y",
-                                                                                                            "northing"}));
-
+    private static final ArrayList<String> Y_AXIS_IDENTIFIERS = new ArrayList<>(Arrays.asList(new String[]{"y",
+        "northing"}));
 
     private static SensorMLStringConverter stringConverter = new SensorMLStringConverter();
 
@@ -119,8 +119,7 @@ public class SensorMLDecoder {
         return sensor;
     }
 
-    /**
-     *
+    /*
      * decodes the given sensor description and also adds the given identification to the returned SirSensor
      * instance if possible.
      */
@@ -155,7 +154,6 @@ public class SensorMLDecoder {
         // sensor.setInterfaces(getInterfaces(system));
         // sensor.setInputs(getInputs(system));
         // sensor.setOutputs(getOutputs(system));
-
         return sensor;
     }
 
@@ -165,12 +163,10 @@ public class SensorMLDecoder {
         if (sensorML instanceof SystemType) {
             SystemType system = (SystemType) sensorML;
             return decode(system);
-        }
-        else if (sensorML instanceof SensorMLDocument) {
+        } else if (sensorML instanceof SensorMLDocument) {
             SensorMLDocument smlDoc = (SensorMLDocument) sensorML;
             return decode(smlDoc);
-        }
-        else if (sensorML instanceof AbstractProcessType) {
+        } else if (sensorML instanceof AbstractProcessType) {
             AbstractProcessType abstractProcess = (AbstractProcessType) sensorML;
 
             // abstractProcess.changeType(SystemType.type) creates another
@@ -179,17 +175,15 @@ public class SensorMLDecoder {
             // QName(XmlTools.SML_1_0_1_NAMESPACE_URI, "System"),
             // SystemType.type does return another
             // abstractProcess that cannot be cast - strange!
-
             SystemType system;
             try {
                 system = SystemType.Factory.parse(abstractProcess.toString());
-            }
-            catch (XmlException e) {
+            } catch (XmlException e) {
                 log.error("Error on parsing abstractProcess!");
                 OwsExceptionReport se = new OwsExceptionReport();
                 se.addCodedException(ExceptionCode.NoApplicableCode,
-                                     "SensorMLDecoder.decode",
-                                     "Error on parsing sensorML document! " + e.getMessage());
+                        "SensorMLDecoder.decode",
+                        "Error on parsing sensorML document! " + e.getMessage());
                 throw se;
             }
 
@@ -200,13 +194,12 @@ public class SensorMLDecoder {
         SensorMLDocument sensorMLDocument;
         try {
             sensorMLDocument = SensorMLDocument.Factory.parse(sensorML.toString());
-        }
-        catch (XmlException e) {
+        } catch (XmlException e) {
             log.error("Error on parsing sensorML Document!");
             OwsExceptionReport se = new OwsExceptionReport();
             se.addCodedException(ExceptionCode.NoApplicableCode,
-                                 "SensorMLDecoder.decode",
-                                 "Error on parsing sensorML document! " + e.getMessage());
+                    "SensorMLDecoder.decode",
+                    "Error on parsing sensorML document! " + e.getMessage());
             throw se;
         }
         return decode(sensorMLDocument);
@@ -276,8 +269,9 @@ public class SensorMLDecoder {
     private static Object getClassificationList(SystemType system) {
         List<String> classifications = new ArrayList<>();
         Classification cs[] = system.getClassificationArray();
-        for (Classification c : cs)
+        for (Classification c : cs) {
             classifications.add(c.getClassifierList().getId());
+        }
         return classifications;
 
     }
@@ -313,8 +307,9 @@ public class SensorMLDecoder {
     }
 
     private static Object getDescription(SensorMLDocument sensorML) {
-        if (sensorML.getSensorML().getMemberArray().length == 0)
+        if (sensorML.getSensorML().getMemberArray().length == 0) {
             return "";
+        }
         SystemType type = (SystemType) sensorML.getSensorML().getMemberArray(0).getProcess();
         return getDescription(type);
     }
@@ -339,8 +334,9 @@ public class SensorMLDecoder {
         Identification[] ids = system.getIdentificationArray();
         for (Identification id : ids) {
             Identifier[] iden = id.getIdentifierList().getIdentifierArray();
-            for (int i = 0; i < iden.length; i++)
+            for (int i = 0; i < iden.length; i++) {
                 identifications.add(iden[i].getTerm().getValue());
+            }
         }
         return identifications;
 
@@ -357,8 +353,9 @@ public class SensorMLDecoder {
                 StringBuilder builder = new StringBuilder();
                 builder.append(inputsarr[i].getName());
                 builder.append(" ");
-                if (inputsarr[i].getQuantity() != null)
+                if (inputsarr[i].getQuantity() != null) {
                     builder.append(inputsarr[i].getQuantity().getUom().getCode().toString());
+                }
                 inputs_results.add(builder.toString());
             }
         }
@@ -371,17 +368,20 @@ public class SensorMLDecoder {
         if (sensorML.getSensorML().getMemberArray().length != 0) {
             SystemType type = (SystemType) sensorML.getSensorML().getMemberArray()[0].getProcess();
             Interfaces interfaces = type.getInterfaces();
-            if (interfaces == null)
+            if (interfaces == null) {
                 return null;
+            }
             InterfaceList list = interfaces.getInterfaceList();
-            if (list == null)
+            if (list == null) {
                 return null;
+            }
             Interface[] interfacearr = list.getInterfaceArray();
             for (int i = 0; i < interfacearr.length; i++) {
                 DataRecordType t = (DataRecordType) (interfacearr[i].getInterfaceDefinition().getServiceLayer().getAbstractDataRecord());
                 DataComponentPropertyType fields[] = t.getFieldArray();
-                for (int j = 0; j < fields.length; j++)
+                for (int j = 0; j < fields.length; j++) {
                     interfaces_result.add(fields[j].getText().getValue().toString());
+                }
             }
         }
         return interfaces_result;
@@ -424,24 +424,29 @@ public class SensorMLDecoder {
     }
 
     private static String getLatitude(SensorMLDocument sensorML) {
-        if (sensorML.getSensorML().getMemberArray().length == 0)
+        if (sensorML.getSensorML().getMemberArray().length == 0) {
             return "";
+        }
         SystemType type = (SystemType) sensorML.getSensorML().getMemberArray(0).getProcess();
-        if (type.getPosition() == null)
+        if (type.getPosition() == null) {
             return "";
+        }
         return getLatitude(type);
     }
 
     private static String getLatitude(SystemType system) {
         PositionType p = system.getPosition().getPosition();
-        if (p == null)
+        if (p == null) {
             return "";
+        }
         VectorType vector = (p.getLocation().getVector());
-        if (vector == null)
+        if (vector == null) {
             return "";
+        }
         Coordinate[] coordinates = vector.getCoordinateArray();
-        if (coordinates.length == 0)
+        if (coordinates.length == 0) {
             return "";
+        }
         StringBuilder latitude = new StringBuilder();
         for (Coordinate cord : coordinates) {
             if (cord.getName().equals("latitude")) {
@@ -454,24 +459,29 @@ public class SensorMLDecoder {
     }
 
     private static String getLongitude(SensorMLDocument sensorML) {
-        if (sensorML.getSensorML().getMemberArray().length == 0)
+        if (sensorML.getSensorML().getMemberArray().length == 0) {
             return "";
+        }
         SystemType type = (SystemType) sensorML.getSensorML().getMemberArray(0).getProcess();
-        if (type.getPosition() == null)
+        if (type.getPosition() == null) {
             return "";
+        }
         return getLongitude(type);
     }
 
     private static String getLongitude(SystemType system) {
         PositionType p = system.getPosition().getPosition();
-        if (p == null)
+        if (p == null) {
             return "";
+        }
         VectorType vector = (p.getLocation().getVector());
-        if (vector == null)
+        if (vector == null) {
             return "";
+        }
         Coordinate[] coordinates = vector.getCoordinateArray();
-        if (coordinates.length == 0)
+        if (coordinates.length == 0) {
             return "";
+        }
         StringBuilder latitude = new StringBuilder();
         for (Coordinate cord : coordinates) {
             if (cord.getName().equals("longitude")) {
@@ -493,8 +503,9 @@ public class SensorMLDecoder {
                 StringBuilder builder = new StringBuilder();
                 builder.append(outputsarr[i].getName());
                 builder.append(" ");
-                if (outputsarr[i].getQuantity() != null)
+                if (outputsarr[i].getQuantity() != null) {
                     builder.append(outputsarr[i].getQuantity().getUom().getCode().toString());
+                }
                 output_results.add(builder.toString());
             }
         }
@@ -517,17 +528,14 @@ public class SensorMLDecoder {
                 String uom = output.getQuantity().getUom().getCode();
                 obsProp.setUom(uom);
                 obsProps.add(obsProp);
-            }
-            else if (output.isSetAbstractDataArray1()) {
+            } else if (output.isSetAbstractDataArray1()) {
                 if (output.getAbstractDataArray1().isSetDefinition()) {
                     obsProp.setUrn(output.getAbstractDataArray1().getDefinition());
                     obsProps.add(obsProp);
-                }
-                else {
+                } else {
                     log.warn("Could not handle output observedProperty data array, definition missing.");
                 }
-            }
-            else {
+            } else {
                 log.warn("Could not handle output observedProperty: " + output);
             }
         }
@@ -553,9 +561,9 @@ public class SensorMLDecoder {
         Member[] members = sensDoc.getSensorML().getMemberArray();
         for (Member member : members) {
             SystemType systemType = (SystemType) member.getProcess();
-            if (sirTimePeriod == null)
+            if (sirTimePeriod == null) {
                 sirTimePeriod = getTimePeriod(systemType);
-            else {
+            } else {
                 TimePeriod stp = getTimePeriod(systemType);
                 sirTimePeriod.union(stp);
             }
@@ -572,20 +580,23 @@ public class SensorMLDecoder {
             String startString = null;
             if (validTime.getTimePeriod().getBeginPosition() != null) {
                 startString = validTime.getTimePeriod().getBeginPosition().getStringValue();
-                if (startString.isEmpty())
+                if (startString.isEmpty()) {
                     startString = validTime.getTimePeriod().getBeginPosition().getIndeterminatePosition().toString();
-            }
-            else
+                }
+            } else {
                 startString = validTime.getTimePeriod().getBegin().getTimeInstant().getTimePosition().getStringValue();
+            }
 
             String endString = null;
             if (validTime.getTimePeriod().getEndPosition() != null) {
                 endString = validTime.getTimePeriod().getEndPosition().getStringValue();
                 if (endString.isEmpty()) // could be indeterminate
+                {
                     endString = validTime.getTimePeriod().getEndPosition().getIndeterminatePosition().toString();
-            }
-            else
+                }
+            } else {
                 endString = validTime.getTimePeriod().getEnd().getTimeInstant().getTimePosition().getStringValue();
+            }
 
             IndeterminateTime start = new IndeterminateTime(startString);
             sirTimePeriod.setStartTime(start);
@@ -608,9 +619,9 @@ public class SensorMLDecoder {
             // no time created
             OwsExceptionReport se = new OwsExceptionReport();
             se.addCodedException(ExceptionCode.NoApplicableCode,
-                                 "SensorMLDecoder.decode",
-                                 "The start time is missing or cannot be parsed in the timePeriod element of valid time section! Time: "
-                                         + it);
+                    "SensorMLDecoder.decode",
+                    "The start time is missing or cannot be parsed in the timePeriod element of valid time section! Time: "
+                    + it);
         }
     }
 
@@ -623,8 +634,7 @@ public class SensorMLDecoder {
 
             if (X_AXIS_IDENTIFIERS.contains(name) || X_AXIS_IDENTIFIERS.contains(id)) {
                 xy[0] = coordinate.getQuantity().getValue();
-            }
-            else if (Y_AXIS_IDENTIFIERS.contains(name) || Y_AXIS_IDENTIFIERS.contains(id)) {
+            } else if (Y_AXIS_IDENTIFIERS.contains(name) || Y_AXIS_IDENTIFIERS.contains(id)) {
                 xy[1] = coordinate.getQuantity().getValue();
             }
         }

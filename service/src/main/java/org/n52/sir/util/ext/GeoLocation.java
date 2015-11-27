@@ -31,7 +31,6 @@
  *
  * Jan Philip Matuschek
  */
-
 package org.n52.sir.util.ext;
 
 /**
@@ -57,14 +56,15 @@ public class GeoLocation {
     private static final double MAX_LAT = Math.toRadians(90d); // PI/2
     private static final double MAX_LON = Math.toRadians(180d); // PI
 
-    private static final double MIN_LAT = Math.toRadians( -90d); // -PI/2
-    private static final double MIN_LON = Math.toRadians( -180d); // -PI
+    private static final double MIN_LAT = Math.toRadians(-90d); // -PI/2
+    private static final double MIN_LON = Math.toRadians(-180d); // -PI
 
     /**
      * @param latitude
      *        the latitude, in degrees.
      * @param longitude
      *        the longitude, in degrees.
+     * @return the location based on the provided coordinate
      */
     public static GeoLocation fromDegrees(double latitude, double longitude) {
         GeoLocation result = new GeoLocation();
@@ -81,6 +81,7 @@ public class GeoLocation {
      *        the latitude, in radians.
      * @param longitude
      *        the longitude, in radians.
+     * @return the location based on the provided coordinate
      */
     public static GeoLocation fromRadians(double latitude, double longitude) {
         GeoLocation result = new GeoLocation();
@@ -136,8 +137,9 @@ public class GeoLocation {
      */
     public GeoLocation[] boundingCoordinates(double distance, double radius) {
 
-        if (radius < 0d || distance < 0d)
+        if (radius < 0d || distance < 0d) {
             throw new IllegalArgumentException();
+        }
 
         // angular distance in radians on a great circle
         double radDist = distance / radius;
@@ -149,13 +151,14 @@ public class GeoLocation {
         if (minLat > MIN_LAT && maxLat < MAX_LAT) {
             double deltaLon = Math.asin(Math.sin(radDist) / Math.cos(this.radLat));
             minLon = this.radLon - deltaLon;
-            if (minLon < MIN_LON)
+            if (minLon < MIN_LON) {
                 minLon += 2d * Math.PI;
+            }
             maxLon = this.radLon + deltaLon;
-            if (maxLon > MAX_LON)
+            if (maxLon > MAX_LON) {
                 maxLon -= 2d * Math.PI;
-        }
-        else {
+            }
+        } else {
             // a pole is within the distance
             minLat = Math.max(minLat, MIN_LAT);
             maxLat = Math.min(maxLat, MAX_LAT);
@@ -163,17 +166,19 @@ public class GeoLocation {
             maxLon = MAX_LON;
         }
 
-        return new GeoLocation[] {fromRadians(minLat, minLon), fromRadians(maxLat, maxLon)};
+        return new GeoLocation[]{fromRadians(minLat, minLon), fromRadians(maxLat, maxLon)};
     }
 
     private void checkBounds() {
-        if (this.radLat < MIN_LAT || this.radLat > MAX_LAT || this.radLon < MIN_LON || this.radLon > MAX_LON)
+        if (this.radLat < MIN_LAT || this.radLat > MAX_LAT || this.radLon < MIN_LON || this.radLon > MAX_LON) {
             throw new IllegalArgumentException();
+        }
     }
 
     /**
      * Computes the great circle distance between this GeoLocation instance and the location argument.
      *
+     * @param location the other location
      * @param radius
      *        the radius of the sphere, e.g. the average radius for a spherical approximation of the figure of
      *        the Earth is approximately 6371.01 kilometers.

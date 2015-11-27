@@ -78,10 +78,10 @@ public class SIR {
         this.requestOperator = requestOperator;
 
         log.info("{} | Version: {} | Build: {} | From: {}",
-                 this,
-                 this.appConstants.getApplicationVersion(),
-                 this.appConstants.getApplicationCommit(),
-                 this.appConstants.getApplicationTimestamp());
+                this,
+                this.appConstants.getApplicationVersion(),
+                this.appConstants.getApplicationCommit(),
+                this.appConstants.getApplicationTimestamp());
 
         log.info(" ***** NEW {} *****", this);
     }
@@ -94,23 +94,19 @@ public class SIR {
 
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public Response doGet(@Context
-    UriInfo uriInfo) {
+    public Response doGet(@Context UriInfo uriInfo) {
         String query = uriInfo.getRequestUri().getQuery();
         log.debug(" ****** (GET) Connected: {} ****** ", query);
 
         // TODO limit the scope of the input parameters to this method
         // MultivaluedMap<String, String> queryParams = uriInfo.getQueryParameters();
-
         ISirResponse sirResp = this.requestOperator.doGetOperation(query);
         return doResponse(sirResp);
     }
 
     @POST
     @Produces(MediaType.APPLICATION_XML)
-    public Response doPost(@Context
-    HttpServletRequest req, @Context
-    UriInfo uri, String body) {
+    public Response doPost(@Context HttpServletRequest req, @Context UriInfo uri, String body) {
         log.debug(" ****** (POST) Connected from: {}", uri.getAbsolutePath());
         log.debug("POST body: {}", body);
 
@@ -126,29 +122,27 @@ public class SIR {
         // }
         // br.close();
         // inputString = sb.toString();
-
         try {
             // discard "request="
             if (inputString.startsWith("request=")) {
                 inputString = inputString.substring(8, inputString.length());
                 inputString = java.net.URLDecoder.decode(inputString, "UTF-8");
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             log.error("Exception reading input stream.", e);
             return doResponse(new ExceptionResponse(e));
         }
 
-        if (inputString.isEmpty())
+        if (inputString.isEmpty()) {
             return doResponse(new ExceptionResponse(new OwsExceptionReport(ExceptionCode.InvalidRequest,
-                                                                           "request",
-                                                                           "request is empty.")));
+                    "request",
+                    "request is empty.")));
+        }
 
         try {
             ISirResponse sirResp = this.requestOperator.doPostOperation(inputString, uri.getAbsolutePath());
             return doResponse(sirResp);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             log.error("Unhanlded error processing operation.", e);
             return doResponse(new ExceptionResponse(e));
         }
@@ -164,14 +158,12 @@ public class SIR {
                     byte[] bytes;
                     try {
                         bytes = sirResp.getByteArray();
-                    }
-                    catch (Exception e) {
+                    } catch (Exception e) {
                         log.error("Could not serialize response.", e);
                         throw new WebApplicationException(e);
                     }
                     bus.write(bytes);
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     log.error("Could not write to response stream.", e);
                 }
             }

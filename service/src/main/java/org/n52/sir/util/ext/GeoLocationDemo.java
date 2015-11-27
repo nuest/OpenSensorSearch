@@ -34,6 +34,8 @@
 
 package org.n52.sir.util.ext;
 
+import java.sql.SQLException;
+
 /**
  * <p>
  * See <a href="http://JanMatuschek.de/LatitudeLongitudeBoundingCoordinates#Java">
@@ -56,6 +58,7 @@ public class GeoLocationDemo {
      * @param connection
      *        an SQL connection.
      * @return places within the specified distance from location.
+     * @throws SQLException on any error during database connection
      */
     public static java.sql.ResultSet findPlacesWithinDistance(double radius,
                                                               GeoLocation location,

@@ -49,7 +49,8 @@ public interface IInsertSensorInfoDAO {
      *        the sensor identification
      * @param servRef
      *        the added service description
-     * @throws OwsExceptionReport
+     * @return the identifier of the added reference
+     * @throws OwsExceptionReport on any error
      */
     public String addNewReference(SirSensorIdentification sensIdent, SirServiceReference servRef) throws OwsExceptionReport;
 
@@ -60,7 +61,8 @@ public interface IInsertSensorInfoDAO {
      *        the sensor Identification
      * @param servRef
      *        the removed service description
-     * @throws OwsExceptionReport
+     * @return the iidentifier of the deleted reference
+     * @throws OwsExceptionReport on any error
      */
     public String deleteReference(SirSensorIdentification sensIdent, SirServiceReference servRef) throws OwsExceptionReport;
 
@@ -70,7 +72,7 @@ public interface IInsertSensorInfoDAO {
      * @param sensIdent
      *        the sensorIdentification
      * @return Returns the former SensorID in SIR
-     * @throws OwsExceptionReport
+     * @throws OwsExceptionReport on any error
      */
     public String deleteSensor(SirSensorIdentification sensIdent) throws OwsExceptionReport;
 
@@ -80,7 +82,7 @@ public interface IInsertSensorInfoDAO {
      * @param sensor
      *        the sensor
      * @return Returns the sensorID in the Database
-     * @throws OwsExceptionReport
+     * @throws OwsExceptionReport on any error
      */
     public String insertSensor(SirSensor sensor) throws OwsExceptionReport;
 
@@ -92,7 +94,7 @@ public interface IInsertSensorInfoDAO {
      * @param sensor
      *        the sensor
      * @return Returns the SensorID in SIR
-     * @throws OwsExceptionReport
+     * @throws OwsExceptionReport on any error
      */
     public String updateSensor(SirSensorIdentification sensIdent, SirSensor sensor) throws OwsExceptionReport;
 

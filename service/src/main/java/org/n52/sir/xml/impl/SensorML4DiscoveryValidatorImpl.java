@@ -41,7 +41,6 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-import javax.inject.Named;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -71,6 +70,7 @@ import org.xml.sax.helpers.DefaultHandler;
 import org.xml.sax.helpers.LocatorImpl;
 
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 
 /**
  * @author <a href="mailto:d.nuest@52north.org">Daniel Nüst</a>

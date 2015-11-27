@@ -43,9 +43,6 @@ public class SirDisconnectFromCatalogResponse extends AbstractXmlResponse {
 
     private static final Logger log = LoggerFactory.getLogger(SirDisconnectFromCatalogResponse.class);
 
-    /**
-     * the url to the catalog service
-     */
     private String catalogUrl;
 
     @Override
@@ -59,24 +56,18 @@ public class SirDisconnectFromCatalogResponse extends AbstractXmlResponse {
         disconCat.setCatalogURL(this.catalogUrl);
 
         if (SirConfigurator.getInstance().isValidateResponses()) {
-            if ( !document.validate())
+            if (!document.validate()) {
                 log.warn("Service created invalid document!\n" + XmlTools.validateAndIterateErrors(document));
+            }
         }
 
         return document;
     }
 
-    /**
-     * @return the cswUrl
-     */
     public String getCatalogUrl() {
         return this.catalogUrl;
     }
 
-    /**
-     * @param cswUrl
-     *        the cswUrl to set
-     */
     public void setCatalogUrl(String catalogUrl) {
         this.catalogUrl = catalogUrl;
     }

@@ -28,6 +28,7 @@
  */
 package org.n52.sir.catalogconnection;
 
+import com.google.inject.AbstractModule;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -35,8 +36,6 @@ import org.n52.sir.catalogconnection.impl.CatalogConnectionSchedulerProvider;
 import org.n52.sir.catalogconnection.impl.StartupThread;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.inject.AbstractModule;
 
 public class CatalogConnectionModule extends AbstractModule {
 
